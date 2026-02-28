@@ -39,6 +39,25 @@ layout: hextra-home
 
 <hr class="ply-divider">
 
+<!-- ═══════════════════ DEMO ═══════════════════ -->
+<section class="ply-demo">
+  <div class="ply-inner">
+    <div class="ply-text-center" style="margin-bottom: 2.5rem;">
+      <span class="ply-section-label" style="justify-content: center;">See it in action</span>
+      <h2 class="ply-section-title" style="margin-left: auto; margin-right: auto;">Claude + PlyDB</h2>
+      <p class="ply-section-desc ply-mx-auto" style="text-align: center;">Ask questions in plain English. PlyDB lets your AI agent query live data and return real answers.</p>
+    </div>
+    <div class="ply-demo__player">
+      <video controls muted autoplay loop playsinline>
+        <source src="plydb_demo_in_claude_desktop.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p class="ply-demo__note">PlyDB works with any AI agent that supports <strong>MCP</strong> or <strong>CLI tools</strong> &mdash; including Claude, ChatGPT, Gemini, Codex, and more.</p>
+  </div>
+</section>
+
+<hr class="ply-divider">
+
 <!-- ═══════════════════ ARCHITECTURE ═══════════════════ -->
 <section class="ply-arch">
   <div class="ply-inner">

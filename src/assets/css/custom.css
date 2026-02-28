@@ -237,6 +237,52 @@
 
 
 /* ═══════════════════════════════════════════════════════════════
+   DEMO VIDEO
+   ═══════════════════════════════════════════════════════════════ */
+.ply-demo {
+  padding: var(--ply-section-gap) 0;
+  background: var(--ply-bg-alt);
+}
+
+.ply-demo__player {
+  max-width: 860px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--ply-border);
+  box-shadow:
+    0 4px 24px rgba(0,0,0,0.06),
+    0 1px 4px rgba(0,0,0,0.04);
+}
+
+.dark .ply-demo__player {
+  box-shadow:
+    0 4px 24px rgba(0,0,0,0.3),
+    0 1px 4px rgba(0,0,0,0.2);
+}
+
+.ply-demo__player video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ply-demo__note {
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--ply-text-dim);
+  margin: 1.5rem auto 0;
+  max-width: 540px;
+  line-height: 1.5;
+}
+
+.ply-demo__note strong {
+  color: var(--ply-text);
+  font-weight: 600;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
    ARCHITECTURE DIAGRAM
    ═══════════════════════════════════════════════════════════════ */
 .ply-arch {
