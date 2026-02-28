@@ -1,0 +1,713 @@
+/* ═══════════════════════════════════════════════════════════════
+   PlyDB Landing Page — "Terminal Noir" aesthetic
+   Deep technical elegance with electric accents
+   ═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@300;400;500;600&display=swap');
+
+/* ── Tokens ────────────────────────────────────────────────── */
+:root {
+  --ply-bg:         #f8f8f6;
+  --ply-bg-alt:     #f0efec;
+  --ply-bg-code:    #1c1e26;
+  --ply-surface:    #ffffff;
+  --ply-border:     #ddd9d0;
+  --ply-text:       #1a1a1a;
+  --ply-text-dim:   #6b6560;
+  --ply-accent:     #0ea5e9;
+  --ply-accent-dim: #0284c7;
+  --ply-accent-glow: rgba(14,165,233,0.12);
+  --ply-warm:       #e67e22;
+  --ply-green:      #22c55e;
+  --ply-violet:     #8b5cf6;
+  --ply-rose:       #f43f5e;
+  --ply-radius:     10px;
+  --ply-font-display: 'Outfit', sans-serif;
+  --ply-font-body:    'Source Sans 3', sans-serif;
+  --ply-font-mono:    'IBM Plex Mono', monospace;
+  --ply-max-width:  1180px;
+  --ply-section-gap: 7rem;
+}
+
+.dark {
+  --ply-bg:         #0d0f14;
+  --ply-bg-alt:     #131620;
+  --ply-bg-code:    #0a0c12;
+  --ply-surface:    #181b24;
+  --ply-border:     #262a36;
+  --ply-text:       #e4e4e7;
+  --ply-text-dim:   #8b8d98;
+  --ply-accent:     #38bdf8;
+  --ply-accent-dim: #0ea5e9;
+  --ply-accent-glow: rgba(56,189,248,0.08);
+}
+
+/* ── Reset for landing sections ────────────────────────────── */
+.ply-landing {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  font-family: var(--ply-font-body);
+  color: var(--ply-text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ply-landing *,
+.ply-landing *::before,
+.ply-landing *::after {
+  box-sizing: border-box;
+}
+
+.ply-landing section {
+  position: relative;
+}
+
+.ply-inner {
+  max-width: var(--ply-max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ── Fade-in animation ─────────────────────────────────────── */
+@keyframes plyFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ply-fade {
+  opacity: 0;
+  animation: plyFadeUp 0.7s ease-out forwards;
+}
+
+.ply-fade-d1 { animation-delay: 0.08s; }
+.ply-fade-d2 { animation-delay: 0.18s; }
+.ply-fade-d3 { animation-delay: 0.30s; }
+.ply-fade-d4 { animation-delay: 0.42s; }
+.ply-fade-d5 { animation-delay: 0.54s; }
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════════════════════════ */
+.ply-hero {
+  padding: 6rem 0 5rem;
+  text-align: center;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% -10%, var(--ply-accent-glow), transparent),
+    var(--ply-bg);
+}
+
+.ply-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
+  margin-bottom: 1.75rem;
+  font-family: var(--ply-font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ply-accent);
+  background: var(--ply-accent-glow);
+  border: 1px solid color-mix(in srgb, var(--ply-accent) 25%, transparent);
+  border-radius: 100px;
+}
+
+.ply-hero__badge svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.ply-hero h1 {
+  font-family: var(--ply-font-display);
+  font-weight: 800;
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: var(--ply-text);
+  margin: 0 auto 1.25rem;
+  max-width: 780px;
+}
+
+.ply-hero h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--ply-accent), var(--ply-violet));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ply-hero__sub {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--ply-text-dim);
+  max-width: 600px;
+  margin: 0 auto 2.25rem;
+  font-weight: 400;
+}
+
+/* Install snippet */
+.ply-hero__install {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 1rem 0.65rem 1.25rem;
+  margin-bottom: 2rem;
+  font-family: var(--ply-font-mono);
+  font-size: 0.88rem;
+  color: #a5f3fc;
+  background: var(--ply-bg-code);
+  border: 1px solid var(--ply-border);
+  border-radius: var(--ply-radius);
+  cursor: pointer;
+  transition: border-color 0.2s;
+  position: relative;
+}
+
+.ply-hero__install:hover {
+  border-color: var(--ply-accent);
+}
+
+.ply-hero__install .ply-prompt {
+  color: var(--ply-accent);
+  user-select: none;
+}
+
+.ply-hero__install .ply-copy-icon {
+  color: #6b7280;
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+
+.ply-hero__install:hover .ply-copy-icon {
+  color: var(--ply-accent);
+}
+
+/* CTA buttons */
+.ply-cta-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.ply-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.72rem 1.5rem;
+  font-family: var(--ply-font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: var(--ply-radius);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.ply-btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.ply-btn--primary {
+  background: var(--ply-accent);
+  color: #fff;
+}
+
+.ply-btn--primary:hover {
+  background: var(--ply-accent-dim);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(14,165,233,0.25);
+}
+
+.ply-btn--ghost {
+  background: transparent;
+  color: var(--ply-text);
+  border: 1px solid var(--ply-border);
+}
+
+.ply-btn--ghost:hover {
+  border-color: var(--ply-accent);
+  color: var(--ply-accent);
+  transform: translateY(-1px);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   ARCHITECTURE DIAGRAM
+   ═══════════════════════════════════════════════════════════════ */
+.ply-arch {
+  padding: var(--ply-section-gap) 0;
+  background: var(--ply-bg);
+}
+
+.ply-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--ply-font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ply-accent);
+  margin-bottom: 1rem;
+}
+
+.ply-section-label::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--ply-accent);
+}
+
+.ply-section-title {
+  font-family: var(--ply-font-display);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--ply-text);
+  margin: 0 0 1rem;
+}
+
+.ply-section-desc {
+  font-size: 1.05rem;
+  color: var(--ply-text-dim);
+  line-height: 1.6;
+  max-width: 560px;
+  margin-bottom: 3rem;
+}
+
+/* Architecture visualization */
+.ply-arch-diagram {
+  background: var(--ply-surface);
+  border: 1px solid var(--ply-border);
+  border-radius: 14px;
+  padding: 3rem 2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.ply-arch-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.ply-arch-node {
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.ply-arch-node__box {
+  padding: 1.2rem 1.8rem;
+  border-radius: var(--ply-radius);
+  font-family: var(--ply-font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  position: relative;
+}
+
+.ply-arch-node__sub {
+  display: block;
+  font-family: var(--ply-font-mono);
+  font-size: 0.7rem;
+  font-weight: 400;
+  margin-top: 0.35rem;
+  opacity: 0.65;
+}
+
+.ply-arch-node--agent .ply-arch-node__box {
+  background: color-mix(in srgb, var(--ply-violet) 10%, var(--ply-surface));
+  border: 1px solid color-mix(in srgb, var(--ply-violet) 30%, transparent);
+  color: var(--ply-text);
+}
+
+.ply-arch-node--plydb .ply-arch-node__box {
+  background: color-mix(in srgb, var(--ply-accent) 10%, var(--ply-surface));
+  border: 2px solid var(--ply-accent);
+  color: var(--ply-text);
+  padding: 1.5rem 2.5rem;
+}
+
+.ply-arch-node--plydb .ply-arch-node__sub {
+  color: var(--ply-accent);
+  opacity: 1;
+}
+
+.ply-arch-node--source .ply-arch-node__box {
+  background: color-mix(in srgb, var(--ply-green) 8%, var(--ply-surface));
+  border: 1px solid color-mix(in srgb, var(--ply-green) 25%, transparent);
+  color: var(--ply-text);
+  padding: 0.8rem 1.2rem;
+  font-size: 0.82rem;
+}
+
+.ply-arch-arrow {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 1rem;
+  color: var(--ply-text-dim);
+  font-family: var(--ply-font-mono);
+  font-size: 0.68rem;
+  gap: 0.2rem;
+}
+
+.ply-arch-arrow__line {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--ply-border), var(--ply-accent), var(--ply-border));
+  position: relative;
+}
+
+.ply-arch-arrow__line::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: -4px;
+  border: 5px solid transparent;
+  border-left-color: var(--ply-accent);
+}
+
+.ply-arch-sources-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Mobile arch */
+@media (max-width: 768px) {
+  .ply-arch-flow {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .ply-arch-arrow {
+    transform: rotate(90deg);
+    padding: 0.5rem 0;
+  }
+  .ply-arch-sources-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   FEATURES
+   ═══════════════════════════════════════════════════════════════ */
+.ply-features {
+  padding: var(--ply-section-gap) 0;
+  background: var(--ply-bg-alt);
+}
+
+.ply-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .ply-features-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .ply-features-grid { grid-template-columns: 1fr; }
+}
+
+.ply-feature-card {
+  background: var(--ply-surface);
+  border: 1px solid var(--ply-border);
+  border-radius: var(--ply-radius);
+  padding: 1.75rem;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.ply-feature-card:hover {
+  border-color: color-mix(in srgb, var(--ply-accent) 40%, var(--ply-border));
+  box-shadow: 0 2px 20px var(--ply-accent-glow);
+}
+
+.ply-feature-card__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.ply-feature-card__icon--blue   { background: color-mix(in srgb, var(--ply-accent) 12%, var(--ply-surface)); color: var(--ply-accent); }
+.ply-feature-card__icon--green  { background: color-mix(in srgb, var(--ply-green)  12%, var(--ply-surface)); color: var(--ply-green); }
+.ply-feature-card__icon--violet { background: color-mix(in srgb, var(--ply-violet) 12%, var(--ply-surface)); color: var(--ply-violet); }
+.ply-feature-card__icon--warm   { background: color-mix(in srgb, var(--ply-warm)   12%, var(--ply-surface)); color: var(--ply-warm); }
+.ply-feature-card__icon--rose   { background: color-mix(in srgb, var(--ply-rose)   12%, var(--ply-surface)); color: var(--ply-rose); }
+
+.ply-feature-card h3 {
+  font-family: var(--ply-font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--ply-text);
+  margin: 0 0 0.5rem;
+}
+
+.ply-feature-card p {
+  font-size: 0.9rem;
+  color: var(--ply-text-dim);
+  line-height: 1.55;
+  margin: 0;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   DATA SOURCES
+   ═══════════════════════════════════════════════════════════════ */
+.ply-sources {
+  padding: var(--ply-section-gap) 0;
+  background: var(--ply-bg);
+}
+
+.ply-sources-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .ply-sources-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.ply-source-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.1rem;
+  background: var(--ply-surface);
+  border: 1px solid var(--ply-border);
+  border-radius: var(--ply-radius);
+  font-family: var(--ply-font-mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ply-text);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.ply-source-chip:hover {
+  border-color: var(--ply-accent);
+  transform: translateY(-2px);
+}
+
+.ply-source-chip__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ply-source-chip__dot--db    { background: var(--ply-accent); }
+.ply-source-chip__dot--file  { background: var(--ply-green); }
+.ply-source-chip__dot--cloud { background: var(--ply-warm); }
+.ply-source-chip__dot--saas  { background: var(--ply-violet); }
+
+.ply-source-legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.ply-source-legend span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--ply-font-mono);
+  font-size: 0.72rem;
+  color: var(--ply-text-dim);
+  letter-spacing: 0.03em;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   USE CASES
+   ═══════════════════════════════════════════════════════════════ */
+.ply-usecases {
+  padding: var(--ply-section-gap) 0;
+  background: var(--ply-bg-alt);
+}
+
+.ply-usecases-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.ply-usecase {
+  background: var(--ply-surface);
+  border: 1px solid var(--ply-border);
+  border-radius: var(--ply-radius);
+  padding: 1.75rem 2rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  transition: border-color 0.2s;
+}
+
+.ply-usecase:hover {
+  border-color: color-mix(in srgb, var(--ply-accent) 40%, var(--ply-border));
+}
+
+.ply-usecase__tag {
+  font-family: var(--ply-font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ply-accent);
+  background: var(--ply-accent-glow);
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.ply-usecase__body h3 {
+  font-family: var(--ply-font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--ply-text);
+  margin: 0 0 0.5rem;
+}
+
+.ply-usecase__prompt {
+  font-family: var(--ply-font-mono);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--ply-text-dim);
+  margin: 0;
+  padding: 0.85rem 1rem;
+  background: color-mix(in srgb, var(--ply-bg-code) 5%, var(--ply-surface));
+  border-radius: 6px;
+  border-left: 2px solid var(--ply-accent);
+}
+
+.dark .ply-usecase__prompt {
+  background: color-mix(in srgb, var(--ply-bg-code) 40%, var(--ply-surface));
+}
+
+@media (max-width: 600px) {
+  .ply-usecase {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   INSTALL / GET STARTED
+   ═══════════════════════════════════════════════════════════════ */
+.ply-install {
+  padding: var(--ply-section-gap) 0;
+  background: var(--ply-bg);
+}
+
+.ply-install-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 700px) {
+  .ply-install-grid { grid-template-columns: 1fr; }
+}
+
+.ply-install-card {
+  background: var(--ply-bg-code);
+  border: 1px solid var(--ply-border);
+  border-radius: var(--ply-radius);
+  padding: 1.5rem 1.75rem;
+  position: relative;
+}
+
+.ply-install-card__label {
+  font-family: var(--ply-font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ply-text-dim);
+  margin-bottom: 0.85rem;
+}
+
+.ply-install-card code {
+  font-family: var(--ply-font-mono);
+  font-size: 0.85rem;
+  color: #a5f3fc;
+  line-height: 1.7;
+  display: block;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.ply-install-card code .ply-prompt {
+  color: var(--ply-green);
+  user-select: none;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   FOOTER CTA
+   ═══════════════════════════════════════════════════════════════ */
+.ply-footer-cta {
+  padding: 5rem 0 6rem;
+  text-align: center;
+  background:
+    radial-gradient(ellipse 50% 60% at 50% 110%, var(--ply-accent-glow), transparent),
+    var(--ply-bg-alt);
+}
+
+.ply-footer-cta h2 {
+  font-family: var(--ply-font-display);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  letter-spacing: -0.02em;
+  color: var(--ply-text);
+  margin: 0 0 0.75rem;
+}
+
+.ply-footer-cta p {
+  font-size: 1.05rem;
+  color: var(--ply-text-dim);
+  margin: 0 0 2rem;
+}
+
+.ply-footer-cta .ply-license {
+  margin-top: 2rem;
+  font-family: var(--ply-font-mono);
+  font-size: 0.72rem;
+  color: var(--ply-text-dim);
+  letter-spacing: 0.03em;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   DIVIDER ACCENTS
+   ═══════════════════════════════════════════════════════════════ */
+.ply-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ply-border), var(--ply-accent), var(--ply-border), transparent);
+  margin: 0;
+  border: none;
+}
+
+/* ── Text helpers ──────────────────────────────────────────── */
+.ply-text-center { text-align: center; }
+.ply-mx-auto { margin-left: auto; margin-right: auto; }
