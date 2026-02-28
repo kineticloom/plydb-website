@@ -22,6 +22,11 @@ menu:
       name: Documentation
       pageRef: /docs/
       weight: 1
+    - name: GitHub
+      weight: 2
+      url: "https://github.com/kineticloom/plydb"
+      params:
+        icon: github
 
 params:
   description: The Universal Database Gateway for AI Agents
