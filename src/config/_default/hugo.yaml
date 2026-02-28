@@ -1,0 +1,47 @@
+baseURL: https://kineticloom.github.io/plydb-website/
+languageCode: en-us
+title: PlyDB
+theme: hextra
+
+markup:
+  highlight:
+    noClasses: false
+  goldmark:
+    renderer:
+      unsafe: true
+    extensions:
+      passthrough:
+        delimiters:
+          block: [['\[', '\]'], ['$$', '$$']]
+          inline: [['\(', '\)']]
+        enable: true
+
+menu:
+  main:
+    - identifier: docs
+      name: Documentation
+      pageRef: /docs/
+      weight: 1
+
+params:
+  description: The Universal Database Gateway for AI Agents
+
+  navbar:
+    displayTitle: true
+    displayLogo: true
+    logo:
+      path: images/icon.svg
+      # dark: images/logo-dark.svg
+      # width: 40
+      # height: 20
+      # link: /
+    width: wide
+  
+  footer:
+    enable: true
+    displayCopyright: true
+    displayPoweredBy: false
+    width: normal
+  
+  search:
+    enable: false
