@@ -8,31 +8,56 @@ layout: hextra-home
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <section class="ply-hero">
   <div class="ply-inner">
-    <div class="ply-fade">
-      <span class="ply-hero__badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        Open Source &middot; Apache 2.0
-      </span>
-    </div>
-    <h1 class="ply-fade ply-fade-d1">The Universal Database<br>Gateway for <em>AI Agents</em></h1>
-    <p class="ply-hero__sub ply-fade ply-fade-d2">
-      Real-time conversational analytics with zero data movement. Bridge your AI to live sources without the ETL tax.
-    </p>
-    <div class="ply-fade ply-fade-d3">
-      <div class="ply-hero__install" onclick="navigator.clipboard.writeText('curl -fsSL https://raw.githubusercontent.com/kineticloom/plydb/main/install.sh | sh')" title="Click to copy">
-        <span class="ply-prompt">$</span> curl -fsSL https://…/install.sh | sh
-        <svg class="ply-copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+    <div class="ply-hero__cols">
+      <div class="ply-hero__text">
+        <div class="ply-fade">
+          <span class="ply-hero__badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Open Source &middot; Apache 2.0
+          </span>
+        </div>
+        <h1 class="ply-fade ply-fade-d1">The Universal Database<br>Gateway for <em>AI Agents</em></h1>
+        <p class="ply-hero__sub ply-fade ply-fade-d2">
+          Real-time conversational analytics with zero data movement. Bridge your AI to live sources without the ETL tax.
+        </p>
+        <div class="ply-cta-row ply-fade ply-fade-d3">
+          <a href="docs/" class="ply-btn ply-btn--primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+            Documentation
+          </a>
+          <a href="https://github.com/kineticloom/plydb" class="ply-btn ply-btn--ghost" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
       </div>
-    </div>
-    <div class="ply-cta-row ply-fade ply-fade-d4">
-      <a href="docs/" class="ply-btn ply-btn--primary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-        Documentation
-      </a>
-      <a href="https://github.com/kineticloom/plydb" class="ply-btn ply-btn--ghost" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        GitHub
-      </a>
+      <div class="ply-hero-flow ply-fade ply-fade-d3">
+        <div class="ply-hero-flow__node ply-hero-flow__node--agent">AI Agent</div>
+        <div class="ply-hero-flow__connector">
+          <svg viewBox="0 0 2 60" preserveAspectRatio="none">
+            <line x1="1" y1="0" x2="1" y2="60" stroke="var(--ply-accent)" stroke-width="2" stroke-dasharray="6 4" class="ply-hero-flow__dash"/>
+          </svg>
+          <svg class="ply-hero-flow__arrow" viewBox="0 0 10 10" width="10" height="10">
+            <polygon points="0,0 10,0 5,10" fill="var(--ply-accent)"/>
+          </svg>
+        </div>
+        <div class="ply-hero-flow__node ply-hero-flow__node--plydb">PlyDB</div>
+        <div class="ply-hero-flow__connector">
+          <svg viewBox="0 0 2 60" preserveAspectRatio="none">
+            <line x1="1" y1="0" x2="1" y2="60" stroke="var(--ply-accent)" stroke-width="2" stroke-dasharray="6 4" class="ply-hero-flow__dash"/>
+          </svg>
+          <svg class="ply-hero-flow__arrow" viewBox="0 0 10 10" width="10" height="10">
+            <polygon points="0,0 10,0 5,10" fill="var(--ply-accent)"/>
+          </svg>
+        </div>
+        <div class="ply-hero-flow__sources">
+          <span class="ply-hero-flow__chip ply-hero-flow__chip--db">PostgreSQL</span>
+          <span class="ply-hero-flow__chip ply-hero-flow__chip--file">CSV</span>
+          <span class="ply-hero-flow__chip ply-hero-flow__chip--cloud">S3</span>
+          <span class="ply-hero-flow__chip ply-hero-flow__chip--saas">Google Sheets</span>
+          <span class="ply-hero-flow__chip ply-hero-flow__chip--file">Excel</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -234,7 +259,7 @@ layout: hextra-home
     <span class="ply-section-label">Get started</span>
     <h2 class="ply-section-title">Up and running in seconds</h2>
     <p class="ply-section-desc">
-      Install PlyDB with a single command. No runtime dependencies, no containers, no configuration required.
+      Install PlyDB with a single command. No runtime dependencies, no containers, no additional infrastructure required.
     </p>
     <div class="ply-install-grid">
       <div class="ply-install-card">
