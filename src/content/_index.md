@@ -230,21 +230,21 @@ layout: hextra-home
         <span class="ply-usecase__tag">Sales</span>
         <div class="ply-usecase__body">
           <h3>Strategic Sales & Retention</h3>
-          <p class="ply-usecase__prompt">"Analyze our top 20 accounts by revenue. Cross-reference their support tickets with recent product usage. Generate a churn-risk dashboard and draft personalized outreach for the three accounts with the lowest activity."</p>
+          <p class="ply-usecase__prompt">"Analyze our top 20 accounts by revenue. Cross-reference their support tickets with recent product usage. <strong>Generate a churn-risk dashboard</strong> and draft personalized outreach for the three accounts with the lowest activity."</p>
         </div>
       </div>
       <div class="ply-usecase">
         <span class="ply-usecase__tag">RevOps</span>
         <div class="ply-usecase__body">
           <h3>Revenue Operations</h3>
-          <p class="ply-usecase__prompt">"Audit our active seat counts against signed contracts in the Google Sheet. Identify all overages, calculate the total unbilled revenue, and build a summary table the billing team can use to issue invoices."</p>
+          <p class="ply-usecase__prompt">"Audit our active seat counts against signed contracts in the Google Sheet. <strong>Identify all overages</strong>, calculate the total unbilled revenue, and build a summary table the billing team can use to issue invoices."</p>
         </div>
       </div>
       <div class="ply-usecase">
         <span class="ply-usecase__tag">Executive</span>
         <div class="ply-usecase__body">
           <h3>Executive Insights</h3>
-          <p class="ply-usecase__prompt">"Pull the MRR from the CRM, infrastructure costs from our logs, and headcount from the HR spreadsheet. Build a financial health dashboard and suggest three areas where we can improve our operating margin."</p>
+          <p class="ply-usecase__prompt">"Pull the MRR from the CRM, infrastructure costs from our logs, and headcount from the HR spreadsheet. <strong>Build a financial health dashboard</strong> and suggest three areas where we can improve our operating margin."</p>
         </div>
       </div>
       <div class="ply-usecase">
