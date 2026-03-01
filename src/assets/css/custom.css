@@ -14,13 +14,13 @@
   --ply-border:     #ddd9d0;
   --ply-text:       #1a1a1a;
   --ply-text-dim:   #6b6560;
-  --ply-accent:     #0ea5e9;
-  --ply-accent-dim: #0284c7;
-  --ply-accent-glow: rgba(14,165,233,0.12);
-  --ply-warm:       #e67e22;
-  --ply-green:      #22c55e;
-  --ply-violet:     #8b5cf6;
-  --ply-rose:       #f43f5e;
+  --ply-accent:     #2563eb;
+  --ply-accent-dim: #1d4ed8;
+  --ply-accent-glow: rgba(37,99,235,0.10);
+  --ply-warm:       #d97706;
+  --ply-green:      #16a34a;
+  --ply-violet:     #7c3aed;
+  --ply-rose:       #dc2626;
   --ply-radius:     10px;
   --ply-font-display: 'Outfit', sans-serif;
   --ply-font-body:    'Source Sans 3', sans-serif;
@@ -37,9 +37,9 @@
   --ply-border:     #262a36;
   --ply-text:       #e4e4e7;
   --ply-text-dim:   #8b8d98;
-  --ply-accent:     #38bdf8;
-  --ply-accent-dim: #0ea5e9;
-  --ply-accent-glow: rgba(56,189,248,0.08);
+  --ply-accent:     #3b82f6;
+  --ply-accent-dim: #2563eb;
+  --ply-accent-glow: rgba(59,130,246,0.10);
 }
 
 /* ── Reset for landing sections ────────────────────────────── */
@@ -131,7 +131,7 @@
 
 .ply-hero h1 em {
   font-style: normal;
-  background: linear-gradient(135deg, var(--ply-accent), var(--ply-violet));
+  background: linear-gradient(135deg, var(--ply-accent), var(--ply-rose));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
