@@ -53,11 +53,19 @@
     <link href="{{ $customCss.RelPermalink }}" rel="stylesheet" />
   {{- end }}
 
-  <!-- Google Analytics -->
-  {{- if and hugo.IsProduction .Site.Config.Services.GoogleAnalytics.ID }}
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
-    {{ partial "google-analytics.html" . -}}
-  {{- end }}
+  {{ partial "components/analytics/analytics.html" . }}
+
+  {{- $scriptsHead := slice -}}
+  {{- range resources.Match "js/head/*.js" -}}
+    {{ $scriptsHead = $scriptsHead | append (resources.ExecuteAsTemplate .Name $ .) }}
+  {{- end -}}
+
+  {{- $scripts := $scriptsHead | resources.Concat "js/main-head.js" -}}
+
+  {{- if hugo.IsProduction -}}
+  {{- $scripts = $scripts | minify | fingerprint -}}
+  {{- end -}}
+  <script src="{{ $scripts.RelPermalink }}" integrity="{{ $scripts.Data.Integrity }}"></script>
 
   <!-- Math engine -->
   {{ $noop := .WordCount -}}

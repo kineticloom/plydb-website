@@ -23,8 +23,6 @@ We use [Hextra](https://github.com/imfing/hextra) as our Hugo theme. We fully
 vendor the theme in the repo instead of using git submodules.
 
 ```sh
-cd marketing-site
-
 rm -rf src/themes/hextra
 
 git clone https://github.com/imfing/hextra.git src/themes/hextra
