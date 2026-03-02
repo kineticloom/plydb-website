@@ -3,18 +3,23 @@ title: Configuring Data Sources
 weight: 2
 ---
 
-Data sources are configured via a JSON config file that you pass to PlyDB with the `--config` flag. You can configure multiple data sources in a single file and query across all of them.
+Data sources are configured via a JSON config file that you pass to PlyDB with
+the `--config` flag. You can configure multiple data sources in a single file
+and query across all of them.
 
-{{< callout type="tip" >}}
-If you have the [PlyDB Agent Skill](/docs/agent-integration/#cli-agent-skill) installed, you can ask your agent to help you with data source configuration instead of writing a config file manually.
-{{< /callout >}}
+{{< callout type="tip" >}} If you have the
+[PlyDB Agent Skill](/docs/agent-integration/#cli-agent-skill) installed, you can
+ask your agent to help you with data source configuration instead of writing a
+config file manually. {{< /callout >}}
 
 ## Config file structure
 
 The config file has three top-level objects:
 
-- **`credentials`** — Shared authentication profiles for cloud providers (S3, Google Sheets).
-- **`databases`** — A map of data source configurations. Each key is a unique identifier that becomes the catalog name in SQL queries.
+- **`credentials`** — Shared authentication profiles for cloud providers (S3,
+  Google Sheets).
+- **`databases`** — A map of data source configurations. Each key is a unique
+  identifier that becomes the catalog name in SQL queries.
 - **`semantic_context`** — (Optional) Semantic context overlay configuration.
 
 Database keys must consist of lowercase letters, digits, and underscores only.
@@ -40,12 +45,12 @@ Database keys must consist of lowercase letters, digits, and underscores only.
 }
 ```
 
-| Field              | Type    | Description                                     |
-| :----------------- | :------ | :---------------------------------------------- |
-| `host`             | String  | Server address                                  |
-| `port`             | Integer | Network port                                    |
-| `database_name`    | String  | Target database name                            |
-| `username`         | String  | Login identity                                  |
+| Field              | Type    | Description                                           |
+| :----------------- | :------ | :---------------------------------------------------- |
+| `host`             | String  | Server address                                        |
+| `port`             | Integer | Network port                                          |
+| `database_name`    | String  | Target database name                                  |
+| `username`         | String  | Login identity                                        |
 | `password_env_var` | String  | Name of the environment variable holding the password |
 
 Tables are referenced as `catalog.schema.table`, e.g. `analytics.public.orders`.
@@ -90,11 +95,12 @@ MySQL uses the same fields as PostgreSQL:
 }
 ```
 
-| Field  | Type   | Description                          |
-| :----- | :----- | :----------------------------------- |
-| `path` | String | Path to the SQLite database file     |
+| Field  | Type   | Description                      |
+| :----- | :----- | :------------------------------- |
+| `path` | String | Path to the SQLite database file |
 
-SQLite uses `main` as its default schema, so tables are referenced as `shop.main.customers`.
+SQLite uses `main` as its default schema, so tables are referenced as
+`shop.main.customers`.
 
 ## DuckDB
 
@@ -113,9 +119,9 @@ SQLite uses `main` as its default schema, so tables are referenced as `shop.main
 }
 ```
 
-| Field  | Type   | Description                          |
-| :----- | :----- | :----------------------------------- |
-| `path` | String | Path to the DuckDB database file     |
+| Field  | Type   | Description                      |
+| :----- | :----- | :------------------------------- |
+| `path` | String | Path to the DuckDB database file |
 
 Like SQLite, DuckDB uses `main` as its default schema.
 
@@ -138,13 +144,13 @@ Like SQLite, DuckDB uses `main` as its default schema.
 }
 ```
 
-| Field        | Type    | Description                                         |
-| :----------- | :------ | :-------------------------------------------------- |
-| `path`       | String  | Path to the file                                    |
+| Field        | Type    | Description                                                                         |
+| :----------- | :------ | :---------------------------------------------------------------------------------- |
+| `path`       | String  | Path to the file                                                                    |
 | `format`     | String  | (Optional) `csv`, `xlsx`, `parquet`, or `json`. Inferred from extension if omitted. |
-| `delimiter`  | String  | (CSV only) Separator character                      |
-| `header_row` | Boolean | (CSV/XLSX) Whether row 1 is the header              |
-| `sheet_name` | String  | (XLSX only) Tab name to read                        |
+| `delimiter`  | String  | (CSV only) Separator character                                                      |
+| `header_row` | Boolean | (CSV/XLSX) Whether row 1 is the header                                              |
+| `sheet_name` | String  | (XLSX only) Tab name to read                                                        |
 
 ## S3
 
@@ -172,23 +178,25 @@ Like SQLite, DuckDB uses `main` as its default schema.
 }
 ```
 
-| Field                | Type    | Description                                         |
-| :------------------- | :------ | :-------------------------------------------------- |
-| `uri`                | String  | S3 URI. Supports glob patterns (`*`, `?`, `[]`).    |
-| `credential_profile` | String  | Key matching an entry in the `credentials` map      |
-| `region`             | String  | AWS region (e.g. `us-east-1`)                       |
-| `format`             | String  | **Required.** File format (`csv`, `parquet`, etc.)   |
-| `delimiter`          | String  | (CSV only) Separator character                      |
-| `header_row`         | Boolean | (CSV/XLSX) Whether row 1 is the header              |
+| Field                | Type    | Description                                        |
+| :------------------- | :------ | :------------------------------------------------- |
+| `uri`                | String  | S3 URI. Supports glob patterns (`*`, `?`, `[]`).   |
+| `credential_profile` | String  | Key matching an entry in the `credentials` map     |
+| `region`             | String  | AWS region (e.g. `us-east-1`)                      |
+| `format`             | String  | **Required.** File format (`csv`, `parquet`, etc.) |
+| `delimiter`          | String  | (CSV only) Separator character                     |
+| `header_row`         | Boolean | (CSV/XLSX) Whether row 1 is the header             |
 
-Credentials are defined in the top-level `credentials` object and referenced by name via `credential_profile`.
+Credentials are defined in the top-level `credentials` object and referenced by
+name via `credential_profile`.
 
 ## Google Sheets
 
 PlyDB supports two authentication methods for Google Sheets:
 
 - **Service account** — for server-side, non-interactive use.
-- **Browser OAuth** — for interactive, ad-hoc use. PlyDB opens a browser for Google login with no credentials needed in the config.
+- **Browser OAuth** — for interactive, ad-hoc use. PlyDB opens a browser for
+  Google login with no credentials needed in the config.
 
 ### Service account
 
@@ -232,18 +240,21 @@ PlyDB supports two authentication methods for Google Sheets:
 }
 ```
 
-On first query, PlyDB opens your browser for Google login. The OAuth token is cached at `~/.duckdb/stored_secrets/` and reused automatically. To force re-authentication, run `plydb auth --config /path/to/config.json`.
+On first query, PlyDB opens your browser for Google login. The OAuth token is
+cached at `~/.duckdb/stored_secrets/` and reused automatically. To force
+re-authentication, run `plydb auth --config /path/to/config.json`.
 
-| Field                | Type    | Description                                         |
-| :------------------- | :------ | :-------------------------------------------------- |
-| `spreadsheet_id`     | String  | The spreadsheet ID from the Google Sheets URL        |
+| Field                | Type    | Description                                                                      |
+| :------------------- | :------ | :------------------------------------------------------------------------------- |
+| `spreadsheet_id`     | String  | The spreadsheet ID from the Google Sheets URL                                    |
 | `credential_profile` | String  | (Optional) Key referencing a credential with `key_file`. Omit for browser OAuth. |
-| `sheet_name`         | String  | (Optional) Tab name. If omitted, PlyDB uses the table name from the SQL query.  |
-| `header_row`         | Boolean | (Optional) Whether row 1 is the header. Defaults to `true`. |
+| `sheet_name`         | String  | (Optional) Tab name. If omitted, PlyDB uses the table name from the SQL query.   |
+| `header_row`         | Boolean | (Optional) Whether row 1 is the header. Defaults to `true`.                      |
 
 ### Dynamic sheet names
 
-When `sheet_name` is omitted, the table name in your SQL query determines which tab is read:
+When `sheet_name` is omitted, the table name in your SQL query determines which
+tab is read:
 
 ```sh
 # Read from the "January" tab
@@ -255,13 +266,15 @@ plydb query --config config.json \
   "SELECT * FROM sales.default.\"February\""
 ```
 
-{{< callout type="warning" >}}
-SQL lowercases unquoted identifiers. If your sheet tab name contains uppercase letters, either quote the identifier with double quotes (e.g. `"Revenue"`) or set `sheet_name` in the config to bypass SQL identifier parsing.
-{{< /callout >}}
+{{< callout type="warning" >}} SQL lowercases unquoted identifiers. If your
+sheet tab name contains uppercase letters, either quote the identifier with
+double quotes (e.g. `"Revenue"`) or set `sheet_name` in the config to bypass SQL
+identifier parsing. {{< /callout >}}
 
 ## Cross-source queries
 
-You can join across any combination of data sources in a single query. Just add all sources to the same config file:
+You can join across any combination of data sources in a single query. Just add
+all sources to the same config file:
 
 ```sh
 plydb query --config config.json \
@@ -272,7 +285,10 @@ plydb query --config config.json \
 
 ## Semantic context
 
-PlyDB can automatically scan your data sources and provide AI agents with structured semantic context. See the dedicated [Semantic Context](/docs/semantic-context/) page for details on automatic discovery, overlays, and how agents build institutional knowledge over time.
+PlyDB can automatically scan your data sources and provide AI agents with
+structured semantic context. See the dedicated
+[Semantic Context](/docs/semantic-context/) page for details on automatic
+discovery, overlays, and how agents build institutional knowledge over time.
 
 ## Full reference example
 
@@ -336,9 +352,7 @@ Here is a complete config file demonstrating multiple source types:
     }
   },
   "semantic_context": {
-    "overlays": [
-      "/path/to/business_glossary.yaml"
-    ]
+    "overlays": ["/path/to/business_glossary.yaml"]
   }
 }
 ```

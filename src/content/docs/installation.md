@@ -33,7 +33,10 @@ PLYDB_INSTALL_DIR=/usr/local/bin PLYDB_VERSION=v0.1.0 \
 
 ## Manual download
 
-Pre-built binaries for all platforms are available on the [Releases](https://github.com/kineticloom/plydb/releases) page. Download the archive for your OS and architecture, extract it, and place the `plydb` binary somewhere on your `PATH`.
+Pre-built binaries for all platforms are available on the
+[Releases](https://github.com/kineticloom/plydb/releases) page. Download the
+archive for your OS and architecture, extract it, and place the `plydb` binary
+somewhere on your `PATH`.
 
 ## Build from source
 
