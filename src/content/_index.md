@@ -129,11 +129,13 @@ layout: hextra-home
 <!-- ═══════════════════ ARCHITECTURE ═══════════════════ -->
 <section class="ply-arch">
   <div class="ply-inner">
-    <span class="ply-section-label">How it works</span>
-    <h2 class="ply-section-title">One gateway. Every data source.</h2>
-    <p class="ply-section-desc">
-      PlyDB sits between your AI agent and your data. It translates standard SQL into native queries across every connected source &mdash; no pipelines, no warehouses.
-    </p>
+    <div class="ply-text-center" style="margin-bottom: 3rem;">
+      <span class="ply-section-label" style="justify-content: center;">How it works</span>
+      <h2 class="ply-section-title" style="margin-left: auto; margin-right: auto;">One gateway. Every data source.</h2>
+      <p class="ply-section-desc ply-mx-auto" style="text-align: center;">
+        PlyDB sits between your AI agent and your data. It translates standard SQL into native queries across every connected source &mdash; no pipelines, no warehouses.
+      </p>
+    </div>
     <div class="ply-arch-diagram">
       <div class="ply-arch-flow">
         <div class="ply-arch-node ply-arch-node--agent">
