@@ -1,6 +1,6 @@
 ---
 title: Supported Data Sources
-weight: 4
+weight: 5
 ---
 
 PlyDB abstracts the complexity of different storage formats into a single relational view. You can query across any combination of these sources using standard SQL.
@@ -13,7 +13,7 @@ For configuration details, see [Configuring Data Sources](/docs/data-sources/).
 
 Full support for querying PostgreSQL databases. PlyDB connects over the network using standard credentials. Tables are referenced as `catalog.schema.table` (e.g. `analytics.public.orders`).
 
-PostgreSQL `COMMENT` metadata is automatically extracted for [semantic context](/docs/data-sources/#semantic-context), giving AI agents rich descriptions of your tables and columns.
+PostgreSQL `COMMENT` metadata is automatically extracted for [semantic context](/docs/semantic-context/), giving AI agents rich descriptions of your tables and columns.
 
 ### MySQL
 

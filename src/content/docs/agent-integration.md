@@ -1,6 +1,6 @@
 ---
 title: Agent Integration
-weight: 3
+weight: 4
 ---
 
 PlyDB integrates with AI agents through two methods: **MCP** (Model Context Protocol) and **CLI** (via Agent Skills). Both give your agent the ability to discover schemas, run SQL queries, and analyze data autonomously.
@@ -84,7 +84,7 @@ plydb mcp \
   --semantic-context-overlay overlay.yaml
 ```
 
-Or embed overlays directly in the [config file](/docs/data-sources/#semantic-context).
+Or embed overlays directly in the [config file](/docs/semantic-context/#overlays).
 
 ## CLI (Agent Skill) {#cli-agent-skill}
 
@@ -100,7 +100,7 @@ The skill gives your agent built-in knowledge of:
 
 - The `plydb query` and `plydb semantic-context` CLI commands and their flags
 - The PlyDB [config file schema](/docs/data-sources/)
-- How to read and write [semantic context overlays](/docs/data-sources/#semantic-context)
+- How to read and write [semantic context overlays](/docs/semantic-context/#overlays)
 
 {{< callout type="info" >}}
 You do not need the skill installed to run `plydb` CLI commands — any agent with shell access can invoke the binary. The skill simply gives the agent guidance on how to configure and use PlyDB effectively.

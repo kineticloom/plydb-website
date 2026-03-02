@@ -272,41 +272,7 @@ plydb query --config config.json \
 
 ## Semantic context
 
-PlyDB can automatically scan your data sources and provide AI agents with structured semantic context — schema, tables, columns, and comment metadata. This helps agents understand what your data means, not just its structure.
-
-```sh
-plydb semantic-context --config config.json
-```
-
-This outputs an [Open Semantic Interchange (OSI)](https://github.com/open-semantic-interchange/OSI) YAML document describing your data model.
-
-### Overlays
-
-You can enrich the auto-scanned context with additional descriptions, relationships, and metrics using overlay files. Overlays cannot add new tables or columns — they only enrich what the scanner already discovered.
-
-Pass overlays via the CLI:
-
-```sh
-plydb semantic-context \
-  --config config.json \
-  --semantic-context-overlay business_glossary.yaml \
-  --semantic-context-overlay team_annotations.yaml
-```
-
-Or embed them in the config file:
-
-```json
-{
-  "semantic_context": {
-    "overlays": [
-      "/path/to/business_glossary.yaml",
-      "/path/to/column_descriptions.yaml"
-    ]
-  }
-}
-```
-
-Config-file overlays are applied first, then CLI flag overlays, in order.
+PlyDB can automatically scan your data sources and provide AI agents with structured semantic context. See the dedicated [Semantic Context](/docs/semantic-context/) page for details on automatic discovery, overlays, and how agents build institutional knowledge over time.
 
 ## Full reference example
 

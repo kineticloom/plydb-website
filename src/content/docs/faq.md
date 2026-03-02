@@ -24,7 +24,7 @@ When first setting up or evolving your configuration, we recommend pairing a CLI
 Even if your data isn't well organized, you may be pleasantly surprised at how capable AI agents are at making sense of it. We suggest you give it a shot!
 
 {{< callout type="tip" >}}
-After a session of data analysis, ask your AI agent to distill its learnings about your data's semantics and [write a semantic context overlay](/docs/data-sources/#semantic-context) to record its findings for future sessions.
+After a session of data analysis, ask your AI agent to distill its learnings about your data's semantics and [write a semantic context overlay](/docs/semantic-context/#overlays) to record its findings for future sessions.
 {{< /callout >}}
 
 ## Can I have an AI agent write my PlyDB config file for me?
@@ -33,7 +33,7 @@ Yes! Install the [PlyDB Agent Skill](/docs/agent-integration/#cli-agent-skill) o
 
 ## Can I have an AI agent write my semantic context overlays for me?
 
-Yes! Install the [PlyDB Agent Skill](/docs/agent-integration/#cli-agent-skill) to teach your agent about PlyDB [semantic context overlays](/docs/data-sources/#semantic-context).
+Yes! Install the [PlyDB Agent Skill](/docs/agent-integration/#cli-agent-skill) to teach your agent about PlyDB [semantic context overlays](/docs/semantic-context/#overlays).
 
 Try asking your agent to write an overlay file after a data analysis session — it's a particularly good opportunity to capture learnings for future sessions.
 
