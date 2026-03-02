@@ -382,7 +382,7 @@
    ═══════════════════════════════════════════════════════════════ */
 .ply-arch {
   padding: var(--ply-section-gap) 0;
-  background: var(--ply-bg);
+  background: var(--ply-bg-alt);
 }
 
 .ply-section-label {
@@ -609,6 +609,92 @@
 
 
 /* ═══════════════════════════════════════════════════════════════
+   SEMANTIC CONTEXT
+   ═══════════════════════════════════════════════════════════════ */
+.ply-semantic {
+  padding: var(--ply-section-gap) 0;
+  background: var(--ply-bg);
+}
+
+.ply-semantic-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 700px) {
+  .ply-semantic-grid { grid-template-columns: 1fr; }
+}
+
+.ply-semantic-card {
+  background: var(--ply-surface);
+  border: 1px solid var(--ply-border);
+  border-radius: var(--ply-radius);
+  padding: 1.75rem;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.ply-semantic-card:hover {
+  border-color: color-mix(in srgb, var(--ply-accent) 40%, var(--ply-border));
+  box-shadow: 0 2px 20px var(--ply-accent-glow);
+}
+
+.ply-semantic-card__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.ply-semantic-card h3 {
+  font-family: var(--ply-font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--ply-text);
+  margin: 0 0 0.5rem;
+}
+
+.ply-semantic-card p {
+  font-size: 0.9rem;
+  color: var(--ply-text-dim);
+  line-height: 1.55;
+  margin: 0 0 0.75rem;
+}
+
+.ply-semantic-card p:last-child {
+  margin-bottom: 0;
+}
+
+.ply-semantic-card__note {
+  font-size: 0.82rem;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+.ply-semantic-card__note a {
+  color: var(--ply-accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.ply-semantic-card__note a:hover {
+  text-decoration: underline;
+}
+
+.ply-semantic-closing {
+  text-align: center;
+  font-size: 1.05rem;
+  color: var(--ply-text-dim);
+  margin: 2.5rem auto 0;
+  max-width: 620px;
+  line-height: 1.6;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
    DATA SOURCES
    ═══════════════════════════════════════════════════════════════ */
 .ply-sources {
@@ -681,7 +767,7 @@
    ═══════════════════════════════════════════════════════════════ */
 .ply-usecases {
   padding: var(--ply-section-gap) 0;
-  background: var(--ply-bg-alt);
+  background: var(--ply-bg);
 }
 
 .ply-usecases-list {
@@ -757,7 +843,7 @@
    ═══════════════════════════════════════════════════════════════ */
 .ply-install {
   padding: var(--ply-section-gap) 0;
-  background: var(--ply-bg);
+  background: var(--ply-bg-alt);
 }
 
 .ply-install-grid {
@@ -812,7 +898,7 @@
   text-align: center;
   background:
     radial-gradient(ellipse 50% 60% at 50% 110%, var(--ply-accent-glow), transparent),
-    var(--ply-bg-alt);
+    var(--ply-bg);
 }
 
 .ply-footer-cta h2 {

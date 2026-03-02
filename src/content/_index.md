@@ -83,6 +83,49 @@ layout: hextra-home
 
 <hr class="ply-divider">
 
+<!-- ═══════════════════ USE CASES ═══════════════════ -->
+<section class="ply-usecases">
+  <div class="ply-inner">
+    <span class="ply-section-label">Use cases</span>
+    <h2 class="ply-section-title">From chatbot to strategic partner</h2>
+    <p class="ply-section-desc">
+      When your AI agent has a secure, real-time view of your data, it can answer complex questions the moment you ask them.
+    </p>
+    <div class="ply-usecases-list">
+      <div class="ply-usecase">
+        <span class="ply-usecase__tag">Sales</span>
+        <div class="ply-usecase__body">
+          <h3>Strategic Sales & Retention</h3>
+          <p class="ply-usecase__prompt">"Analyze our top 20 accounts by revenue. Cross-reference their support tickets with recent product usage. <strong>Generate a churn-risk dashboard</strong> and draft personalized outreach for the three accounts with the lowest activity."</p>
+        </div>
+      </div>
+      <div class="ply-usecase">
+        <span class="ply-usecase__tag">RevOps</span>
+        <div class="ply-usecase__body">
+          <h3>Revenue Operations</h3>
+          <p class="ply-usecase__prompt">"Audit our active seat counts against signed contracts in the Google Sheet. <strong>Identify all overages</strong>, calculate the total unbilled revenue, and build a summary table the billing team can use to issue invoices."</p>
+        </div>
+      </div>
+      <div class="ply-usecase">
+        <span class="ply-usecase__tag">Executive</span>
+        <div class="ply-usecase__body">
+          <h3>Executive Insights</h3>
+          <p class="ply-usecase__prompt">"Pull the MRR from the CRM, infrastructure costs from our logs, and headcount from the HR spreadsheet. <strong>Build a financial health dashboard</strong> and suggest three areas where we can improve our operating margin."</p>
+        </div>
+      </div>
+      <div class="ply-usecase">
+        <span class="ply-usecase__tag">DevOps</span>
+        <div class="ply-usecase__body">
+          <h3>Incident Response</h3>
+          <p class="ply-usecase__prompt">"Review our app logs in S3 for errors from the past week. Cross-reference with our codebase and database replica to identify affected customers and diagnose root causes. <strong>Open PRs with fixes</strong> for the most severe issues, and draft a summary our PM and CSM teams can use."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="ply-divider">
+
 <!-- ═══════════════════ ARCHITECTURE ═══════════════════ -->
 <section class="ply-arch">
   <div class="ply-inner">
@@ -122,6 +165,40 @@ layout: hextra-home
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<hr class="ply-divider">
+
+<!-- ═══════════════════ SEMANTIC CONTEXT ═══════════════════ -->
+<section class="ply-semantic">
+  <div class="ply-inner">
+    <div class="ply-text-center" style="margin-bottom: 3rem;">
+      <span class="ply-section-label" style="justify-content: center;">Semantic context</span>
+      <h2 class="ply-section-title" style="margin-left: auto; margin-right: auto;">Your AI doesn't just query &mdash; it understands</h2>
+      <p class="ply-section-desc ply-mx-auto" style="text-align: center;">
+        Raw schemas tell an agent <em>what</em> columns exist. Semantic context tells it what they <em>mean</em>. PlyDB bridges that gap automatically &mdash; and lets agents deepen their understanding over time.
+      </p>
+    </div>
+    <div class="ply-semantic-grid">
+      <div class="ply-semantic-card">
+        <div class="ply-semantic-card__icon ply-feature-card__icon--green">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </div>
+        <h3>Automatic discovery</h3>
+        <p>PlyDB scans your data sources and generates structured semantic context &mdash; <strong>schemas, tables, columns, types, and database COMMENT metadata</strong> &mdash; all without any manual setup.</p>
+        <p class="ply-semantic-card__note">Output follows the open <a href="https://github.com/open-semantic-interchange/OSI" target="_blank" rel="noopener">OSI standard</a>, giving agents a machine-readable map of your data model.</p>
+      </div>
+      <div class="ply-semantic-card">
+        <div class="ply-semantic-card__icon ply-feature-card__icon--violet">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h3>Agent-authored overlays</h3>
+        <p>After exploring your data, AI agents can <strong>record what they've learned</strong> &mdash; business definitions, column meanings, relationships, derived metrics &mdash; into semantic context overlay files.</p>
+        <p class="ply-semantic-card__note">Overlays persist across sessions, so future agents start with institutional knowledge already in place. Knowledge compounds over time.</p>
+      </div>
+    </div>
+    <p class="ply-semantic-closing">The result: agents that ask better questions, write more accurate queries, and deliver answers you can trust.</p>
   </div>
 </section>
 
@@ -211,49 +288,6 @@ layout: hextra-home
       <span><span class="ply-source-chip__dot ply-source-chip__dot--cloud" style="display:inline-block;"></span> Object Storage</span>
       <span><span class="ply-source-chip__dot ply-source-chip__dot--saas" style="display:inline-block;"></span> SaaS</span>
       <span><span class="ply-source-chip__dot" style="display:inline-block; background: var(--ply-text-dim);"></span> Planned</span>
-    </div>
-  </div>
-</section>
-
-<hr class="ply-divider">
-
-<!-- ═══════════════════ USE CASES ═══════════════════ -->
-<section class="ply-usecases">
-  <div class="ply-inner">
-    <span class="ply-section-label">Use cases</span>
-    <h2 class="ply-section-title">From chatbot to strategic partner</h2>
-    <p class="ply-section-desc">
-      When your AI agent has a secure, real-time view of your data, it can answer complex questions the moment you ask them.
-    </p>
-    <div class="ply-usecases-list">
-      <div class="ply-usecase">
-        <span class="ply-usecase__tag">Sales</span>
-        <div class="ply-usecase__body">
-          <h3>Strategic Sales & Retention</h3>
-          <p class="ply-usecase__prompt">"Analyze our top 20 accounts by revenue. Cross-reference their support tickets with recent product usage. <strong>Generate a churn-risk dashboard</strong> and draft personalized outreach for the three accounts with the lowest activity."</p>
-        </div>
-      </div>
-      <div class="ply-usecase">
-        <span class="ply-usecase__tag">RevOps</span>
-        <div class="ply-usecase__body">
-          <h3>Revenue Operations</h3>
-          <p class="ply-usecase__prompt">"Audit our active seat counts against signed contracts in the Google Sheet. <strong>Identify all overages</strong>, calculate the total unbilled revenue, and build a summary table the billing team can use to issue invoices."</p>
-        </div>
-      </div>
-      <div class="ply-usecase">
-        <span class="ply-usecase__tag">Executive</span>
-        <div class="ply-usecase__body">
-          <h3>Executive Insights</h3>
-          <p class="ply-usecase__prompt">"Pull the MRR from the CRM, infrastructure costs from our logs, and headcount from the HR spreadsheet. <strong>Build a financial health dashboard</strong> and suggest three areas where we can improve our operating margin."</p>
-        </div>
-      </div>
-      <div class="ply-usecase">
-        <span class="ply-usecase__tag">DevOps</span>
-        <div class="ply-usecase__body">
-          <h3>Incident Response</h3>
-          <p class="ply-usecase__prompt">"Review our app logs in S3 for errors from the past week. Cross-reference with our codebase and database replica to identify affected customers and diagnose root causes. <strong>Open PRs with fixes</strong> for the most severe issues, and draft a summary our PM and CSM teams can use."</p>
-        </div>
-      </div>
     </div>
   </div>
 </section>
