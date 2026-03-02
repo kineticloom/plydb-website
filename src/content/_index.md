@@ -202,7 +202,7 @@ layout: hextra-home
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
         </div>
         <h3>Agent-authored overlays</h3>
-        <p>Every insight &mdash; whether discovered from schemas, learned from source code, or explained by a human &mdash; gets recorded into <strong>semantic overlay files</strong> that persist across sessions and agents.</p>
+        <p>Every insight &mdash; whether discovered from schemas, learned from source code, or explained by a human &mdash; can be recorded into <strong>semantic overlay files</strong> that persist across sessions and agents.</p>
         <p class="ply-semantic-card__note">Overlays follow the open <a href="https://github.com/open-semantic-interchange/OSI" target="_blank" rel="noopener">OSI standard</a> and compound over time. Future agents inherit institutional knowledge from day one.</p>
       </div>
     </div>

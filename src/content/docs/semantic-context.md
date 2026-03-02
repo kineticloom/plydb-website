@@ -75,7 +75,7 @@ Config-file overlays are applied first, then CLI flag overlays, in order.
 ## How it compounds
 
 Every insight - whether discovered from schemas, learned from source code, or
-explained by a human - gets recorded into semantic overlay files that persist
+explained by a human - can be recorded into semantic overlay files that persist
 across sessions and agents. Overlays follow the open
 [OSI standard](https://github.com/open-semantic-interchange/OSI) and compound
 over time. Future agents inherit institutional knowledge from day one.
