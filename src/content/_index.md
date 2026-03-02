@@ -190,12 +190,20 @@ layout: hextra-home
         <p class="ply-semantic-card__note">Output follows the open <a href="https://github.com/open-semantic-interchange/OSI" target="_blank" rel="noopener">OSI standard</a>, giving agents a machine-readable map of your data model.</p>
       </div>
       <div class="ply-semantic-card">
+        <div class="ply-semantic-card__icon ply-feature-card__icon--warm">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        </div>
+        <h3>Knowledge beyond the schema</h3>
+        <p>Schemas describe structure, but agents can learn meaning from richer sources &mdash; <strong>your codebase</strong> reveals enum values, validation rules, and business logic, while <strong>your conversations</strong> teach domain context that no schema can express.</p>
+        <p class="ply-semantic-card__note">An agent that sees <code>status = 3</code> can check your code to learn it means &ldquo;churned&rdquo; &mdash; or remember that you explained it last Tuesday.</p>
+      </div>
+      <div class="ply-semantic-card">
         <div class="ply-semantic-card__icon ply-feature-card__icon--violet">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
         </div>
         <h3>Agent-authored overlays</h3>
-        <p>After exploring your data, AI agents can <strong>record what they've learned</strong> &mdash; business definitions, column meanings, relationships, derived metrics &mdash; into semantic context overlay files.</p>
-        <p class="ply-semantic-card__note">Overlays persist across sessions, so future agents start with institutional knowledge already in place. Knowledge compounds over time.</p>
+        <p>Every insight &mdash; whether discovered from schemas, learned from source code, or explained by a human &mdash; gets recorded into <strong>semantic overlay files</strong> that persist across sessions and agents.</p>
+        <p class="ply-semantic-card__note">Overlays follow the open <a href="https://github.com/open-semantic-interchange/OSI" target="_blank" rel="noopener">OSI standard</a> and compound over time. Future agents inherit institutional knowledge from day one.</p>
       </div>
     </div>
     <p class="ply-semantic-closing">The result: agents that ask better questions, write more accurate queries, and deliver answers you can trust.</p>
