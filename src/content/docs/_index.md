@@ -10,6 +10,7 @@ standard SQL, no data warehouse necessary.
 ## Getting started
 
 {{< cards >}}
+{{< card link="quickstart" title="Quickstart" subtitle="Go from install to querying data in minutes — with your AI agent." icon="play" >}}
 {{< card link="installation" title="Installation" subtitle="Install PlyDB in seconds with a single command." icon="download" >}}
 {{< card link="data-sources" title="Configuring Data Sources" subtitle="Connect databases, files, S3 buckets, and Google Sheets." icon="database" >}}
 {{< card link="semantic-context" title="Semantic Context" subtitle="How agents understand your data — not just its structure." icon="light-bulb" >}}

@@ -1,6 +1,6 @@
 ---
 title: Configuring Data Sources
-weight: 2
+weight: 3
 ---
 
 Data sources are configured via a JSON config file that you pass to PlyDB with

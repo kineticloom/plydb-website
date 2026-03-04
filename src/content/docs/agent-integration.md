@@ -1,6 +1,6 @@
 ---
 title: Agent Integration
-weight: 4
+weight: 5
 ---
 
 PlyDB integrates with AI agents through two methods: **MCP** (Model Context

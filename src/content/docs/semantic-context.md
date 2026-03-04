@@ -1,6 +1,6 @@
 ---
 title: Semantic Context
-weight: 3
+weight: 4
 ---
 
 Raw schemas tell an agent _what_ columns exist. Semantic context tells it what

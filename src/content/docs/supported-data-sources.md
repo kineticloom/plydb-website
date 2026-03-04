@@ -1,6 +1,6 @@
 ---
 title: Supported Data Sources
-weight: 5
+weight: 6
 ---
 
 PlyDB abstracts the complexity of different storage formats into a single
