@@ -171,15 +171,13 @@ synthesize results:
 
 > **Analyze the order data and give me insights about purchasing trends.**
 
-You can also ask your agent to write up its work so you can audit the full
-thought process:
+You can also ask your agent to produce a document from its work — a detailed
+technical writeup for auditing, or a polished deck for sharing:
 
 > **Write a markdown document summarizing your analysis. Include the queries you
 > ran, the raw results, your reasoning, and your conclusions.**
 
-This gives you a reviewable artifact with the agent's queries, data, and logic
-laid out step by step — useful for verifying results or sharing findings with
-others.
+> **Create a PowerPoint deck that summarizes our findings.**
 
 ## 6. Record learnings into a semantic overlay
 
