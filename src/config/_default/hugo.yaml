@@ -22,8 +22,12 @@ menu:
       name: Documentation
       pageRef: /docs/
       weight: 1
-    - name: GitHub
+    - identifier: blog
+      name: Blog
+      pageRef: /blog/
       weight: 2
+    - name: GitHub
+      weight: 3
       url: "https://github.com/kineticloom/plydb"
       params:
         icon: github
