@@ -1,0 +1,327 @@
+<div id="oly26bo" aria-label="Best Odds by Discipline — Milano-Cortina 2026">
+<style>
+#oly26bo {
+  font-family: var(--ply-font-body, 'Source Sans 3', sans-serif);
+  background: var(--ply-surface, #fff);
+  border: 1px solid var(--ply-border, #ddd9d0);
+  border-radius: var(--ply-radius, 10px);
+  padding: 24px;
+  margin: 2rem 0;
+  color: var(--ply-text, #1a1a1a);
+  box-sizing: border-box;
+}
+#oly26bo *, #oly26bo *::before, #oly26bo *::after { box-sizing: border-box; }
+
+.o26bo-header { margin-bottom: 18px; }
+.o26bo-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ply-accent, #2563eb);
+  margin-bottom: 6px;
+}
+.o26bo-label::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--ply-accent, #2563eb);
+}
+.o26bo-subtitle {
+  font-size: 0.8rem;
+  color: var(--ply-text-dim, #6b6560);
+}
+.o26bo-tier-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-bottom: 18px;
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.68rem;
+  color: var(--ply-text-dim, #6b6560);
+}
+.o26bo-tleg { display: flex; align-items: center; gap: 5px; }
+.o26bo-tleg-pip { width: 10px; height: 3px; border-radius: 2px; flex-shrink: 0; }
+
+.o26bo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 10px;
+}
+.o26bo-card {
+  background: var(--ply-bg-alt, #f0efec);
+  border: 1px solid var(--ply-border, #ddd9d0);
+  border-top-width: 3px;
+  border-radius: var(--ply-radius, 10px);
+  padding: 14px;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+.o26bo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+.o26bo-card--best    { border-top-color: var(--ply-green, #16a34a); }
+.o26bo-card--good    { border-top-color: var(--ply-accent, #2563eb); }
+.o26bo-card--niche   { border-top-color: var(--ply-warm, #d97706); }
+.o26bo-card--mid     { border-top-color: var(--ply-border, #ddd9d0); }
+.o26bo-card--avoid   {
+  border-top-color: var(--ply-rose, #dc2626);
+  background: color-mix(in srgb, var(--ply-rose, #dc2626) 4%, var(--ply-bg-alt, #f0efec));
+}
+
+.o26bo-badge {
+  display: inline-block;
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+.o26bo-badge--best  { background: color-mix(in srgb, var(--ply-green,  #16a34a) 12%, var(--ply-surface, #fff)); color: var(--ply-green,  #16a34a); }
+.o26bo-badge--good  { background: color-mix(in srgb, var(--ply-accent, #2563eb) 10%, var(--ply-surface, #fff)); color: var(--ply-accent, #2563eb); }
+.o26bo-badge--niche { background: color-mix(in srgb, var(--ply-warm,   #d97706) 12%, var(--ply-surface, #fff)); color: var(--ply-warm,   #d97706); }
+.o26bo-badge--mid   { background: var(--ply-bg-alt, #f0efec); color: var(--ply-text-dim, #6b6560); }
+.o26bo-badge--avoid { background: color-mix(in srgb, var(--ply-rose,   #dc2626) 10%, var(--ply-surface, #fff)); color: var(--ply-rose,   #dc2626); }
+
+.o26bo-sport {
+  font-family: var(--ply-font-display, 'Outfit', sans-serif);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ply-text, #1a1a1a);
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+.o26bo-rate-row {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  margin-bottom: 5px;
+}
+.o26bo-rate-num {
+  font-family: var(--ply-font-display, 'Outfit', sans-serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ply-text, #1a1a1a);
+}
+.o26bo-rate-unit {
+  font-size: 0.72rem;
+  color: var(--ply-text-dim, #6b6560);
+}
+.o26bo-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.68rem;
+  color: var(--ply-text-dim, #6b6560);
+}
+.o26bo-meta-item { display: flex; align-items: center; gap: 4px; }
+.o26bo-conc-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.o26bo-footnote {
+  margin-top: 14px;
+  font-size: 0.72rem;
+  color: var(--ply-text-dim, #6b6560);
+  line-height: 1.5;
+  border-top: 1px solid var(--ply-border, #ddd9d0);
+  padding-top: 12px;
+}
+</style>
+
+<div class="o26bo-header">
+  <div class="o26bo-label">Best Odds by Discipline</div>
+  <div class="o26bo-subtitle">Medal rate, gold-country diversity &amp; field size &mdash; Milano-Cortina 2026</div>
+</div>
+
+<div class="o26bo-tier-legend">
+  <div class="o26bo-tleg"><div class="o26bo-tleg-pip" style="background:var(--ply-green,#16a34a)"></div>Best overall</div>
+  <div class="o26bo-tleg"><div class="o26bo-tleg-pip" style="background:var(--ply-accent,#2563eb)"></div>Good odds</div>
+  <div class="o26bo-tleg"><div class="o26bo-tleg-pip" style="background:var(--ply-warm,#d97706)"></div>Small / new</div>
+  <div class="o26bo-tleg"><div class="o26bo-tleg-pip" style="background:var(--ply-border,#ddd9d0)"></div>Mid-tier</div>
+  <div class="o26bo-tleg"><div class="o26bo-tleg-pip" style="background:var(--ply-rose,#dc2626)"></div>Avoid</div>
+</div>
+
+<div class="o26bo-grid">
+
+  <div class="o26bo-card o26bo-card--best">
+    <div class="o26bo-badge o26bo-badge--best">Best</div>
+    <div class="o26bo-sport">Short Track Speed Skating</div>
+    <div class="o26bo-rate-row"><span class="o26bo-rate-num">33.9</span><span class="o26bo-rate-unit">% medal rate</span></div>
+    <div class="o26bo-meta">
+      <span class="o26bo-meta-item"><span class="o26bo-conc-dot" style="background:var(--ply-green,#16a34a)"></span>4 gold nations</span>
+      <span class="o26bo-meta-item">112 athletes</span>
+    </div>
+  </div>
+
+  <div class="o26bo-card o26bo-card--best">
+    <div class="o26bo-badge o26bo-badge--best">Best</div>
+    <div class="o26bo-sport">Biathlon</div>
+    <div class="o26bo-rate-row"><span class="o26bo-rate-num">17.1</span><span class="o26bo-rate-unit">% medal rate</span></div>
+    <div class="o26bo-meta">
+      <span class="o26bo-meta-item"><span class="o26bo-conc-dot" style="background:var(--ply-green,#16a34a)"></span>4 gold nations</span>
+      <span class="o26bo-meta-item">210 athletes</span>
+    </div>
+  </div>
+
+  <div class="o26bo-card o26bo-card--good">
+    <div class="o26bo-badge o26bo-badge--good">Good</div>
+    <div class="o26bo-sport">Figure Skating</div>
+    <div class="o26bo-rate-row"><span class="o26bo-rate-num">21.1</span><span class="o26bo-rate-unit">% medal rate</span></div>
+    <div class="o26bo-meta">
+      <span class="o26bo-meta-item"><span class="o26bo-conc-dot" style="background:var(--ply-green,#16a34a)"></span>4 gold nations</span>
+      <span class="o26bo-meta-item">147 athletes</span>
+    </div>
+  </div>
+
+  <div class="o26bo-card o26bo-card--good">
+    <div class="o26bo-badge o26bo-badge--good">Good</div>
+    <div class="o26bo-sport">Freestyle Skiing</div>
+    <div class="o26bo-rate-row"><span class="o26bo-rate-num">14.4</span><span class="o26bo-rate-unit">% medal rate</span></div>
+    <div class="o26bo-meta">
+      <span class="o26bo-meta-item"><span class="o26bo-conc-dot" style="background:var(--ply-green,#16a34a)"></span>8 gold nations</span>
+      <span class="o26bo-meta-item">278 athletes</span>
+    </div>
+  </div>
+
+  <div class="o26bo-card o26bo-card--good">
+    <div class="o26bo-badge o26bo-badge--good">Good</div>
+    <div class="o26bo-sport">Snowboard</div>
+    <div class="o26bo-rate-row"><span class="o26bo-rate-num">13.6</span><span class="o26bo-rate-unit">% medal rate</span></div>
+    <div class="o26bo-meta">
+      <span class="o26bo-meta-item"><span class="o26bo-conc-dot" style="background:var(--ply-green,#16a34a)"></span>7 gold nations</span>
+      <span class="o26bo-meta-item">235 athletes</span>
+    </div>
+  </div>
+
+  <div class="o26bo-card o26bo-card--good">
+    <div class="o26bo-badge o26bo-badge--good">Good*</div>
+    <div class="o26bo-sport">Curling</div>
+    <div class="o26bo-rate-row"><span class="o26bo-rate-num">32.1</span><span class="o26bo-rate-unit">% medal rate</span></div>
+    <div class="o26bo-meta">
+      <span class="o26bo-meta-item"><span class="o26bo-conc-dot" style="background:var(--ply-warm,#d97706)"></span>2 gold nations</span>
+      <span class="o26bo-meta-item">112 athletes</span>
+    </div>
+  </div>
+
+  <div class="o26bo-card o26bo-card--niche">
+    <div class="o26bo-badge o26bo-badge--niche">New / Small</div>
+    <div class="o26bo-sport">Ski Mountaineering</div>
+    <div class="o26bo-rate-row"><span class="o26bo-rate-num">19.4</span><span class="o26bo-rate-unit">% medal rate</span></div>
+    <div class="o26bo-meta">
+      <span class="o26bo-meta-item"><span class="o26bo-conc-dot" style="background:var(--ply-green,#16a34a)"></span>3 gold nations</span>
+      <span class="o26bo-meta-item">36 athletes</span>
+    </div>
+  </div>
+
+  <div class="o26bo-card o26bo-card--niche">
+    <div class="o26bo-badge o26bo-badge--niche">Small Field</div>
+    <div class="o26bo-sport">Skeleton</div>
+    <div class="o26bo-rate-row"><span class="o26bo-rate-num">14.0</span><span class="o26bo-rate-unit">% medal rate</span></div>
+    <div class="o26bo-meta">
+      <span class="o26bo-meta-item"><span class="o26bo-conc-dot" style="background:var(--ply-warm,#d97706)"></span>2 gold nations</span>
+      <span class="o26bo-meta-item">50 athletes</span>
+    </div>
+  </div>
+
+  <div class="o26bo-card o26bo-card--mid">
+    <div class="o26bo-badge o26bo-badge--mid">Mid</div>
+    <div class="o26bo-sport">Ski Jumping</div>
+    <div class="o26bo-rate-row"><span class="o26bo-rate-num">18.8</span><span class="o26bo-rate-unit">% medal rate</span></div>
+    <div class="o26bo-meta">
+      <span class="o26bo-meta-item"><span class="o26bo-conc-dot" style="background:var(--ply-green,#16a34a)"></span>4 gold nations</span>
+      <span class="o26bo-meta-item">101 athletes</span>
+    </div>
+  </div>
+
+  <div class="o26bo-card o26bo-card--mid">
+    <div class="o26bo-badge o26bo-badge--mid">Mid</div>
+    <div class="o26bo-sport">Luge</div>
+    <div class="o26bo-rate-row"><span class="o26bo-rate-num">19.0</span><span class="o26bo-rate-unit">% medal rate</span></div>
+    <div class="o26bo-meta">
+      <span class="o26bo-meta-item"><span class="o26bo-conc-dot" style="background:var(--ply-warm,#d97706)"></span>2 gold nations</span>
+      <span class="o26bo-meta-item">105 athletes</span>
+    </div>
+  </div>
+
+  <div class="o26bo-card o26bo-card--mid">
+    <div class="o26bo-badge o26bo-badge--mid">Mid</div>
+    <div class="o26bo-sport">Speed Skating</div>
+    <div class="o26bo-rate-row"><span class="o26bo-rate-num">13.1</span><span class="o26bo-rate-unit">% medal rate</span></div>
+    <div class="o26bo-meta">
+      <span class="o26bo-meta-item"><span class="o26bo-conc-dot" style="background:var(--ply-green,#16a34a)"></span>7 gold nations</span>
+      <span class="o26bo-meta-item">275 athletes</span>
+    </div>
+  </div>
+
+  <div class="o26bo-card o26bo-card--avoid">
+    <div class="o26bo-badge o26bo-badge--avoid">Avoid</div>
+    <div class="o26bo-sport">Nordic Combined</div>
+    <div class="o26bo-rate-row"><span class="o26bo-rate-num">16.7</span><span class="o26bo-rate-unit">% medal rate</span></div>
+    <div class="o26bo-meta">
+      <span class="o26bo-meta-item"><span class="o26bo-conc-dot" style="background:var(--ply-rose,#dc2626)"></span>1 gold nation</span>
+      <span class="o26bo-meta-item">36 athletes</span>
+    </div>
+  </div>
+
+  <div class="o26bo-card o26bo-card--avoid">
+    <div class="o26bo-badge o26bo-badge--avoid">Avoid</div>
+    <div class="o26bo-sport">Cross-Country Skiing</div>
+    <div class="o26bo-rate-row"><span class="o26bo-rate-num">11.1</span><span class="o26bo-rate-unit">% medal rate</span></div>
+    <div class="o26bo-meta">
+      <span class="o26bo-meta-item"><span class="o26bo-conc-dot" style="background:var(--ply-rose,#dc2626)"></span>2 gold nations</span>
+      <span class="o26bo-meta-item">296 athletes</span>
+    </div>
+  </div>
+
+  <div class="o26bo-card o26bo-card--avoid">
+    <div class="o26bo-badge o26bo-badge--avoid">Avoid</div>
+    <div class="o26bo-sport">Bobsleigh</div>
+    <div class="o26bo-rate-row"><span class="o26bo-rate-num">10.4</span><span class="o26bo-rate-unit">% medal rate</span></div>
+    <div class="o26bo-meta">
+      <span class="o26bo-meta-item"><span class="o26bo-conc-dot" style="background:var(--ply-rose,#dc2626)"></span>2 gold nations</span>
+      <span class="o26bo-meta-item">201 athletes</span>
+    </div>
+  </div>
+
+  <div class="o26bo-card o26bo-card--avoid">
+    <div class="o26bo-badge o26bo-badge--avoid">Avoid</div>
+    <div class="o26bo-sport">Alpine Skiing</div>
+    <div class="o26bo-rate-row"><span class="o26bo-rate-num">9.2</span><span class="o26bo-rate-unit">% medal rate</span></div>
+    <div class="o26bo-meta">
+      <span class="o26bo-meta-item"><span class="o26bo-conc-dot" style="background:var(--ply-green,#16a34a)"></span>5 gold nations</span>
+      <span class="o26bo-meta-item">306 athletes</span>
+    </div>
+  </div>
+
+  <div class="o26bo-card o26bo-card--avoid">
+    <div class="o26bo-badge o26bo-badge--avoid">Avoid</div>
+    <div class="o26bo-sport">Ice Hockey</div>
+    <div class="o26bo-rate-row"><span class="o26bo-rate-num">27.2</span><span class="o26bo-rate-unit">% medal rate</span></div>
+    <div class="o26bo-meta">
+      <span class="o26bo-meta-item"><span class="o26bo-conc-dot" style="background:var(--ply-rose,#dc2626)"></span>1 nation per gender</span>
+      <span class="o26bo-meta-item">530 athletes</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="o26bo-footnote">
+  * Curling: high medal rate due to team format, but only 2 nations won gold. Strong route to silver/bronze; tough for gold.<br>
+  Medal rate = unique medalists / registered athletes. Assumes qualification for the Games. Source: Milano-Cortina 2026 &middot; Analysis via PlyDB + Claude Code
+</div>
+
+</div>

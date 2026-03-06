@@ -1,0 +1,327 @@
+<div id="oly26gdp" aria-label="GDP vs Medal Efficiency — Milano-Cortina 2026">
+<style>
+#oly26gdp {
+  font-family: var(--ply-font-body, 'Source Sans 3', sans-serif);
+  background: var(--ply-surface, #fff);
+  border: 1px solid var(--ply-border, #ddd9d0);
+  border-radius: var(--ply-radius, 10px);
+  padding: 24px;
+  margin: 2rem 0;
+  color: var(--ply-text, #1a1a1a);
+  box-sizing: border-box;
+}
+#oly26gdp *, #oly26gdp *::before, #oly26gdp *::after { box-sizing: border-box; }
+
+.o26g-header { margin-bottom: 20px; }
+.o26g-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ply-accent, #2563eb);
+  margin-bottom: 6px;
+}
+.o26g-label::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--ply-accent, #2563eb);
+}
+.o26g-subtitle {
+  font-size: 0.8rem;
+  color: var(--ply-text-dim, #6b6560);
+}
+.o26g-callout {
+  background: color-mix(in srgb, var(--ply-accent, #2563eb) 6%, var(--ply-bg-alt, #f0efec));
+  border: 1px solid color-mix(in srgb, var(--ply-accent, #2563eb) 18%, transparent);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  font-size: 0.82rem;
+  color: var(--ply-text, #1a1a1a);
+  line-height: 1.5;
+}
+.o26g-callout strong { color: var(--ply-accent, #2563eb); font-weight: 600; }
+
+.o26g-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+@media (max-width: 580px) {
+  .o26g-panels { grid-template-columns: 1fr; }
+}
+.o26g-panel-title {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ply-text-dim, #6b6560);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--ply-border, #ddd9d0);
+}
+.o26g-rows { display: flex; flex-direction: column; gap: 6px; }
+.o26g-row {
+  display: grid;
+  grid-template-columns: 20px 1fr 54px;
+  align-items: center;
+  gap: 7px;
+}
+.o26g-flag { font-size: 0.88rem; text-align: center; }
+.o26g-row-inner { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.o26g-name {
+  font-size: 0.72rem;
+  color: var(--ply-text, #1a1a1a);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.o26g-bar-wrap {
+  height: 4px;
+  background: var(--ply-bg-alt, #f0efec);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+.o26g-bar-fill {
+  position: absolute; left: 0; top: 0;
+  height: 100%;
+  border-radius: 2px;
+  width: 0;
+  transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.o26g-bar-fill--hi  { background: var(--ply-green, #16a34a); }
+.o26g-bar-fill--mid { background: var(--ply-accent, #2563eb); opacity: 0.6; }
+.o26g-bar-fill--lo  { background: var(--ply-rose, #dc2626); opacity: 0.7; }
+.o26g-val {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-align: right;
+  white-space: nowrap;
+}
+.o26g-val--hi  { color: var(--ply-green, #16a34a); }
+.o26g-val--mid { color: var(--ply-text-dim, #6b6560); }
+.o26g-val--lo  { color: var(--ply-rose, #dc2626); }
+
+.o26g-sep {
+  border: none;
+  border-top: 1px dashed var(--ply-border, #ddd9d0);
+  margin: 6px 0;
+}
+
+/* Latitude-adjusted panel */
+.o26g-lat-rows { display: flex; flex-direction: column; gap: 6px; }
+.o26g-lat-section {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ply-text-dim, #6b6560);
+  opacity: 0.6;
+  margin: 10px 0 6px;
+}
+.o26g-lat-section:first-child { margin-top: 0; }
+.o26g-lat-row {
+  display: grid;
+  grid-template-columns: 20px 1fr 44px;
+  align-items: center;
+  gap: 7px;
+}
+.o26g-lat-inner { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.o26g-lat-name {
+  font-size: 0.7rem;
+  color: var(--ply-text, #1a1a1a);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.o26g-lat-band {
+  font-size: 0.62rem;
+  color: var(--ply-text-dim, #6b6560);
+  opacity: 0.65;
+}
+.o26g-lat-bar-wrap {
+  height: 4px;
+  background: var(--ply-bg-alt, #f0efec);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+.o26g-lat-fill {
+  position: absolute; left: 0; top: 0;
+  height: 100%;
+  border-radius: 2px;
+  width: 0;
+  transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.o26g-lat-fill--over  { background: var(--ply-warm, #d97706); }
+.o26g-lat-fill--under { background: var(--ply-text-dim, #6b6560); opacity: 0.4; }
+.o26g-lat-val {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-align: right;
+}
+.o26g-lat-val--over  { color: var(--ply-warm, #d97706); }
+.o26g-lat-val--under { color: var(--ply-text-dim, #6b6560); }
+
+.o26g-source {
+  margin-top: 16px;
+  font-size: 0.68rem;
+  color: var(--ply-text-dim, #6b6560);
+  text-align: right;
+  opacity: 0.6;
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+}
+</style>
+
+<div class="o26g-header">
+  <div class="o26g-label">GDP vs Medal Efficiency</div>
+  <div class="o26g-subtitle">Does money buy Winter Olympics medals? Milano-Cortina 2026</div>
+</div>
+
+<div class="o26g-callout">
+  Norway is <strong>71&times; more efficient</strong> than the USA and <strong>103&times; more efficient</strong> than China &mdash; on an economy the size of one American state. After adjusting for latitude, culture explains the gaps geography alone can&rsquo;t.
+</div>
+
+<div class="o26g-panels">
+  <div>
+    <div class="o26g-panel-title">Medals per $1 trillion GDP</div>
+    <div class="o26g-rows" id="oly26gdp-rows"></div>
+  </div>
+  <div>
+    <div class="o26g-panel-title">Latitude-adjusted index</div>
+    <div class="o26g-lat-rows" id="oly26gdp-lat"></div>
+  </div>
+</div>
+
+<div class="o26g-source">Source: World Bank GDP 2023 &middot; Country latitude centroids &middot; Analysis via PlyDB + Claude Code</div>
+</div>
+
+<script>
+(function() {
+  var flags = {
+    'NOR':'🇳🇴','SLO':'🇸🇮','LAT':'🇱🇻','AUT':'🇦🇹','GEO':'🇬🇪',
+    'SWE':'🇸🇪','SUI':'🇨🇭','EST':'🇪🇪','FIN':'🇫🇮','BUL':'🇧🇬',
+    'NED':'🇳🇱','ITA':'🇮🇹','GBR':'🇬🇧','USA':'🇺🇸','CHN':'🇨🇳','BRA':'🇧🇷'
+  };
+
+  var gdpData = [
+    {c:'NOR', n:'Norway',        v:84.9,  t:'hi'},
+    {c:'SLO', n:'Slovenia',      v:57.8,  t:'hi'},
+    {c:'LAT', n:'Latvia',        v:46.7,  t:'hi'},
+    {c:'AUT', n:'Austria',       v:34.8,  t:'hi'},
+    {c:'GEO', n:'Georgia',       v:32.5,  t:'hi'},
+    {c:'SWE', n:'Sweden',        v:31.1,  t:'hi'},
+    {c:'SUI', n:'Switzerland',   v:25.7,  t:'hi'},
+    {c:'EST', n:'Estonia',       v:24.1,  t:'mid'},
+    {c:'FIN', n:'Finland',       v:20.3,  t:'mid'},
+    {c:'BUL', n:'Bulgaria',      v:19.6,  t:'mid'},
+    null,
+    {c:'NED', n:'Netherlands',   v:17.6,  t:'mid'},
+    {c:'ITA', n:'Italy',         v:13.0,  t:'mid'},
+    {c:'GBR', n:'Great Britain', v:1.5,   t:'lo'},
+    {c:'USA', n:'United States', v:1.2,   t:'lo'},
+    {c:'CHN', n:'China',         v:0.82,  t:'lo'},
+    {c:'BRA', n:'Brazil',        v:0.46,  t:'lo'}
+  ];
+
+  var maxGdp = 84.9;
+  var rowsEl = document.getElementById('oly26gdp-rows');
+  if (rowsEl) {
+    gdpData.forEach(function(d, i) {
+      if (!d) {
+        var sep = document.createElement('div');
+        sep.className = 'o26g-sep';
+        rowsEl.appendChild(sep);
+        return;
+      }
+      var pct = (d.v / maxGdp * 100).toFixed(1);
+      var delay = i * 30;
+      var valStr = d.v >= 10 ? d.v.toFixed(1) : d.v.toFixed(2);
+      var el = document.createElement('div');
+      el.className = 'o26g-row';
+      el.innerHTML =
+        '<div class="o26g-flag">' + (flags[d.c] || '') + '</div>' +
+        '<div class="o26g-row-inner">' +
+          '<div class="o26g-name">' + d.n + '</div>' +
+          '<div class="o26g-bar-wrap">' +
+            '<div class="o26g-bar-fill o26g-bar-fill--' + d.t + '" data-w="' + pct + '%" style="transition-delay:' + delay + 'ms"></div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="o26g-val o26g-val--' + d.t + '">' + valStr + '</div>';
+      rowsEl.appendChild(el);
+    });
+  }
+
+  var latOver = [
+    {c:'GEO', n:'Georgia',       v:15.33, b:'Mediterranean'},
+    {c:'BUL', n:'Bulgaria',      v:9.23,  b:'Mediterranean'},
+    {c:'NOR', n:'Norway',        v:6.65,  b:'Nordic'},
+    {c:'ITA', n:'Italy',         v:6.11,  b:'Mediterranean'},
+    {c:'SLO', n:'Slovenia',      v:5.69,  b:'N. Temperate'}
+  ];
+  var latUnder = [
+    {c:'CHN', n:'China',         v:0.39,  b:'Mediterranean'},
+    {c:'BRA', n:'Brazil',        v:0.19,  b:'Southern Hem.'},
+    {c:'GBR', n:'Great Britain', v:0.11,  b:'Nordic (55°N)'}
+  ];
+
+  var maxLat = 15.33;
+  var latEl = document.getElementById('oly26gdp-lat');
+  if (latEl) {
+    function makeSection(label) {
+      var el = document.createElement('div');
+      el.className = 'o26g-lat-section';
+      el.textContent = label;
+      return el;
+    }
+    function makeRow(d, i, type, baseDelay) {
+      var pct = Math.max(d.v / maxLat * 100, 2).toFixed(1);
+      var el = document.createElement('div');
+      el.className = 'o26g-lat-row';
+      el.innerHTML =
+        '<div class="o26g-flag">' + (flags[d.c] || '') + '</div>' +
+        '<div class="o26g-lat-inner">' +
+          '<div class="o26g-lat-name">' + d.n + '</div>' +
+          '<div class="o26g-lat-band">' + d.b + '</div>' +
+          '<div class="o26g-lat-bar-wrap">' +
+            '<div class="o26g-lat-fill o26g-lat-fill--' + type + '" data-w="' + pct + '%" style="transition-delay:' + (baseDelay + i * 60) + 'ms"></div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="o26g-lat-val o26g-lat-val--' + type + '">' + d.v.toFixed(2) + '&times;</div>';
+      return el;
+    }
+
+    latEl.appendChild(makeSection('Overachievers vs latitude peers'));
+    latOver.forEach(function(d, i) { latEl.appendChild(makeRow(d, i, 'over', 100)); });
+    latEl.appendChild(makeSection('Underachievers vs latitude peers'));
+    latUnder.forEach(function(d, i) { latEl.appendChild(makeRow(d, i, 'under', 400)); });
+  }
+
+  var wrapper = document.getElementById('oly26gdp');
+  var animated = false;
+  var io = new IntersectionObserver(function(entries) {
+    if (animated) return;
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        animated = true;
+        wrapper.querySelectorAll('.o26g-bar-fill, .o26g-lat-fill').forEach(function(el) {
+          el.style.width = el.getAttribute('data-w');
+        });
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.1 });
+  io.observe(wrapper);
+})();
+</script>

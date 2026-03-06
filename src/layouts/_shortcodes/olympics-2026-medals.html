@@ -1,0 +1,245 @@
+<div id="oly26mt" aria-label="Full Medal Table — Milano-Cortina 2026">
+<style>
+#oly26mt {
+  font-family: var(--ply-font-body, 'Source Sans 3', sans-serif);
+  background: var(--ply-surface, #fff);
+  border: 1px solid var(--ply-border, #ddd9d0);
+  border-radius: var(--ply-radius, 10px);
+  padding: 24px;
+  margin: 2rem 0;
+  color: var(--ply-text, #1a1a1a);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+#oly26mt *, #oly26mt *::before, #oly26mt *::after { box-sizing: border-box; }
+
+.o26m-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.o26m-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ply-accent, #2563eb);
+}
+.o26m-label::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--ply-accent, #2563eb);
+}
+.o26m-subtitle {
+  font-size: 0.8rem;
+  color: var(--ply-text-dim, #6b6560);
+  font-weight: 400;
+}
+.o26m-legend {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 14px;
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.68rem;
+  color: var(--ply-text-dim, #6b6560);
+}
+.o26m-leg-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+.o26m-rows { display: flex; flex-direction: column; }
+.o26m-row {
+  display: grid;
+  grid-template-columns: 22px auto 1fr 52px;
+  align-items: center;
+  gap: 0 10px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--ply-border, #ddd9d0);
+}
+.o26m-row:last-child { border-bottom: none; }
+.o26m-rank {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.65rem;
+  color: var(--ply-text-dim, #6b6560);
+  text-align: right;
+  opacity: 0.5;
+}
+.o26m-flag { font-size: 0.95rem; text-align: center; }
+.o26m-country { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.o26m-name {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ply-text, #1a1a1a);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.o26m-bar-wrap {
+  width: 100%;
+  height: 5px;
+  background: var(--ply-bg-alt, #f0efec);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+.o26m-bar-fill {
+  position: absolute; left: 0; top: 0;
+  height: 100%;
+  display: flex;
+  gap: 1px;
+  width: 0;
+  transition: width 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.o26m-seg { height: 100%; }
+.o26m-seg-g { background: #ca8a04; }
+.o26m-seg-s { background: #7890a8; }
+.o26m-seg-b { background: #a0602c; }
+.o26m-stats {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+}
+.o26m-gsb {
+  display: none;
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.6rem;
+  color: var(--ply-text-dim, #6b6560);
+  opacity: 0.7;
+}
+.o26m-total {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ply-text, #1a1a1a);
+  min-width: 20px;
+  text-align: right;
+}
+.o26m-source {
+  margin-top: 14px;
+  font-size: 0.68rem;
+  color: var(--ply-text-dim, #6b6560);
+  text-align: right;
+  opacity: 0.6;
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+}
+@media (min-width: 520px) {
+  .o26m-gsb { display: inline; }
+  .o26m-row { grid-template-columns: 22px auto 1fr 82px; }
+}
+</style>
+
+<div class="o26m-header">
+  <span class="o26m-label">Full Medal Table</span>
+  <span class="o26m-subtitle">Milano-Cortina 2026 &mdash; all 29 medal-winning nations</span>
+</div>
+<div class="o26m-legend">
+  <span><span class="o26m-leg-dot" style="background:#ca8a04"></span>Gold</span>
+  <span><span class="o26m-leg-dot" style="background:#7890a8"></span>Silver</span>
+  <span><span class="o26m-leg-dot" style="background:#a0602c"></span>Bronze</span>
+</div>
+<div class="o26m-rows" id="oly26mt-rows"></div>
+<div class="o26m-source">Source: Milano-Cortina 2026 official results &nbsp;&middot;&nbsp; Analysis via PlyDB + Claude Code</div>
+</div>
+
+<script>
+(function() {
+  var data = [
+    {r:1,  f:'NO', n:'Norway',        g:18, s:12, b:11},
+    {r:2,  f:'US', n:'United States', g:12, s:12, b:9 },
+    {r:3,  f:'NL', n:'Netherlands',   g:10, s:7,  b:3 },
+    {r:4,  f:'IT', n:'Italy',         g:10, s:6,  b:14},
+    {r:5,  f:'DE', n:'Germany',       g:8,  s:10, b:8 },
+    {r:6,  f:'FR', n:'France',        g:8,  s:9,  b:6 },
+    {r:7,  f:'SE', n:'Sweden',        g:8,  s:6,  b:4 },
+    {r:8,  f:'CH', n:'Switzerland',   g:6,  s:9,  b:8 },
+    {r:9,  f:'AT', n:'Austria',       g:5,  s:8,  b:5 },
+    {r:10, f:'JP', n:'Japan',         g:5,  s:7,  b:12},
+    {r:11, f:'CA', n:'Canada',        g:5,  s:7,  b:9 },
+    {r:12, f:'CN', n:'China',         g:5,  s:4,  b:6 },
+    {r:13, f:'KR', n:'Korea',         g:3,  s:4,  b:3 },
+    {r:14, f:'AU', n:'Australia',     g:3,  s:2,  b:1 },
+    {r:15, f:'GB', n:'Great Britain', g:3,  s:1,  b:1 },
+    {r:16, f:'CZ', n:'Czechia',       g:2,  s:2,  b:1 },
+    {r:17, f:'SI', n:'Slovenia',      g:2,  s:1,  b:1 },
+    {r:18, f:'ES', n:'Spain',         g:1,  s:0,  b:2 },
+    {r:19, f:'BR', n:'Brazil',        g:1,  s:0,  b:0 },
+    {r:19, f:'KZ', n:'Kazakhstan',    g:1,  s:0,  b:0 },
+    {r:21, f:'PL', n:'Poland',        g:0,  s:3,  b:1 },
+    {r:22, f:'NZ', n:'New Zealand',   g:0,  s:2,  b:1 },
+    {r:23, f:'FI', n:'Finland',       g:0,  s:1,  b:5 },
+    {r:24, f:'LV', n:'Latvia',        g:0,  s:1,  b:1 },
+    {r:25, f:'DK', n:'Denmark',       g:0,  s:1,  b:0 },
+    {r:25, f:'EE', n:'Estonia',       g:0,  s:1,  b:0 },
+    {r:25, f:'GE', n:'Georgia',       g:0,  s:1,  b:0 },
+    {r:28, f:'BG', n:'Bulgaria',      g:0,  s:0,  b:2 },
+    {r:29, f:'BE', n:'Belgium',       g:0,  s:0,  b:1 }
+  ];
+  var flags = {
+    'NO':'🇳🇴','US':'🇺🇸','NL':'🇳🇱','IT':'🇮🇹','DE':'🇩🇪','FR':'🇫🇷',
+    'SE':'🇸🇪','CH':'🇨🇭','AT':'🇦🇹','JP':'🇯🇵','CA':'🇨🇦','CN':'🇨🇳',
+    'KR':'🇰🇷','AU':'🇦🇺','GB':'🇬🇧','CZ':'🇨🇿','SI':'🇸🇮','ES':'🇪🇸',
+    'BR':'🇧🇷','KZ':'🇰🇿','PL':'🇵🇱','NZ':'🇳🇿','FI':'🇫🇮','LV':'🇱🇻',
+    'DK':'🇩🇰','EE':'🇪🇪','GE':'🇬🇪','BG':'🇧🇬','BE':'🇧🇪'
+  };
+  var MAX = 41;
+  var container = document.getElementById('oly26mt-rows');
+  if (!container) return;
+
+  data.forEach(function(d, i) {
+    var total = d.g + d.s + d.b;
+    var barW = (total / MAX * 100).toFixed(2);
+    var delay = i * 25;
+    var row = document.createElement('div');
+    row.className = 'o26m-row';
+    row.innerHTML =
+      '<div class="o26m-rank">' + d.r + '</div>' +
+      '<div class="o26m-flag" aria-hidden="true">' + (flags[d.f] || '') + '</div>' +
+      '<div class="o26m-country">' +
+        '<div class="o26m-name">' + d.n + '</div>' +
+        '<div class="o26m-bar-wrap">' +
+          '<div class="o26m-bar-fill" data-w="' + barW + '%" style="transition-delay:' + delay + 'ms">' +
+            (d.g > 0 ? '<div class="o26m-seg o26m-seg-g" style="flex:' + d.g + '"></div>' : '') +
+            (d.s > 0 ? '<div class="o26m-seg o26m-seg-s" style="flex:' + d.s + '"></div>' : '') +
+            (d.b > 0 ? '<div class="o26m-seg o26m-seg-b" style="flex:' + d.b + '"></div>' : '') +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="o26m-stats">' +
+        '<span class="o26m-gsb">' + d.g + '·' + d.s + '·' + d.b + '</span>' +
+        '<span class="o26m-total">' + total + '</span>' +
+      '</div>';
+    container.appendChild(row);
+  });
+
+  var wrapper = document.getElementById('oly26mt');
+  var observed = false;
+  var io = new IntersectionObserver(function(entries) {
+    if (observed) return;
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        observed = true;
+        wrapper.querySelectorAll('.o26m-bar-fill').forEach(function(bar) {
+          bar.style.width = bar.getAttribute('data-w');
+        });
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.1 });
+  io.observe(wrapper);
+})();
+</script>

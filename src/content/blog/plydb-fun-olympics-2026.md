@@ -36,6 +36,8 @@ coordinates. Then we just... started chatting.
 
 ---
 
+{{< olympics-2026-medals >}}
+
 ## Finding 1: Norway Is in a Different League
 
 Norway sent 80 athletes to Milano-Cortina and came home with **41 medals** — 18
@@ -139,6 +141,8 @@ Expensive sport to train for, brutal to medal in.
 **Ice Hockey**: 530 athletes, but gold goes to 23–25 players from a single
 country per gender tournament. The pool looks big; the actual odds aren't.
 
+{{< olympics-2026-best-odds >}}
+
 ---
 
 ## The GDP vs. Medals Question
@@ -166,6 +170,8 @@ grain.
 
 The conclusion across all three analyses: **latitude sets the ceiling; culture
 determines how close you get to it.** You can't buy a ski jump in your DNA.
+
+{{< olympics-2026-gdp >}}
 
 ---
 
