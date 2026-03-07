@@ -1,0 +1,252 @@
+<div id="osc26prec" aria-label="Precursor Award Conversion Rates — Oscar Prediction">
+<style>
+#osc26prec {
+  font-family: var(--ply-font-body, 'Source Sans 3', sans-serif);
+  background: var(--ply-surface, #fff);
+  border: 1px solid var(--ply-border, #ddd9d0);
+  border-radius: var(--ply-radius, 10px);
+  padding: 24px;
+  margin: 2rem 0;
+  color: var(--ply-text, #1a1a1a);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+#osc26prec *, #osc26prec *::before, #osc26prec *::after { box-sizing: border-box; }
+
+.opr-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.opr-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ply-accent, #2563eb);
+}
+.opr-label::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--ply-accent, #2563eb);
+}
+.opr-subtitle {
+  font-size: 0.8rem;
+  color: var(--ply-text-dim, #6b6560);
+  margin-bottom: 18px;
+}
+.opr-group { margin-bottom: 18px; }
+.opr-group:last-of-type { margin-bottom: 0; }
+.opr-group-name {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ply-text-dim, #6b6560);
+  margin-bottom: 8px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--ply-border, #ddd9d0);
+}
+.opr-rows { display: flex; flex-direction: column; gap: 6px; }
+.opr-row {
+  display: grid;
+  grid-template-columns: 1fr 40px;
+  align-items: center;
+  gap: 10px;
+}
+.opr-row-left { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.opr-award-cat {
+  font-size: 0.72rem;
+  color: var(--ply-text, #1a1a1a);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.opr-oscar-cat {
+  font-size: 0.63rem;
+  color: var(--ply-text-dim, #6b6560);
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.opr-bar-wrap {
+  width: 100%;
+  height: 5px;
+  background: var(--ply-bg-alt, #f0efec);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+.opr-bar-fill {
+  position: absolute; left: 0; top: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 3px;
+  transition: width 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.opr-pct {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-align: right;
+  white-space: nowrap;
+}
+.opr-note {
+  font-size: 0.63rem;
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  color: #dc2626;
+  margin-left: 4px;
+  font-style: normal;
+}
+.opr-source {
+  margin-top: 16px;
+  font-size: 0.68rem;
+  color: var(--ply-text-dim, #6b6560);
+  text-align: right;
+  opacity: 0.6;
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+}
+
+/* strength colors */
+.str-strong .opr-bar-fill { background: #16a34a; }
+.str-strong .opr-pct { color: #15803d; }
+.str-medium .opr-bar-fill { background: #ca8a04; }
+.str-medium .opr-pct { color: #92400e; }
+.str-weak .opr-bar-fill { background: #7890a8; }
+.str-weak .opr-pct { color: #6b6560; }
+.str-noise .opr-bar-fill { background: #dc2626; }
+.str-noise .opr-pct { color: #dc2626; }
+</style>
+
+<div class="opr-header">
+  <span class="opr-label">Precursor Conversion Rates</span>
+</div>
+<div class="opr-subtitle">How often does winning each award actually predict winning the Oscar? Queried from historical data.</div>
+
+<div id="osc26prec-body"></div>
+<div class="opr-source">Historical data via PlyDB &nbsp;&middot;&nbsp; Ceremonies 68&ndash;97 &nbsp;&middot;&nbsp; Analysis: Claude Code</div>
+</div>
+
+<script>
+(function() {
+  var groups = [
+    {
+      name: 'SAG Awards',
+      rows: [
+        {award: 'SAG Outstanding Male Actor (Lead)', oscar: 'Best Actor', pct: 77.4, str: 'strong'},
+        {award: 'SAG Outstanding Female Actor (Supporting)', oscar: 'Best Supporting Actress', pct: 71.9, str: 'strong'},
+        {award: 'SAG Outstanding Male Actor (Supporting)', oscar: 'Best Supporting Actor', pct: 71.0, str: 'strong'},
+        {award: 'SAG Outstanding Female Actor (Lead)', oscar: 'Best Actress', pct: 67.7, str: 'strong'},
+        {award: 'SAG Outstanding Cast', oscar: 'Best Picture', pct: 43.3, str: 'medium'}
+      ]
+    },
+    {
+      name: 'Critics Choice Awards',
+      rows: [
+        {award: 'Critics Choice Best Director', oscar: 'Best Director', pct: 71.9, str: 'strong'},
+        {award: 'Critics Choice Best Supporting Actress', oscar: 'Best Supporting Actress', pct: 62.5, str: 'strong'},
+        {award: 'Critics Choice Best Supporting Actor', oscar: 'Best Supporting Actor', pct: 61.3, str: 'strong'},
+        {award: 'Critics Choice Best Picture', oscar: 'Best Picture', pct: 60.0, str: 'strong'},
+        {award: 'Critics Choice Best Actor', oscar: 'Best Actor', pct: 64.5, str: 'strong'},
+        {award: 'Critics Choice Best Actress', oscar: 'Best Actress', pct: 48.5, str: 'medium'}
+      ]
+    },
+    {
+      name: 'Golden Globe — Drama',
+      rows: [
+        {award: 'GG Best Actor in a Drama', oscar: 'Best Actor', pct: 65.8, str: 'strong'},
+        {award: 'GG Best Director', oscar: 'Best Director', pct: 53.7, str: 'medium'},
+        {award: 'GG Best Actress in a Drama', oscar: 'Best Actress', pct: 47.4, str: 'medium'},
+        {award: 'GG Best Motion Picture — Drama', oscar: 'Best Picture', pct: 46.7, str: 'medium'}
+      ]
+    },
+    {
+      name: 'BAFTA',
+      rows: [
+        {award: 'BAFTA Best Actress in a Leading Role', oscar: 'Best Actress', pct: 44.8, str: 'medium'},
+        {award: 'BAFTA Best Actor in a Leading Role', oscar: 'Best Actor', pct: 39.7, str: 'weak'},
+        {award: 'BAFTA Best Supporting Actress', oscar: 'Best Supporting Actress', pct: 37.5, str: 'weak'},
+        {award: 'BAFTA Best Direction', oscar: 'Best Director', pct: 33.9, str: 'weak'},
+        {award: 'BAFTA Best Film', oscar: 'Best Picture', pct: 31.6, str: 'weak'},
+        {award: 'BAFTA Best Supporting Actor', oscar: 'Best Supporting Actor', pct: 30.4, str: 'weak'}
+      ]
+    },
+    {
+      name: 'Golden Globe — Comedy/Musical \u26A0 low signal',
+      rows: [
+        {award: 'GG Best Actress in a Comedy/Musical', oscar: 'Best Actress', pct: 22.8, str: 'noise'},
+        {award: 'GG Best Motion Picture — Comedy/Musical', oscar: 'Best Picture', pct: 16.7, str: 'noise'},
+        {award: 'GG Best Actor in a Comedy/Musical', oscar: 'Best Actor', pct: 9.2, str: 'noise', note: 'red herring'}
+      ]
+    }
+  ];
+
+  var body = document.getElementById('osc26prec-body');
+  if (!body) return;
+
+  var allRows = [];
+
+  groups.forEach(function(g, gi) {
+    var group = document.createElement('div');
+    group.className = 'opr-group';
+
+    var gName = document.createElement('div');
+    gName.className = 'opr-group-name';
+    gName.textContent = g.name;
+    group.appendChild(gName);
+
+    var rows = document.createElement('div');
+    rows.className = 'opr-rows';
+
+    g.rows.forEach(function(r, ri) {
+      var delay = (gi * 40 + ri * 60);
+      var row = document.createElement('div');
+      row.className = 'opr-row str-' + r.str;
+
+      var noteHtml = r.note ? '<span class="opr-note">\u2190 ' + r.note + '</span>' : '';
+
+      row.innerHTML =
+        '<div class="opr-row-left">' +
+          '<div class="opr-award-cat">' + r.award + noteHtml + '</div>' +
+          '<div class="opr-oscar-cat">predicts: ' + r.oscar + '</div>' +
+          '<div class="opr-bar-wrap">' +
+            '<div class="opr-bar-fill" data-w="' + r.pct + '%" style="transition-delay:' + delay + 'ms"></div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="opr-pct">' + r.pct + '%</div>';
+
+      rows.appendChild(row);
+      allRows.push(row.querySelector('.opr-bar-fill'));
+    });
+
+    group.appendChild(rows);
+    body.appendChild(group);
+  });
+
+  var wrapper = document.getElementById('osc26prec');
+  var observed = false;
+  var io = new IntersectionObserver(function(entries) {
+    if (observed) return;
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        observed = true;
+        allRows.forEach(function(bar) {
+          bar.style.width = bar.getAttribute('data-w');
+        });
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.1 });
+  io.observe(wrapper);
+})();
+</script>

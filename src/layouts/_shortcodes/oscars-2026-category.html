@@ -1,0 +1,204 @@
+{{ $catId := .Get "id" }}<div id="osc26cat-{{ $catId }}" class="osc26cat" data-cat="{{ $catId }}"></div>
+<script>
+(function() {
+  /* ── inject shared styles once ── */
+  if (!document.getElementById('osc26cat-style')) {
+    var s = document.createElement('style');
+    s.id = 'osc26cat-style';
+    s.textContent = [
+      '.osc26cat{font-family:var(--ply-font-body,"Source Sans 3",sans-serif);background:var(--ply-bg-alt,#f9f8f6);border:1px solid var(--ply-border,#ddd9d0);border-radius:8px;padding:14px 16px;margin:1.5rem 0;color:var(--ply-text,#1a1a1a);box-sizing:border-box;overflow:hidden;}',
+      '.osc26cat *,.osc26cat *::before,.osc26cat *::after{box-sizing:border-box;}',
+      '.oc-header{display:flex;align-items:baseline;gap:7px;margin-bottom:13px;}',
+      '.oc-icon{font-size:0.85rem;line-height:1;}',
+      '.oc-catname{font-family:var(--ply-font-mono,"IBM Plex Mono",monospace);font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ply-text-dim,#6b6560);}',
+      '.oc-nominees{display:flex;flex-direction:column;gap:9px;}',
+      '.oc-row{display:grid;grid-template-columns:1fr 38px;align-items:start;gap:0 10px;}',
+      '.oc-row.oc-winner{border-left:3px solid #ca8a04;padding-left:10px;margin-left:-13px;}',
+      '.oc-left{display:flex;flex-direction:column;gap:3px;min-width:0;}',
+      '.oc-name{font-size:0.8rem;font-weight:400;color:var(--ply-text,#1a1a1a);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.25;}',
+      '.oc-winner .oc-name{font-weight:600;color:#78350f;}',
+      '.oc-dim .oc-name{color:var(--ply-text-dim,#6b6560);font-style:italic;}',
+      '.oc-badges{display:flex;flex-wrap:wrap;gap:3px;margin:1px 0;}',
+      '.oc-badge{display:inline-block;font-family:var(--ply-font-mono,"IBM Plex Mono",monospace);font-size:0.56rem;font-weight:600;letter-spacing:0.03em;padding:1px 5px;border-radius:10px;white-space:nowrap;line-height:1.5;}',
+      '.oc-film{font-size:0.65rem;color:var(--ply-text-dim,#6b6560);font-style:italic;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}',
+      '.oc-bar-wrap{width:100%;height:4px;background:var(--ply-surface,#ece9e4);border-radius:3px;overflow:hidden;position:relative;margin-top:4px;}',
+      '.oc-bar-fill{position:absolute;left:0;top:0;height:100%;width:0;border-radius:3px;transition:width 0.8s cubic-bezier(0.25,0.46,0.45,0.94);}',
+      '.oc-winner .oc-bar-fill{background:#ca8a04;}',
+      '.oc-runner .oc-bar-fill{background:#7890a8;}',
+      '.oc-dim .oc-bar-fill{background:#d4cfca;}',
+      '.oc-pct{font-family:var(--ply-font-mono,"IBM Plex Mono",monospace);font-size:0.72rem;font-weight:600;text-align:right;padding-top:2px;white-space:nowrap;}',
+      '.oc-winner .oc-pct{color:#92400e;}',
+      '.oc-runner .oc-pct{color:var(--ply-text-dim,#6b6560);}',
+      '.oc-dim .oc-pct{color:var(--ply-text-dim,#6b6560);opacity:0.5;}',
+      '.oc-footer{margin-top:12px;font-family:var(--ply-font-mono,"IBM Plex Mono",monospace);font-size:0.63rem;color:var(--ply-text-dim,#6b6560);opacity:0.6;text-align:right;}'
+    ].join('');
+    document.head.appendChild(s);
+  }
+
+  /* ── badge color map ── */
+  var badgeStyle = {
+    'SAG':            'background:#dcfce7;color:#15803d',
+    'SAG Cast':       'background:#dcfce7;color:#15803d',
+    'Critics Choice': 'background:#dbeafe;color:#1d4ed8',
+    'GG Drama':       'background:#fef3c7;color:#92400e',
+    'Golden Globe':   'background:#fef3c7;color:#92400e',
+    'GG Comedy':      'background:#fee2e2;color:#991b1b',
+    'BAFTA':          'background:#f1f5f9;color:#475569',
+    'TIFF':           'background:#f3e8ff;color:#6b21a8'
+  };
+
+  /* ── all category data ── */
+  var allData = {
+    picture: {
+      icon: '\uD83C\uDFC6', label: 'Best Picture', upsetRate: '13.3%',
+      nominees: [
+        {name: 'One Battle after Another', film: null, prob: 45, type: 'winner',
+          precursors: ['Critics Choice', 'BAFTA', 'GG Comedy']},
+        {name: 'Hamnet', film: null, prob: 26, type: 'runner',
+          precursors: ['GG Drama', 'TIFF']},
+        {name: 'Sinners', film: null, prob: 19, type: 'runner',
+          precursors: ['SAG Cast']},
+        {name: '7 other nominees', film: null, prob: 1, type: 'dim', precursors: []}
+      ]
+    },
+    director: {
+      icon: '\uD83C\uDFAC', label: 'Best Director', upsetRate: '13.3%',
+      nominees: [
+        {name: 'Paul Thomas Anderson', film: 'One Battle after Another', prob: 89, type: 'winner',
+          precursors: ['BAFTA', 'Golden Globe', 'Critics Choice']},
+        {name: 'Ryan Coogler', film: 'Sinners', prob: 3, type: 'dim', precursors: []},
+        {name: 'Chlo\u00E9 Zhao', film: 'Hamnet', prob: 3, type: 'dim', precursors: []},
+        {name: 'Josh Safdie', film: 'Marty Supreme', prob: 3, type: 'dim', precursors: []},
+        {name: 'Joachim Trier', film: 'Sentimental Value', prob: 3, type: 'dim', precursors: []}
+      ]
+    },
+    actor: {
+      icon: '\uD83C\uDFAD', label: 'Best Actor', upsetRate: '6.7%',
+      nominees: [
+        {name: 'Michael B. Jordan', film: 'Sinners', prob: 35, type: 'winner',
+          precursors: ['SAG']},
+        {name: 'Timoth\u00E9e Chalamet', film: 'Marty Supreme', prob: 33, type: 'runner',
+          precursors: ['GG Comedy', 'Critics Choice']},
+        {name: 'Wagner Moura', film: 'The Secret Agent', prob: 30, type: 'runner',
+          precursors: ['GG Drama']},
+        {name: 'Ethan Hawke', film: 'Blue Moon', prob: 1, type: 'dim', precursors: []},
+        {name: 'Leonardo DiCaprio', film: 'One Battle after Another', prob: 1, type: 'dim', precursors: []}
+      ]
+    },
+    actress: {
+      icon: '\u2728', label: 'Best Actress', upsetRate: '0.0%',
+      nominees: [
+        {name: 'Jessie Buckley', film: 'Hamnet', prob: 90, type: 'winner',
+          precursors: ['BAFTA', 'GG Drama', 'Critics Choice', 'SAG']},
+        {name: 'Rose Byrne', film: 'If I Had Legs I\u2019d Kick You', prob: 10, type: 'runner',
+          precursors: ['GG Comedy']},
+        {name: 'Renate Reinsve', film: 'Sentimental Value', prob: 0, type: 'dim', precursors: []},
+        {name: 'Emma Stone', film: 'Bugonia', prob: 0, type: 'dim', precursors: []},
+        {name: 'Kate Hudson', film: 'Song Sung Blue', prob: 0, type: 'dim', precursors: []}
+      ]
+    },
+    'supporting-actor': {
+      icon: '\uD83C\uDFAD', label: 'Best Supporting Actor', upsetRate: '6.7%',
+      nominees: [
+        {name: 'Sean Penn', film: 'One Battle after Another', prob: 59, type: 'winner',
+          precursors: ['BAFTA', 'SAG']},
+        {name: 'Jacob Elordi', film: 'Frankenstein', prob: 37, type: 'runner',
+          precursors: ['Critics Choice']},
+        {name: 'Benicio Del Toro', film: 'One Battle after Another', prob: 1, type: 'dim', precursors: []},
+        {name: 'Delroy Lindo', film: 'Sinners', prob: 1, type: 'dim', precursors: []},
+        {name: 'Stellan Skarsg\u00E5rd', film: 'Sentimental Value', prob: 1, type: 'dim', precursors: []}
+      ]
+    },
+    'supporting-actress': {
+      icon: '\uD83C\uDF1F', label: 'Best Supporting Actress', upsetRate: '3.3%',
+      nominees: [
+        {name: 'Amy Madigan', film: 'Weapons', prob: 76, type: 'winner',
+          precursors: ['Critics Choice', 'SAG']},
+        {name: 'Wunmi Mosaku', film: 'Sinners', prob: 22, type: 'runner',
+          precursors: ['BAFTA']},
+        {name: 'Elle Fanning', film: 'Sentimental Value', prob: 1, type: 'dim', precursors: []},
+        {name: 'Inga Ibsdotter Lilleaas', film: 'Sentimental Value', prob: 1, type: 'dim', precursors: []},
+        {name: 'Teyana Taylor', film: 'One Battle after Another', prob: 1, type: 'dim', precursors: []}
+      ]
+    }
+  };
+
+  var catId = '{{ $catId }}';
+  var cat = allData[catId];
+  var wrapper = document.getElementById('osc26cat-' + catId);
+  if (!cat || !wrapper) return;
+
+  /* ── header ── */
+  var header = document.createElement('div');
+  header.className = 'oc-header';
+  header.innerHTML = '<span class="oc-icon" aria-hidden="true">' + cat.icon + '</span>' +
+    '<span class="oc-catname">' + cat.label + '</span>';
+  wrapper.appendChild(header);
+
+  /* ── nominee rows ── */
+  var nomList = document.createElement('div');
+  nomList.className = 'oc-nominees';
+  var barFills = [];
+
+  cat.nominees.forEach(function(n, i) {
+    var row = document.createElement('div');
+    row.className = 'oc-row oc-' + n.type;
+
+    /* precursor badges */
+    var badgesHtml = '';
+    if (n.precursors.length) {
+      badgesHtml = '<div class="oc-badges">';
+      n.precursors.forEach(function(p) {
+        var st = badgeStyle[p] || 'background:#f1f5f9;color:#475569';
+        badgesHtml += '<span class="oc-badge" style="' + st + '">' + p + '</span>';
+      });
+      badgesHtml += '</div>';
+    }
+
+    /* probability display */
+    var probDisplay = n.prob > 0 ? n.prob + '%' : '\u2014';
+    var barW = Math.max(n.prob, n.type === 'dim' && n.prob === 0 ? 0 : 1);
+    var delay = i * 80;
+
+    var filmHtml = n.film ? '<div class="oc-film">' + n.film + '</div>' : '';
+    var barHtml = n.prob > 0 || n.type !== 'dim'
+      ? '<div class="oc-bar-wrap"><div class="oc-bar-fill" data-w="' + barW + '%" style="transition-delay:' + delay + 'ms"></div></div>'
+      : '';
+
+    row.innerHTML =
+      '<div class="oc-left">' +
+        '<div class="oc-name">' + n.name + '</div>' +
+        badgesHtml +
+        filmHtml +
+        barHtml +
+      '</div>' +
+      '<div class="oc-pct">' + probDisplay + '</div>';
+
+    nomList.appendChild(row);
+    var fill = row.querySelector('.oc-bar-fill');
+    if (fill) barFills.push(fill);
+  });
+
+  wrapper.appendChild(nomList);
+
+  /* ── footer ── */
+  var footer = document.createElement('div');
+  footer.className = 'oc-footer';
+  footer.textContent = 'Historical upset rate: ' + cat.upsetRate + '\u2002\u00B7\u2002Analysis via PlyDB + Claude';
+  wrapper.appendChild(footer);
+
+  /* ── animate bars on scroll ── */
+  var observed = false;
+  var io = new IntersectionObserver(function(entries) {
+    if (observed) return;
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        observed = true;
+        barFills.forEach(function(bar) { bar.style.width = bar.getAttribute('data-w'); });
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.1 });
+  io.observe(wrapper);
+})();
+</script>

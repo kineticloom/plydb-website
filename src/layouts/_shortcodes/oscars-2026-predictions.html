@@ -1,0 +1,269 @@
+<div id="osc26pred" aria-label="2026 Oscar Predictions — 98th Academy Awards">
+<style>
+#osc26pred {
+  font-family: var(--ply-font-body, 'Source Sans 3', sans-serif);
+  background: var(--ply-surface, #fff);
+  border: 1px solid var(--ply-border, #ddd9d0);
+  border-radius: var(--ply-radius, 10px);
+  padding: 24px;
+  margin: 2rem 0;
+  color: var(--ply-text, #1a1a1a);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+#osc26pred *, #osc26pred *::before, #osc26pred *::after { box-sizing: border-box; }
+
+.op-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.op-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ply-accent, #2563eb);
+}
+.op-label::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--ply-accent, #2563eb);
+}
+.op-subtitle {
+  font-size: 0.8rem;
+  color: var(--ply-text-dim, #6b6560);
+  font-weight: 400;
+}
+.op-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+@media (min-width: 580px) {
+  .op-grid { grid-template-columns: 1fr 1fr; }
+}
+.op-card {
+  border: 1px solid var(--ply-border, #ddd9d0);
+  border-radius: 8px;
+  padding: 14px 16px;
+  background: var(--ply-bg-alt, #f9f8f6);
+}
+.op-cat-header {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  margin-bottom: 11px;
+}
+.op-cat-icon {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+.op-cat-name {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ply-text-dim, #6b6560);
+}
+.op-nominees { display: flex; flex-direction: column; gap: 7px; }
+.op-row {
+  display: grid;
+  grid-template-columns: 1fr 36px;
+  align-items: center;
+  gap: 8px;
+}
+.op-row-inner { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.op-name {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--ply-text, #1a1a1a);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+.op-film {
+  font-size: 0.65rem;
+  color: var(--ply-text-dim, #6b6560);
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.op-bar-wrap {
+  width: 100%;
+  height: 4px;
+  background: var(--ply-bg-alt, #ece9e4);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+.op-bar-fill {
+  position: absolute; left: 0; top: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 3px;
+  transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.op-pct {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Winner styling */
+.op-row.winner .op-name {
+  font-weight: 600;
+  color: #78350f;
+}
+.op-row.winner .op-bar-fill { background: #ca8a04; }
+.op-row.winner .op-pct { color: #92400e; }
+
+/* Runner-up */
+.op-row.runner .op-bar-fill { background: #7890a8; }
+.op-row.runner .op-pct { color: var(--ply-text-dim, #6b6560); }
+
+/* Dim (others) */
+.op-row.dim .op-name {
+  font-size: 0.7rem;
+  color: var(--ply-text-dim, #6b6560);
+  font-style: italic;
+}
+.op-row.dim .op-bar-fill { background: #c8c3bc; }
+.op-row.dim .op-pct { color: #b0aa a2; opacity: 0.6; }
+
+.op-source {
+  margin-top: 16px;
+  font-size: 0.68rem;
+  color: var(--ply-text-dim, #6b6560);
+  text-align: right;
+  opacity: 0.6;
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+}
+</style>
+
+<div class="op-header">
+  <span class="op-label">2026 Oscar Predictions</span>
+  <span class="op-subtitle">98th Academy Awards &mdash; March 15, 2026 &mdash; data-driven model</span>
+</div>
+<div class="op-grid" id="osc26pred-grid"></div>
+<div class="op-source">Analysis via PlyDB + Claude Code &nbsp;&middot;&nbsp; Based on historical precursor conversion rates</div>
+</div>
+
+<script>
+(function() {
+  var categories = [
+    {
+      icon: '\uD83C\uDFC6', name: 'Best Picture',
+      nominees: [
+        {name: 'One Battle after Another', prob: 45, type: 'winner'},
+        {name: 'Hamnet', prob: 26, type: 'runner'},
+        {name: 'Sinners', prob: 19, type: 'runner'},
+        {name: 'Others (7 films)', prob: 10, type: 'dim'}
+      ]
+    },
+    {
+      icon: '\uD83C\uDFAC', name: 'Best Director',
+      nominees: [
+        {name: 'Paul Thomas Anderson', film: 'One Battle after Another', prob: 89, type: 'winner'},
+        {name: 'Others (4 nominees)', prob: 11, type: 'dim'}
+      ]
+    },
+    {
+      icon: '\uD83C\uDFAD', name: 'Best Actor',
+      nominees: [
+        {name: 'Michael B. Jordan', film: 'Sinners', prob: 35, type: 'winner'},
+        {name: 'Timoth\u00E9e Chalamet', film: 'Marty Supreme', prob: 33, type: 'runner'},
+        {name: 'Wagner Moura', film: 'The Secret Agent', prob: 30, type: 'runner'},
+        {name: 'Others', prob: 2, type: 'dim'}
+      ]
+    },
+    {
+      icon: '\u2728', name: 'Best Actress',
+      nominees: [
+        {name: 'Jessie Buckley', film: 'Hamnet', prob: 90, type: 'winner'},
+        {name: 'Rose Byrne', film: 'If I Had Legs I\'d Kick You', prob: 10, type: 'runner'},
+        {name: 'Others', prob: 0, type: 'dim'}
+      ]
+    },
+    {
+      icon: '\uD83C\uDFAD', name: 'Best Supporting Actor',
+      nominees: [
+        {name: 'Sean Penn', film: 'One Battle after Another', prob: 59, type: 'winner'},
+        {name: 'Jacob Elordi', film: 'Frankenstein', prob: 37, type: 'runner'},
+        {name: 'Others', prob: 4, type: 'dim'}
+      ]
+    },
+    {
+      icon: '\uD83C\uDF1F', name: 'Best Supporting Actress',
+      nominees: [
+        {name: 'Amy Madigan', film: 'Weapons', prob: 76, type: 'winner'},
+        {name: 'Wunmi Mosaku', film: 'Sinners', prob: 22, type: 'runner'},
+        {name: 'Others', prob: 2, type: 'dim'}
+      ]
+    }
+  ];
+
+  var grid = document.getElementById('osc26pred-grid');
+  if (!grid) return;
+
+  categories.forEach(function(cat, ci) {
+    var card = document.createElement('div');
+    card.className = 'op-card';
+
+    var header = '<div class="op-cat-header">' +
+      '<span class="op-cat-icon" aria-hidden="true">' + cat.icon + '</span>' +
+      '<span class="op-cat-name">' + cat.name + '</span>' +
+      '</div>';
+
+    var rows = '<div class="op-nominees">';
+    cat.nominees.forEach(function(n, ni) {
+      if (n.prob === 0 && n.type === 'dim') return;
+      var delay = (ci * 60 + ni * 80);
+      var pctDisplay = n.prob + '%';
+      rows += '<div class="op-row ' + n.type + '">' +
+        '<div class="op-row-inner">' +
+          '<div class="op-name">' + n.name + '</div>' +
+          (n.film ? '<div class="op-film">' + n.film + '</div>' : '') +
+          '<div class="op-bar-wrap">' +
+            '<div class="op-bar-fill" data-w="' + n.prob + '%" style="transition-delay:' + delay + 'ms"></div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="op-pct">' + pctDisplay + '</div>' +
+        '</div>';
+    });
+    rows += '</div>';
+
+    card.innerHTML = header + rows;
+    grid.appendChild(card);
+  });
+
+  var wrapper = document.getElementById('osc26pred');
+  var observed = false;
+  var io = new IntersectionObserver(function(entries) {
+    if (observed) return;
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        observed = true;
+        wrapper.querySelectorAll('.op-bar-fill').forEach(function(bar) {
+          bar.style.width = bar.getAttribute('data-w');
+        });
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.1 });
+  io.observe(wrapper);
+})();
+</script>
