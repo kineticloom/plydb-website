@@ -13,7 +13,7 @@ decades, and [PlyDB](https://www.plydb.com/) to query it all. Then we asked it
 to pick the winners.
 
 No gut feelings. No box office. No Hollywood intuition. Just an AI, a
-probability model, and 97 years of data.
+score-based model, and 97 years of data.
 
 Here are its predictions:
 
@@ -92,16 +92,16 @@ none of the major precursors. How often? We queried it:
 | Best Picture | 13.3% |
 | Best Director | 13.3% |
 
-The formula distributes probability in two parts: a large share proportional to
+The formula distributes score weight in two parts: a large share proportional to
 each nominee's precursor signal, plus a flat floor for every nominee that
 accounts for the upset rate.
 
-$$P(i) = \frac{\text{signal}(i)}{\sum \text{signals}} \times (1 - \text{upset\_rate}) + \frac{\text{upset\_rate}}{N}$$
+$$\text{Score}(i) = \frac{\text{signal}(i)}{\sum \text{signals}} \times (1 - \text{upset\_rate}) + \frac{\text{upset\_rate}}{N}$$
 
-In plain English: most of the probability mass goes to whoever has the
+In plain English: most of the score weight goes to whoever has the
 strongest precursor signal. A small reserve is split equally across all
 nominees — because the upset does happen, and we can't predict which zero-signal
-nominee gets lucky.
+nominee gets lucky. Scores sum to 100% within each category.
 
 ---
 
@@ -158,7 +158,7 @@ Best Picture too.
 
 This is the most honest toss-up the model produced. Jordan won the SAG (77.4%
 predictor — the strongest single acting signal available). Chalamet won GG
-Comedy and Critics Choice. Moura won GG Drama. Probabilities: Jordan 35%,
+Comedy and Critics Choice. Moura won GG Drama. Scores: Jordan 35%,
 Chalamet 33%, Moura 30%.
 
 Here's where the GG Comedy caveat matters enormously. Chalamet's Golden Globe
