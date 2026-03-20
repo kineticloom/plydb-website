@@ -93,6 +93,13 @@ layout: hextra-home
     </p>
     <div class="ply-usecases-list">
       <div class="ply-usecase">
+        <span class="ply-usecase__tag">DevOps</span>
+        <div class="ply-usecase__body">
+          <h3>Incident Response</h3>
+          <p class="ply-usecase__prompt">"Review our app logs in S3 for errors from the past week. Cross-reference with our codebase and database replica to identify affected customers and diagnose root causes. <strong>Open PRs with fixes</strong> for the most severe issues, and draft a summary our PM and CSM teams can use."</p>
+        </div>
+      </div>
+      <div class="ply-usecase">
         <span class="ply-usecase__tag">Sales</span>
         <div class="ply-usecase__body">
           <h3>Strategic Sales & Retention</h3>
@@ -111,13 +118,6 @@ layout: hextra-home
         <div class="ply-usecase__body">
           <h3>Executive Insights</h3>
           <p class="ply-usecase__prompt">"Pull the MRR from the CRM, infrastructure costs from our logs, and headcount from the HR spreadsheet. <strong>Build a financial health dashboard</strong> and suggest three areas where we can improve our operating margin."</p>
-        </div>
-      </div>
-      <div class="ply-usecase">
-        <span class="ply-usecase__tag">DevOps</span>
-        <div class="ply-usecase__body">
-          <h3>Incident Response</h3>
-          <p class="ply-usecase__prompt">"Review our app logs in S3 for errors from the past week. Cross-reference with our codebase and database replica to identify affected customers and diagnose root causes. <strong>Open PRs with fixes</strong> for the most severe issues, and draft a summary our PM and CSM teams can use."</p>
         </div>
       </div>
     </div>
