@@ -74,7 +74,7 @@ layout: hextra-home
     </div>
     <div class="ply-demo__player">
       <video controls muted autoplay loop playsinline>
-        <source src="plydb_demo_in_claude_desktop.mp4" type="video/mp4">
+        <source src="videos/plydb-demo-in-claude-desktop.mp4" type="video/mp4">
       </video>
     </div>
     <p class="ply-demo__note">PlyDB works with any AI agent that supports <strong>MCP</strong> or <strong>CLI tools</strong> &mdash; including Claude, ChatGPT, Gemini, Codex, and more.</p>
