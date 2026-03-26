@@ -1,11 +1,11 @@
 ---
 date: "2026-03-16"
 draft: false
-title: "Fun with PlyDB: Ask an AI Anything About F1 — In Plain English"
+title: "Formula 1 Data Analysis with AI: Ask F1 Questions in Plain English"
 description:
-  "Introducing F1 Analyst: point PlyDB at a season's worth of Formula 1 data and
-  ask your AI agent anything — lap times, tyre strategy, telemetry, weather — no
-  SQL required."
+  "Analyze Formula 1 lap times, tyre strategy, telemetry, and race data with AI
+  — no SQL required. F1 Analyst connects FastF1 to PlyDB so you can ask your AI
+  agent anything about F1 from 2018 onwards."
 ---
 
 F1 produces more data per race than almost any other sport on the planet. Lap
@@ -13,27 +13,36 @@ times measured to the millisecond. Tyre compounds and stint lengths. Sector
 splits. GPS coordinates sampled ten times a second. Weather logged throughout
 every session.
 
-It's all there. The frustrating part has always been getting to it.
-
-Until now you needed Python, SQL, and enough patience to wrangle nested
-DataFrames just to answer a simple question. We thought there was a better way —
-so we built
-**[F1 Analyst](https://github.com/kineticloom/plydb-fun-f1-analyst)**.
+The data is everywhere. The friction is in the questions — the ones that require
+joining telemetry to lap times to weather data just to get a single answer. Until
+now that meant Python, SQL, and enough patience to wrangle nested DataFrames
+before you could even start. We thought there was a better way — so we built
+**[F1 Analyst](https://github.com/kineticloom/plydb-fun-f1-analyst)**: an
+open-source Formula 1 analytics tool that lets anyone — fan, analyst, or
+developer — explore F1 data through plain-English questions, no SQL required.
 
 ---
 
 ## What Is F1 Analyst?
 
-F1 Analyst connects [FastF1](https://docs.fastf1.dev/) — the community library
-that pulls official F1 timing data — to [PlyDB](https://www.plydb.com/), so your
-AI agent can query laps, results, telemetry, tyre strategy, and weather data in
+**F1 Analyst is an open-source Formula 1 data analysis tool that connects your
+AI agent to real F1 timing data so you can ask questions in plain English and get
+answers instantly — no SQL, no Python, no data wrangling.**
+
+It connects [FastF1](https://docs.fastf1.dev/) — the community library that
+pulls official F1 timing data — to [PlyDB](https://www.plydb.com/), so your AI
+agent can query laps, results, telemetry, tyre strategy, and weather data in
 real time, in response to plain-English questions.
 
 The idea is simple: you ask, the AI figures out the SQL, PlyDB runs it, you get
 an answer. No pipelines. No cloud. No data wrangling.
 
-It covers every race, qualifying session, and practice session from 2018
-onwards.
+It covers every race, qualifying session, and practice session from 2018 onwards.
+
+**Who is this for?** F1 fans who want deeper analysis than a race summary,
+data-curious engineers who want a working example of AI-powered sports analytics,
+and anyone who has ever wanted to answer a telemetry question without writing a
+script.
 
 ---
 
@@ -99,6 +108,34 @@ overlay so your agent understands F1-specific encodings and table relationships
 out of the box.
 
 Setup takes a few minutes. The rabbit holes take considerably longer.
+
+---
+
+## Frequently Asked Questions
+
+**Do I need to know SQL to use F1 Analyst?**
+No. Your AI agent handles all the SQL. You ask questions in plain English; the
+agent translates them into queries, runs them via PlyDB, and returns the answer.
+
+**What F1 data is included?**
+F1 Analyst pulls from FastF1, which provides official F1 timing data: lap times,
+sector splits, tyre compounds and stint lengths, pit stop windows, GPS telemetry
+(speed, throttle, brake, gear), and weather data. It covers every race,
+qualifying session, and practice session from 2018 onwards.
+
+**What AI agent do I use with it?**
+Any PlyDB-compatible agent works. The repo is set up for Claude Code, but the
+PlyDB config and semantic overlay are compatible with any agent that supports
+tool use.
+
+**Does it work without a cloud database or data warehouse?**
+Yes. Data is queried locally via PlyDB — no cloud account, no ETL pipeline, no
+ongoing infrastructure required.
+
+**Is there a similar project for other sports?**
+Yes — check out [Baseball Analyst](../plydb-fun-baseball-analyst) for MLB data,
+[Olympics Analyst](../plydb-fun-olympics-2026) for the 2026 Winter Games, and
+[Oscars Analyst](../plydb-fun-oscars-2026) for 97 years of Academy Awards data.
 
 ---
 

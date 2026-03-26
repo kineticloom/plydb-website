@@ -2,11 +2,12 @@
 date: "2026-03-05"
 draft: false
 title:
-  "Fun with PlyDB: We Asked an AI to Analyze the 2026 Winter Olympics. Here's
-  What It Found."
+  "2026 Winter Olympics Data Analysis: What AI Found in the Milano-Cortina Medal
+  Table"
 description:
-  "Using PlyDB and Claude Code to chat with Olympic data — medals, GDP, and the
-  best sport to win gold if you're starting from scratch."
+  "AI-powered analysis of the 2026 Winter Olympics — medal efficiency by country,
+  GDP vs. medal count, and the best sport to win gold if you're starting from
+  scratch. Powered by PlyDB and Claude Code, no SQL required."
 ---
 
 Brazil won alpine skiing gold. One man swept every men's cross-country event.
@@ -20,6 +21,11 @@ So we did what any reasonable data nerd would do: we pointed
 datasets and asked questions in plain English.
 
 The results were more fun than we expected.
+
+**Who is this for?** Sports fans who want more than a medal table, data
+enthusiasts curious what AI-powered sports analytics looks like in practice, and
+anyone who wants to ask their own questions about Olympic data without writing
+code.
 
 ---
 
@@ -195,6 +201,30 @@ To run it yourself:
    questions
 
 The whole setup takes a few minutes. The rabbit holes take considerably longer.
+
+---
+
+## Frequently Asked Questions
+
+**What data does the Olympics analysis use?**
+Five Kaggle datasets covering athletes, coaches, medals, schedules, and venues
+from the 2026 Winter Olympics, joined to World Bank GDP data and country latitude
+coordinates. All datasets are pre-normalized and ready to query.
+
+**Do I need to know SQL to explore this data?**
+No. PlyDB lets your AI agent handle all the SQL. You ask questions in plain
+English — the agent translates them into queries and returns the answer.
+
+**What is PlyDB?**
+PlyDB is an open-source tool that gives AI agents unified SQL access to local
+data files — CSV, Parquet, Excel, databases, and more. No cloud required. See
+the [PlyDB quickstart](/docs/quickstart/) to get up and running.
+
+**Is there a similar project for other sports or events?**
+Yes — check out [F1 Analyst](../plydb-fun-f1-analyst) for Formula 1 telemetry
+data, [Baseball Analyst](../plydb-fun-baseball-analyst) for MLB Statcast and
+FanGraphs data, and [Oscars Analyst](../plydb-fun-oscars-2026) for 97 years of
+Academy Awards history.
 
 ---
 

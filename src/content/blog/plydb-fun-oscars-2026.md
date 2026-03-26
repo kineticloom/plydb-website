@@ -2,9 +2,11 @@
 date: "2026-03-07"
 draft: false
 title:
-  "Fun with PlyDB: We Fed an AI 97 Years of Oscar Data and Asked It to Pick the Winners"
+  "Oscar Predictions 2026: We Fed an AI 97 Years of Academy Awards Data"
 description:
-  "We gave Claude 97 years of Oscar history, every major precursor award, and a SQL interface. Then we asked it to pick the 2026 winners. Here's what it said."
+  "AI-powered Oscar predictions for 2026 — built on 97 years of Academy Awards
+  history and precursor conversion rates from SAG, BAFTA, Golden Globes, and
+  Critics Choice. Powered by PlyDB and Claude, no SQL required."
 ---
 
 The 98th Academy Awards are in eight days. We gave Claude a database of every
@@ -14,6 +16,11 @@ to pick the winners.
 
 No gut feelings. No box office. No Hollywood intuition. Just an AI, a
 score-based model, and 97 years of data.
+
+**Who is this for?** Oscar fans who want predictions grounded in historical data
+rather than punditry, data enthusiasts curious how precursor awards actually
+correlate with Academy votes, and anyone who wants to run their own analysis with
+the full dataset.
 
 Here are its predictions:
 
@@ -284,6 +291,37 @@ To run your own queries:
 3. Point your AI at the `plydb-config.json` and start asking questions
 
 We'll be back on March 16th with how many we got right.
+
+---
+
+## Frequently Asked Questions
+
+**What data does the model use?**
+Historical Oscar nominations and wins covering all 97 past ceremonies, plus
+precursor award results from BAFTA, Golden Globes (Drama and Comedy/Musical),
+SAG Awards, Critics Choice, and TIFF People's Choice. All data is
+pre-normalized and queryable via PlyDB.
+
+**How are the predictions calculated?**
+Each nominee accumulates a signal score based on the historical Oscar conversion
+rate of each precursor they won. An upset adjustment adds a flat probability
+floor for every nominee, proportional to the category's historical upset rate.
+Scores sum to 100% within each category.
+
+**Do I need to know SQL to explore this data?**
+No. PlyDB lets your AI agent handle all the SQL. You ask questions in plain
+English — the agent translates them into queries and returns the answer.
+
+**What is PlyDB?**
+PlyDB is an open-source tool that gives AI agents unified SQL access to local
+data files — CSV, Parquet, Excel, databases, and more. No cloud required. See
+the [PlyDB quickstart](/docs/quickstart/) to get up and running.
+
+**Is there a similar project for other sports or events?**
+Yes — check out [F1 Analyst](../plydb-fun-f1-analyst) for Formula 1 telemetry,
+[Baseball Analyst](../plydb-fun-baseball-analyst) for MLB Statcast and FanGraphs
+data, and [Olympics Analyst](../plydb-fun-olympics-2026) for the 2026 Winter
+Games medal analysis.
 
 ---
 

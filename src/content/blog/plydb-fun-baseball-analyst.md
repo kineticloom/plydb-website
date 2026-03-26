@@ -140,10 +140,11 @@ compatible with any agent that supports tool use.
 stored locally as Parquet files and queried directly by PlyDB. No cloud account,
 no ETL pipeline, no ongoing infrastructure required.
 
-**Is there a similar project for other sports?** Yes — check out
-[F1 Analyst](../plydb-fun-f1-analyst), which does the same thing for Formula 1
-data: lap times, tyre strategy, telemetry, and race results, all queryable in
-plain English.
+**Is there a similar project for other sports or events?**
+Yes — check out [F1 Analyst](../plydb-fun-f1-analyst) for Formula 1 telemetry
+data, [Olympics Analyst](../plydb-fun-olympics-2026) for the 2026 Winter Games
+medal analysis, and [Oscars Analyst](../plydb-fun-oscars-2026) for 97 years of
+Academy Awards history.
 
 ---
 
