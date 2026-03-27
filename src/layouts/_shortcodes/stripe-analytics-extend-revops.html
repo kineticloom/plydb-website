@@ -1,0 +1,248 @@
+<div id="saex-revops" aria-label="Cross-Domain RevOps — multiple data sources unified by PlyDB into cross-domain insights">
+<style>
+#saex-revops {
+  font-family: var(--ply-font-body, 'Source Sans 3', sans-serif);
+  background: var(--ply-surface, #fff);
+  border: 1px solid var(--ply-border, #ddd9d0);
+  border-radius: 12px;
+  padding: 28px 24px 24px;
+  margin: 1.5rem auto;
+  color: var(--ply-text, #1a1a1a);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 680px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+#saex-revops.saexr-visible { opacity: 1; transform: none; }
+#saex-revops *, #saex-revops *::before, #saex-revops *::after { box-sizing: border-box; }
+
+.saexr-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.saexr-icon {
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--ply-accent, #2563eb) 10%, transparent);
+  color: var(--ply-accent, #2563eb);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.saexr-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ply-text, #1a1a1a);
+  line-height: 1.2;
+}
+.saexr-subhead {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.68rem;
+  color: var(--ply-text-dim, #6b6560);
+  margin-top: 1px;
+}
+
+/* Hub layout */
+.saexr-hub-layout {
+  display: grid;
+  grid-template-columns: 1fr 56px 1fr;
+  gap: 0;
+  align-items: center;
+}
+
+.saexr-sources, .saexr-insights {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Source chip */
+.saexr-chip {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  background: var(--ply-bg-alt, #f9f8f6);
+  border: 1px solid var(--ply-border, #ddd9d0);
+}
+.saexr-chip-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.saexr-chip-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.saexr-chip-sub {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.70rem;
+  color: var(--ply-text-dim, #6b6560);
+  line-height: 1;
+  margin-top: 2px;
+}
+
+/* Center column: arrows + PlyDB badge */
+.saexr-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 100%;
+}
+.saexr-plydb-badge {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ply-accent, #2563eb);
+  background: color-mix(in srgb, var(--ply-accent, #2563eb) 9%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--ply-accent, #2563eb) 28%, transparent);
+  border-radius: 8px;
+  padding: 8px 10px;
+  text-align: center;
+  white-space: nowrap;
+  writing-mode: vertical-lr;
+  letter-spacing: 0.03em;
+}
+.saexr-center-label {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.60rem;
+  color: var(--ply-text-dim, #6b6560);
+  text-align: center;
+  writing-mode: horizontal-tb;
+  line-height: 1.3;
+}
+
+/* Insight chips (right column) */
+.saexr-insight {
+  padding: 9px 12px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--ply-accent, #2563eb) 5%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ply-accent, #2563eb) 18%, transparent);
+}
+.saexr-insight-text {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.76rem;
+  color: var(--ply-text, #1a1a1a);
+  line-height: 1.3;
+}
+
+/* Footer note */
+.saexr-footer {
+  margin-top: 18px;
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.68rem;
+  color: var(--ply-text-dim, #6b6560);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.saexr-footer::before, .saexr-footer::after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 32px;
+  background: var(--ply-border, #ddd9d0);
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+  .saexr-hub-layout {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .saexr-plydb-badge { writing-mode: horizontal-tb; padding: 8px 14px; }
+  .saexr-center { flex-direction: row; gap: 10px; }
+  .saexr-center-label { writing-mode: horizontal-tb; }
+}
+
+@media (prefers-color-scheme: dark) {
+  .saexr-chip { background: rgba(255,255,255,0.04); }
+}
+</style>
+
+<div class="saexr-header">
+  <div class="saexr-icon" aria-hidden="true">
+    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="1" width="5.5" height="5.5" rx="1.4" fill="currentColor" opacity="0.65"/>
+      <rect x="10.5" y="1" width="5.5" height="5.5" rx="1.4" fill="currentColor" opacity="0.65"/>
+      <rect x="5.75" y="10.5" width="5.5" height="5.5" rx="1.4" fill="currentColor"/>
+      <line x1="3.75" y1="6.5" x2="8.5" y2="10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="13.25" y1="6.5" x2="8.5" y2="10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div>
+    <div class="saexr-heading">Cross-Domain RevOps</div>
+    <div class="saexr-subhead">PlyDB queries across all sources in a single SQL statement</div>
+  </div>
+</div>
+
+<div class="saexr-hub-layout">
+
+  <!-- Left: data sources -->
+  <div class="saexr-sources">
+    <div class="saexr-chip">
+      <div class="saexr-chip-dot" style="background:#6366f1"></div>
+      <div>
+        <div class="saexr-chip-name">Stripe</div>
+        <div class="saexr-chip-sub">revenue &amp; billing</div>
+      </div>
+    </div>
+    <div class="saexr-chip">
+      <div class="saexr-chip-dot" style="background:#f97316"></div>
+      <div>
+        <div class="saexr-chip-name">HubSpot</div>
+        <div class="saexr-chip-sub">pipeline &amp; CRM</div>
+      </div>
+    </div>
+    <div class="saexr-chip">
+      <div class="saexr-chip-dot" style="background:#22c55e"></div>
+      <div>
+        <div class="saexr-chip-name">Google Analytics</div>
+        <div class="saexr-chip-sub">traffic &amp; acquisition</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Center: PlyDB -->
+  <div class="saexr-center">
+    <div class="saexr-plydb-badge">◈ PlyDB</div>
+    <div class="saexr-center-label">cross-source<br>SQL</div>
+  </div>
+
+  <!-- Right: insights -->
+  <div class="saexr-insights">
+    <div class="saexr-insight">
+      <div class="saexr-insight-text">True CAC vs LTV</div>
+    </div>
+    <div class="saexr-insight">
+      <div class="saexr-insight-text">Pipeline-to-revenue<br>conversion</div>
+    </div>
+    <div class="saexr-insight">
+      <div class="saexr-insight-text">Margin by customer<br>segment</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="saexr-footer">No joins to configure. No schemas to reconcile. One query.</div>
+
+<script>
+(function() {
+  var el = document.getElementById('saex-revops');
+  if (!el) return;
+  var io = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) { el.classList.add('saexr-visible'); io.disconnect(); }
+  }, { threshold: 0.15 });
+  io.observe(el);
+})();
+</script>
+</div>
