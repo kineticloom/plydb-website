@@ -1,0 +1,442 @@
+<div id="gaex-action-ga4" aria-label="From Insight to Action — agent detects GA4 signals, drafts recommendations, human reviews">
+<style>
+#gaex-action-ga4 {
+  font-family: var(--ply-font-body, 'Source Sans 3', sans-serif);
+  background: var(--ply-surface, #fff);
+  border: 1px solid var(--ply-border, #ddd9d0);
+  border-radius: 12px;
+  padding: 28px 24px 24px;
+  margin: 1.5rem auto;
+  color: var(--ply-text, #1a1a1a);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 680px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+#gaex-action-ga4.gaexa-visible { opacity: 1; transform: none; }
+#gaex-action-ga4 *, #gaex-action-ga4 *::before, #gaex-action-ga4 *::after { box-sizing: border-box; }
+
+/* Header */
+.gaexa-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.gaexa-icon {
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  background: rgba(22,163,74,0.1);
+  color: #16a34a;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.gaexa-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ply-text, #1a1a1a);
+  line-height: 1.2;
+}
+.gaexa-subhead {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.68rem;
+  color: var(--ply-text-dim, #6b6560);
+  margin-top: 1px;
+}
+
+/* Pipeline */
+.gaexa-pipeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Stage row */
+.gaexa-stage {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 0 14px;
+  position: relative;
+}
+
+/* Left rail: number + vertical connector */
+.gaexa-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.gaexa-num {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.gaexa-num--auto {
+  background: rgba(37,99,235,0.1);
+  border: 1.5px solid rgba(37,99,235,0.25);
+  color: var(--ply-accent, #2563eb);
+}
+.gaexa-num--human {
+  background: rgba(22,163,74,0.12);
+  border: 1.5px solid rgba(22,163,74,0.35);
+  color: #16a34a;
+}
+.gaexa-line {
+  width: 1.5px;
+  flex: 1;
+  min-height: 12px;
+}
+.gaexa-line--solid  { background: rgba(37,99,235,0.18); }
+.gaexa-line--dashed {
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.15) 0px,
+    rgba(0,0,0,0.15) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+/* Right content */
+.gaexa-content {
+  padding-bottom: 20px;
+}
+.gaexa-stage:last-child .gaexa-content { padding-bottom: 0; }
+
+.gaexa-stage-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 3px;
+  margin-bottom: 10px;
+}
+.gaexa-stage-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ply-text, #1a1a1a);
+  line-height: 1.2;
+}
+.gaexa-badge {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.60rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.gaexa-badge--auto  { background: rgba(37,99,235,0.08);  color: #1d4ed8; }
+.gaexa-badge--human { background: rgba(22,163,74,0.1);   color: #15803d; }
+
+/* Stage 1: detected signals */
+.gaexa-signals {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.gaexa-signal {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.76rem;
+  color: var(--ply-text, #1a1a1a);
+  line-height: 1.3;
+}
+.gaexa-signal-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.gaexa-signal-dot--red   { background: #ef4444; }
+.gaexa-signal-dot--amber { background: #f59e0b; }
+.gaexa-signal-dot--blue  { background: #3b82f6; }
+.gaexa-signal-dim { color: var(--ply-text-dim, #6b6560); }
+
+/* Stage 2: proposed action card */
+.gaexa-proposal {
+  border: 1px solid var(--ply-border, #ddd9d0);
+  border-radius: 8px;
+  padding: 12px 14px;
+  background: var(--ply-bg-alt, #f9f8f6);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.gaexa-proposal-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.gaexa-proposal-who {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ply-text, #1a1a1a);
+}
+.gaexa-priority-badge {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(239,68,68,0.1);
+  color: #b91c1c;
+  border-radius: 4px;
+  padding: 2px 6px;
+  flex-shrink: 0;
+}
+.gaexa-proposal-meta {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.71rem;
+  color: var(--ply-text-dim, #6b6560);
+  line-height: 1.4;
+}
+.gaexa-proposal-action {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.73rem;
+  color: var(--ply-accent, #2563eb);
+  font-weight: 600;
+}
+.gaexa-proposal-action svg { flex-shrink: 0; opacity: 0.7; }
+.gaexa-proposal-more {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.68rem;
+  color: var(--ply-text-dim, #6b6560);
+  border-top: 1px solid var(--ply-border, #ddd9d0);
+  padding-top: 7px;
+  margin-top: 1px;
+}
+
+/* Handoff divider */
+.gaexa-handoff {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 4px 0 18px;
+  padding: 0 0 0 66px; /* aligns with content column */
+}
+.gaexa-handoff-line {
+  flex: 1;
+  height: 1px;
+  background: var(--ply-border, #ddd9d0);
+}
+.gaexa-handoff-label {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ply-text-dim, #6b6560);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Stage 3: human decision */
+.gaexa-review-box {
+  border: 1.5px solid rgba(22,163,74,0.3);
+  border-radius: 9px;
+  padding: 14px 16px;
+  background: rgba(22,163,74,0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.gaexa-review-desc {
+  font-size: 0.87rem;
+  color: var(--ply-text, #1a1a1a);
+  line-height: 1.45;
+}
+.gaexa-review-desc strong { font-weight: 700; }
+.gaexa-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.gaexa-btn {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1.5px solid transparent;
+  white-space: nowrap;
+}
+.gaexa-btn--approve {
+  background: rgba(22,163,74,0.12);
+  border-color: rgba(22,163,74,0.35);
+  color: #15803d;
+}
+.gaexa-btn--edit {
+  background: transparent;
+  border-color: var(--ply-border, #ddd9d0);
+  color: var(--ply-text-dim, #6b6560);
+}
+.gaexa-btn--skip {
+  background: transparent;
+  border-color: transparent;
+  color: var(--ply-text-dim, #6b6560);
+}
+
+/* Footer */
+.gaexa-footer {
+  margin-top: 20px;
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.68rem;
+  color: var(--ply-text-dim, #6b6560);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.gaexa-footer::before, .gaexa-footer::after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 32px;
+  background: var(--ply-border, #ddd9d0);
+}
+
+@media (prefers-color-scheme: dark) {
+  .gaexa-proposal  { background: rgba(255,255,255,0.04); }
+  .gaexa-review-box { background: rgba(22,163,74,0.06); }
+}
+</style>
+
+<div class="gaexa-header">
+  <div class="gaexa-icon" aria-hidden="true">
+    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="8.5" cy="8.5" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+      <path d="M5.5 8.5l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div>
+    <div class="gaexa-heading">From Insight to Action</div>
+    <div class="gaexa-subhead">Agent detects and proposes. You decide.</div>
+  </div>
+</div>
+
+<div class="gaexa-pipeline">
+
+  <!-- Stage 1: Detect -->
+  <div class="gaexa-stage">
+    <div class="gaexa-rail">
+      <div class="gaexa-num gaexa-num--auto" aria-hidden="true">1</div>
+      <div class="gaexa-line gaexa-line--solid"></div>
+    </div>
+    <div class="gaexa-content">
+      <div class="gaexa-stage-header">
+        <div class="gaexa-stage-title">Detect</div>
+        <div class="gaexa-badge gaexa-badge--auto">Automated</div>
+      </div>
+      <div class="gaexa-signals" aria-label="Detected signals">
+        <div class="gaexa-signal">
+          <div class="gaexa-signal-dot gaexa-signal-dot--red"></div>
+          <span>/features &mdash; bounce rate 68%, 2&times; site average</span>
+        </div>
+        <div class="gaexa-signal">
+          <div class="gaexa-signal-dot gaexa-signal-dot--amber"></div>
+          <span>Paid search &mdash; high volume, below-baseline engagement</span>
+        </div>
+        <div class="gaexa-signal">
+          <div class="gaexa-signal-dot gaexa-signal-dot--blue"></div>
+          <span>/blog/case-studies &mdash; traffic +40%, no conversion CTA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 2: Prioritize & Propose -->
+  <div class="gaexa-stage">
+    <div class="gaexa-rail">
+      <div class="gaexa-num gaexa-num--auto" aria-hidden="true">2</div>
+      <div class="gaexa-line gaexa-line--dashed"></div>
+    </div>
+    <div class="gaexa-content">
+      <div class="gaexa-stage-header">
+        <div class="gaexa-stage-title">Prioritize &amp; Propose</div>
+        <div class="gaexa-badge gaexa-badge--auto">Automated</div>
+      </div>
+      <div class="gaexa-proposal" aria-label="Top priority proposal">
+        <div class="gaexa-proposal-top">
+          <div class="gaexa-proposal-who">/features page</div>
+          <div class="gaexa-priority-badge">#1 priority</div>
+        </div>
+        <div class="gaexa-proposal-meta">
+          Organic &amp; paid landing &middot; 3,400 sessions/mo &middot; bounce rate 68%
+        </div>
+        <div class="gaexa-proposal-action">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1" y="2.5" width="11" height="8" rx="1.5" stroke="currentColor" stroke-width="1.3" fill="none"/>
+            <path d="M1 5l5.5 3.5L12 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+          Content brief drafted &mdash; ready for review
+        </div>
+        <div class="gaexa-proposal-more">+ 2 more proposals ranked by opportunity size</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Human handoff divider -->
+<div class="gaexa-handoff" aria-hidden="true">
+  <div class="gaexa-handoff-line"></div>
+  <div class="gaexa-handoff-label">your call</div>
+  <div class="gaexa-handoff-line"></div>
+</div>
+
+<div class="gaexa-pipeline">
+
+  <!-- Stage 3: You review -->
+  <div class="gaexa-stage">
+    <div class="gaexa-rail">
+      <div class="gaexa-num gaexa-num--human" aria-hidden="true">3</div>
+    </div>
+    <div class="gaexa-content">
+      <div class="gaexa-stage-header">
+        <div class="gaexa-stage-title">Review &amp; Act</div>
+        <div class="gaexa-badge gaexa-badge--human">You decide</div>
+      </div>
+      <div class="gaexa-review-box">
+        <div class="gaexa-review-desc">
+          Read the brief. Adjust the angle. Approve what's right,
+          edit what isn't, skip what doesn't apply.
+          <strong>Nothing ships until you say so.</strong>
+        </div>
+        <div class="gaexa-actions" aria-label="Possible actions">
+          <div class="gaexa-btn gaexa-btn--approve">&#10003; Approve &amp; assign</div>
+          <div class="gaexa-btn gaexa-btn--edit">Edit brief</div>
+          <div class="gaexa-btn gaexa-btn--skip">Skip</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="gaexa-footer">Agent handles the detection and the legwork. Judgment stays with you.</div>
+
+<script>
+(function() {
+  var el = document.getElementById('gaex-action-ga4');
+  if (!el) return;
+  var io = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) { el.classList.add('gaexa-visible'); io.disconnect(); }
+  }, { threshold: 0.1 });
+  io.observe(el);
+})();
+</script>
+</div>

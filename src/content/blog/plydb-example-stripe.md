@@ -119,8 +119,8 @@ depends on your setup. Three directions worth considering:
 
 The Stripe data becomes a lot more powerful when it's not isolated. PlyDB can
 JOIN across multiple data sources in a single query — add your HubSpot CRM,
-Google Analytics traffic, or ad spend exports and suddenly you can ask questions
-that no single-source tool can answer: true CAC-to-LTV ratios,
+[Google Analytics traffic](../plydb-example-google-analytics), or ad spend
+exports and suddenly you can ask questions that no single-source tool can answer: true CAC-to-LTV ratios,
 pipeline-to-revenue conversion, or margin by customer segment. The Stripe data
 is the revenue layer; everything else plugs in around it.
 
@@ -206,8 +206,8 @@ the full compatibility list.
 
 **Can I add other data sources alongside Stripe?** Yes — that's one of the most
 natural extensions. PlyDB supports cross-source SQL queries, so you can add a
-HubSpot export, a Google Analytics file, or any other dlt-supported source and
-query across all of them at once.
+HubSpot export, [Google Analytics data](../plydb-example-google-analytics), or
+any other dlt-supported source and query across all of them at once.
 
 **Does this work with Stripe test mode?** Yes. Use a `sk_test_` API key in
 `.dlt/secrets.toml` to load test-mode data. Useful for exploring the setup
@@ -225,6 +225,13 @@ The Stripe Dashboard is great at showing you what happened. This is for when you
 need to know what to do about it.
 
 [Try the Stripe Analytics Starter →](https://github.com/kineticloom/plydb-example-stripe)
+
+---
+
+Want to pair Stripe revenue with web analytics? The
+[Google Analytics AI Starter](../plydb-example-google-analytics) connects your
+GA4 traffic and acquisition data to the same PlyDB setup — so you can query
+revenue and web analytics together in a single SQL statement.
 
 ---
 
