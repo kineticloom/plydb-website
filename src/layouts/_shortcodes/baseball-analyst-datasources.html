@@ -1,0 +1,202 @@
+<div id="bba-ds" aria-label="Baseball Analyst — data sources">
+<style>
+#bba-ds {
+  font-family: var(--ply-font-body, 'Source Sans 3', sans-serif);
+  background: var(--ply-surface, #fff);
+  border: 1px solid var(--ply-border, #ddd9d0);
+  border-radius: 10px;
+  padding: 22px 20px 18px;
+  margin: 2rem auto;
+  color: var(--ply-text, #1a1a1a);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 680px;
+}
+#bba-ds *, #bba-ds *::before, #bba-ds *::after { box-sizing: border-box; }
+
+.bba-ds__heading {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ply-text-dim, #6b6560);
+  text-align: center;
+  margin: 0 0 16px;
+}
+
+.bba-ds__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.bba-ds__card {
+  border-radius: 8px;
+  border: 1.5px solid transparent;
+  padding: 13px 14px 11px;
+}
+
+.bba-ds__card-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 6px;
+}
+
+.bba-ds__card-icon {
+  font-size: 1rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.bba-ds__card-title {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.bba-ds__card-source {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.60rem;
+  font-weight: 400;
+  opacity: 0.75;
+  display: block;
+  margin-top: 1px;
+}
+
+.bba-ds__card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 7px;
+}
+
+.bba-ds__tag {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.58rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0.85;
+}
+
+/* card colour variants */
+.bba-ds__card--statcast {
+  background: #fef9ee;
+  border-color: #f59e0b;
+  color: #78350f;
+}
+.bba-ds__card--statcast .bba-ds__tag { background: #fef3c7; }
+
+.bba-ds__card--fangraphs {
+  background: #f0fdf4;
+  border-color: #6ee7b7;
+  color: #064e3b;
+}
+.bba-ds__card--fangraphs .bba-ds__tag { background: #d1fae5; }
+
+.bba-ds__card--bbref {
+  background: #eff6ff;
+  border-color: #93c5fd;
+  color: #1e3a5f;
+}
+.bba-ds__card--bbref .bba-ds__tag { background: #dbeafe; }
+
+.bba-ds__card--playerid {
+  background: #fdf4ff;
+  border-color: #d8b4fe;
+  color: #4a1d96;
+}
+.bba-ds__card--playerid .bba-ds__tag { background: #f3e8ff; }
+
+@media (prefers-color-scheme: dark) {
+  .bba-ds__card--statcast  { background: #2d1a00; border-color: #d97706; color: #fde68a; }
+  .bba-ds__card--statcast .bba-ds__tag  { background: #1c1000; }
+  .bba-ds__card--fangraphs { background: #022c22; border-color: #059669; color: #6ee7b7; }
+  .bba-ds__card--fangraphs .bba-ds__tag { background: #021a14; }
+  .bba-ds__card--bbref     { background: #0d1f3c; border-color: #3b82f6; color: #93c5fd; }
+  .bba-ds__card--bbref .bba-ds__tag     { background: #071124; }
+  .bba-ds__card--playerid  { background: #2e1065; border-color: #7c3aed; color: #ddd6fe; }
+  .bba-ds__card--playerid .bba-ds__tag  { background: #1c0840; }
+}
+
+@media (max-width: 480px) {
+  .bba-ds__grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<p class="bba-ds__heading">Data sources</p>
+<div class="bba-ds__grid">
+
+  <div class="bba-ds__card bba-ds__card--statcast">
+    <div class="bba-ds__card-header">
+      <span class="bba-ds__card-icon">⚾</span>
+      <span class="bba-ds__card-title">
+        Statcast
+        <span class="bba-ds__card-source">Baseball Savant · 2008–present</span>
+      </span>
+    </div>
+    <div class="bba-ds__card-tags">
+      <span class="bba-ds__tag">exit velocity</span>
+      <span class="bba-ds__tag">launch angle</span>
+      <span class="bba-ds__tag">spin rate</span>
+      <span class="bba-ds__tag">pitch type</span>
+      <span class="bba-ds__tag">pitch location</span>
+      <span class="bba-ds__tag">700k+ pitches/season</span>
+    </div>
+  </div>
+
+  <div class="bba-ds__card bba-ds__card--fangraphs">
+    <div class="bba-ds__card-header">
+      <span class="bba-ds__card-icon">📈</span>
+      <span class="bba-ds__card-title">
+        Advanced Stats
+        <span class="bba-ds__card-source">FanGraphs · batting &amp; pitching</span>
+      </span>
+    </div>
+    <div class="bba-ds__card-tags">
+      <span class="bba-ds__tag">wRC+</span>
+      <span class="bba-ds__tag">FIP</span>
+      <span class="bba-ds__tag">ISO</span>
+      <span class="bba-ds__tag">wOBA</span>
+      <span class="bba-ds__tag">WAR</span>
+      <span class="bba-ds__tag">season stats</span>
+    </div>
+  </div>
+
+  <div class="bba-ds__card bba-ds__card--bbref">
+    <div class="bba-ds__card-header">
+      <span class="bba-ds__card-icon">📅</span>
+      <span class="bba-ds__card-title">
+        Standings &amp; Schedules
+        <span class="bba-ds__card-source">Baseball Reference</span>
+      </span>
+    </div>
+    <div class="bba-ds__card-tags">
+      <span class="bba-ds__tag">team standings</span>
+      <span class="bba-ds__tag">game logs</span>
+      <span class="bba-ds__tag">win/loss records</span>
+      <span class="bba-ds__tag">run differential</span>
+    </div>
+  </div>
+
+  <div class="bba-ds__card bba-ds__card--playerid">
+    <div class="bba-ds__card-header">
+      <span class="bba-ds__card-icon">🔗</span>
+      <span class="bba-ds__card-title">
+        Player ID Register
+        <span class="bba-ds__card-source">Chadwick Bureau</span>
+      </span>
+    </div>
+    <div class="bba-ds__card-tags">
+      <span class="bba-ds__tag">MLBAM IDs</span>
+      <span class="bba-ds__tag">FanGraphs IDs</span>
+      <span class="bba-ds__tag">BR IDs</span>
+      <span class="bba-ds__tag">cross-dataset joins</span>
+    </div>
+  </div>
+
+</div>
+</div>

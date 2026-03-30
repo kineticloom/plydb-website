@@ -39,6 +39,8 @@ Demo with Claude
 AI agent to real baseball data so you can ask questions in plain English and get
 answers instantly — no SQL, no Python, no data wrangling.**
 
+{{< baseball-analyst-arch >}}
+
 Under the hood, it connects [pybaseball](https://github.com/jldbc/pybaseball) —
 the community library that pulls data from Baseball Savant, FanGraphs, and
 Baseball Reference — to [PlyDB](https://www.plydb.com/), so your AI agent can
@@ -51,6 +53,8 @@ You get an answer. No warehouse, no ETL, no cloud.
 
 It covers Statcast data from 2008 onwards, with FanGraphs and Baseball Reference
 stats going back further.
+
+{{< baseball-analyst-datasources >}}
 
 **Who is this for?** Baseball fans who want deeper analysis than a box score,
 sabermetrics enthusiasts who are tired of writing one-off scripts, and

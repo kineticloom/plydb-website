@@ -1,0 +1,209 @@
+<div id="f1a-ds" aria-label="F1 Analyst — data sources">
+<style>
+#f1a-ds {
+  font-family: var(--ply-font-body, 'Source Sans 3', sans-serif);
+  background: var(--ply-surface, #fff);
+  border: 1px solid var(--ply-border, #ddd9d0);
+  border-radius: 10px;
+  padding: 22px 20px 18px;
+  margin: 2rem auto;
+  color: var(--ply-text, #1a1a1a);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 680px;
+}
+#f1a-ds *, #f1a-ds *::before, #f1a-ds *::after { box-sizing: border-box; }
+
+.f1a-ds__heading {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ply-text-dim, #6b6560);
+  text-align: center;
+  margin: 0 0 16px;
+}
+
+.f1a-ds__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.f1a-ds__card {
+  border-radius: 8px;
+  border: 1.5px solid transparent;
+  padding: 13px 14px 11px;
+}
+
+.f1a-ds__card-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 6px;
+}
+
+.f1a-ds__card-icon {
+  font-size: 1rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.f1a-ds__card-title {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.f1a-ds__card-source {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.60rem;
+  font-weight: 400;
+  opacity: 0.75;
+  display: block;
+  margin-top: 1px;
+}
+
+.f1a-ds__card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 7px;
+}
+
+.f1a-ds__tag {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.58rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0.85;
+}
+
+/* card colour variants */
+.f1a-ds__card--laps {
+  background: #fff1f2;
+  border-color: #f87171;
+  color: #7f1d1d;
+}
+.f1a-ds__card--laps .f1a-ds__tag { background: #fee2e2; }
+
+.f1a-ds__card--results {
+  background: #fdf4ff;
+  border-color: #d8b4fe;
+  color: #4a1d96;
+}
+.f1a-ds__card--results .f1a-ds__tag { background: #f3e8ff; }
+
+.f1a-ds__card--telemetry {
+  background: #eff6ff;
+  border-color: #93c5fd;
+  color: #1e3a5f;
+}
+.f1a-ds__card--telemetry .f1a-ds__tag { background: #dbeafe; }
+
+.f1a-ds__card--session {
+  background: #f8fafc;
+  border-color: #94a3b8;
+  color: #334155;
+}
+.f1a-ds__card--session .f1a-ds__tag { background: #f1f5f9; }
+
+@media (prefers-color-scheme: dark) {
+  .f1a-ds__card--laps      { background: #450a0a; border-color: #ef4444; color: #fecaca; }
+  .f1a-ds__card--laps .f1a-ds__tag      { background: #2d0606; }
+  .f1a-ds__card--results   { background: #2e1065; border-color: #7c3aed; color: #ddd6fe; }
+  .f1a-ds__card--results .f1a-ds__tag   { background: #1c0840; }
+  .f1a-ds__card--telemetry { background: #0d1f3c; border-color: #3b82f6; color: #93c5fd; }
+  .f1a-ds__card--telemetry .f1a-ds__tag { background: #071124; }
+  .f1a-ds__card--session   { background: #0f172a; border-color: #475569; color: #cbd5e1; }
+  .f1a-ds__card--session .f1a-ds__tag   { background: #080f1e; }
+}
+
+@media (max-width: 480px) {
+  .f1a-ds__grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<p class="f1a-ds__heading">Data sources</p>
+<div class="f1a-ds__grid">
+
+  <div class="f1a-ds__card f1a-ds__card--laps">
+    <div class="f1a-ds__card-header">
+      <span class="f1a-ds__card-icon">🏁</span>
+      <span class="f1a-ds__card-title">
+        Lap Timing &amp; Strategy
+        <span class="f1a-ds__card-source">races · qualifying · practice</span>
+      </span>
+    </div>
+    <div class="f1a-ds__card-tags">
+      <span class="f1a-ds__tag">lap times</span>
+      <span class="f1a-ds__tag">sector splits</span>
+      <span class="f1a-ds__tag">tyre compound</span>
+      <span class="f1a-ds__tag">stint length</span>
+      <span class="f1a-ds__tag">pit in/out</span>
+      <span class="f1a-ds__tag">track status (SC/VSC/yellow)</span>
+      <span class="f1a-ds__tag">speed traps</span>
+    </div>
+  </div>
+
+  <div class="f1a-ds__card f1a-ds__card--results">
+    <div class="f1a-ds__card-header">
+      <span class="f1a-ds__card-icon">🏆</span>
+      <span class="f1a-ds__card-title">
+        Results &amp; Qualifying
+        <span class="f1a-ds__card-source">classification · points · Q1/Q2/Q3</span>
+      </span>
+    </div>
+    <div class="f1a-ds__card-tags">
+      <span class="f1a-ds__tag">finishing position</span>
+      <span class="f1a-ds__tag">grid position</span>
+      <span class="f1a-ds__tag">points</span>
+      <span class="f1a-ds__tag">Q1/Q2/Q3 times</span>
+      <span class="f1a-ds__tag">DNF/R/DSQ status</span>
+      <span class="f1a-ds__tag">driver names</span>
+    </div>
+  </div>
+
+  <div class="f1a-ds__card f1a-ds__card--telemetry">
+    <div class="f1a-ds__card-header">
+      <span class="f1a-ds__card-icon">📡</span>
+      <span class="f1a-ds__card-title">
+        Car Telemetry
+        <span class="f1a-ds__card-source">~240 Hz · per lap</span>
+      </span>
+    </div>
+    <div class="f1a-ds__card-tags">
+      <span class="f1a-ds__tag">speed</span>
+      <span class="f1a-ds__tag">throttle %</span>
+      <span class="f1a-ds__tag">brake</span>
+      <span class="f1a-ds__tag">gear</span>
+      <span class="f1a-ds__tag">RPM</span>
+      <span class="f1a-ds__tag">DRS</span>
+      <span class="f1a-ds__tag">circuit coords (X/Y/Z)</span>
+    </div>
+  </div>
+
+  <div class="f1a-ds__card f1a-ds__card--session">
+    <div class="f1a-ds__card-header">
+      <span class="f1a-ds__card-icon">🌤</span>
+      <span class="f1a-ds__card-title">
+        Session &amp; Weather
+        <span class="f1a-ds__card-source">2018–present · every circuit</span>
+      </span>
+    </div>
+    <div class="f1a-ds__card-tags">
+      <span class="f1a-ds__tag">race calendar</span>
+      <span class="f1a-ds__tag">sprint weekends</span>
+      <span class="f1a-ds__tag">air temp</span>
+      <span class="f1a-ds__tag">track temp</span>
+      <span class="f1a-ds__tag">rainfall</span>
+      <span class="f1a-ds__tag">wind speed</span>
+      <span class="f1a-ds__tag">humidity</span>
+    </div>
+  </div>
+
+</div>
+</div>

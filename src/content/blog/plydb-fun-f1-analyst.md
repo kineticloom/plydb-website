@@ -29,6 +29,8 @@ developer — explore F1 data through plain-English questions, no SQL required.
 AI agent to real F1 timing data so you can ask questions in plain English and get
 answers instantly — no SQL, no Python, no data wrangling.**
 
+{{< f1-analyst-arch >}}
+
 It connects [FastF1](https://docs.fastf1.dev/) — the community library that
 pulls official F1 timing data — to [PlyDB](https://www.plydb.com/), so your AI
 agent can query laps, results, telemetry, tyre strategy, and weather data in
@@ -38,6 +40,8 @@ The idea is simple: you ask, the AI figures out the SQL, PlyDB runs it, you get
 an answer. No pipelines. No cloud. No data wrangling.
 
 It covers every race, qualifying session, and practice session from 2018 onwards.
+
+{{< f1-analyst-datasources >}}
 
 **Who is this for?** F1 fans who want deeper analysis than a race summary,
 data-curious engineers who want a working example of AI-powered sports analytics,
@@ -118,10 +122,14 @@ No. Your AI agent handles all the SQL. You ask questions in plain English; the
 agent translates them into queries, runs them via PlyDB, and returns the answer.
 
 **What F1 data is included?**
-F1 Analyst pulls from FastF1, which provides official F1 timing data: lap times,
-sector splits, tyre compounds and stint lengths, pit stop windows, GPS telemetry
-(speed, throttle, brake, gear), and weather data. It covers every race,
-qualifying session, and practice session from 2018 onwards.
+F1 Analyst pulls from FastF1, which provides official F1 timing and telemetry
+data: lap times, sector splits, tyre compounds and stint lengths, pit stop
+windows, car telemetry (speed, throttle, brake, gear, RPM, DRS at ~240 Hz),
+circuit position data (X/Y/Z coordinates), weather conditions sampled throughout
+each session, session results (finishing positions, qualifying times,
+championship points, retirement status), and the race calendar including sprint
+weekend formats. It covers every race, qualifying session, and practice session
+from 2018 onwards.
 
 **What AI agent do I use with it?**
 Any PlyDB-compatible agent works. The repo is set up for Claude Code, but the
