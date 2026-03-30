@@ -94,7 +94,7 @@ description: "Apache Superset is a leading open-source BI platform — 40+ chart
           <tr>
             <td>Cost</td>
             <td><span class="ply-cmp-val">Superset: free; Preset Cloud: from $25/user/month; enterprise on request</span></td>
-            <td><span class="ply-cmp-win">Free and open source — no per-user pricing</span></td>
+            <td><span class="ply-cmp-win">Open source — Apache 2.0</span></td>
           </tr>
         </tbody>
       </table>
@@ -171,7 +171,7 @@ description: "Apache Superset is a leading open-source BI platform — 40+ chart
 <section class="ply-footer-cta">
   <div class="ply-inner">
     <h2>Direct database access for your AI agent.</h2>
-    <p>No BI layer in between. Native MCP. Semantic context that compounds. Free and open source.</p>
+    <p>No BI layer in between. Native MCP. Semantic context that compounds. Open source.</p>
     <div class="ply-cta-row">
       <a href="/docs/quickstart/" class="ply-btn ply-btn--primary">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>

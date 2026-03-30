@@ -94,7 +94,7 @@ description: "BigQuery is Google's serverless cloud data warehouse — petabyte-
           <tr>
             <td>Cost</td>
             <td><span class="ply-cmp-val">$5–6.25/TB queried on-demand; 1 TB/month free; storage $0.02/GB/month</span></td>
-            <td><span class="ply-cmp-win">Free and open source</span></td>
+            <td><span class="ply-cmp-win">Open source</span></td>
           </tr>
         </tbody>
       </table>
@@ -171,7 +171,7 @@ description: "BigQuery is Google's serverless cloud data warehouse — petabyte-
 <section class="ply-footer-cta">
   <div class="ply-inner">
     <h2>Your data, wherever it lives. No warehouse required.</h2>
-    <p>Direct agent access to live databases. No GCP account. No data loading. Free and open source.</p>
+    <p>Direct agent access to live databases. No GCP account. No data loading. Open source.</p>
     <div class="ply-cta-row">
       <a href="/docs/quickstart/" class="ply-btn ply-btn--primary">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>

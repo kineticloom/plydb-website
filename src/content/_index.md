@@ -1,6 +1,24 @@
 ---
 title: 'PlyDB'
+description: 'Connect your AI agent to any database or file — PostgreSQL, MySQL, CSV, Parquet, S3, Google Sheets — with zero ETL. Open source, Apache 2.0.'
 layout: hextra-home
+faq:
+  - q: "What is PlyDB?"
+    a: "PlyDB is an open-source universal database gateway for AI agents. It connects your AI to live data sources — PostgreSQL, MySQL, SQLite, DuckDB, CSV, JSON, Parquet, Excel, Amazon S3, and Google Sheets — so it can query across all of them using standard SQL, with no ETL pipeline or data warehouse required."
+  - q: "How does PlyDB work?"
+    a: "PlyDB sits between your AI agent and your data sources. You ask a question in plain English; your agent translates it into SQL and sends it to PlyDB via MCP or CLI. PlyDB executes the query directly against your connected sources and returns the results — no data movement, no pipeline."
+  - q: "Which AI agents work with PlyDB?"
+    a: "PlyDB works with any AI agent that supports MCP (Model Context Protocol) or CLI tools — including Claude, Claude Code, Claude Desktop, ChatGPT, Gemini, Codex, and more."
+  - q: "What databases and file formats does PlyDB support?"
+    a: "PlyDB currently supports PostgreSQL, MySQL, SQLite, DuckDB, CSV, JSON, Parquet, Excel, Amazon S3, and Google Sheets. Apache Iceberg and Delta Lake support are planned."
+  - q: "Do I need to know SQL to use PlyDB?"
+    a: "No. Your AI agent handles all the SQL. You ask questions in plain English; the agent translates them into queries, runs them via PlyDB, and returns answers."
+  - q: "Does PlyDB send my data to the cloud?"
+    a: "No. PlyDB runs locally on your machine and queries your sources directly. Your data never leaves your infrastructure — only query results are returned to your AI agent."
+  - q: "What is the difference between PlyDB and a data warehouse?"
+    a: "A data warehouse requires copying and transforming your data into a central store before you can query it — adding cost, latency, and maintenance. PlyDB queries your data exactly where it lives, in real time, with no pipeline and no data movement."
+  - q: "Is PlyDB open source?"
+    a: "Yes. PlyDB is open source under the Apache 2.0 license — no vendor lock-in, full transparency, and a community-driven codebase."
 ---
 
 <div class="ply-landing">
@@ -96,6 +114,7 @@ layout: hextra-home
         <span class="ply-usecase__tag">DevOps</span>
         <div class="ply-usecase__body">
           <h3>Incident Response</h3>
+          <p class="ply-usecase__outcome">PlyDB connects your AI simultaneously to app logs in S3, your production database, and your codebase &mdash; so it can trace an incident from symptom to root cause and draft fixes in a single session, without manual data extraction.</p>
           <p class="ply-usecase__prompt">"Review our app logs in S3 for errors from the past week. Cross-reference with our codebase and database replica to identify affected customers and diagnose root causes. <strong>Open PRs with fixes</strong> for the most severe issues, and draft a summary our PM and CSM teams can use."</p>
         </div>
       </div>
@@ -103,6 +122,7 @@ layout: hextra-home
         <span class="ply-usecase__tag">Sales</span>
         <div class="ply-usecase__body">
           <h3>Strategic Sales & Retention</h3>
+          <p class="ply-usecase__outcome">PlyDB joins CRM records, support tickets, and product usage data in one query &mdash; giving your AI a complete account picture to identify churn risk and generate personalized outreach, without exporting anything to a spreadsheet.</p>
           <p class="ply-usecase__prompt">"Analyze our top 20 accounts by revenue. Cross-reference their support tickets with recent product usage. <strong>Generate a churn-risk dashboard</strong> and draft personalized outreach for the three accounts with the lowest activity."</p>
         </div>
       </div>
@@ -110,6 +130,7 @@ layout: hextra-home
         <span class="ply-usecase__tag">RevOps</span>
         <div class="ply-usecase__body">
           <h3>Revenue Operations</h3>
+          <p class="ply-usecase__outcome">PlyDB joins signed contracts in a Google Sheet against live seat counts in your database &mdash; so your AI can surface billing gaps and calculate unbilled revenue in real time, without a manual audit.</p>
           <p class="ply-usecase__prompt">"Audit our active seat counts against signed contracts in the Google Sheet. <strong>Identify all overages</strong>, calculate the total unbilled revenue, and build a summary table the billing team can use to issue invoices."</p>
         </div>
       </div>
@@ -117,6 +138,7 @@ layout: hextra-home
         <span class="ply-usecase__tag">Executive</span>
         <div class="ply-usecase__body">
           <h3>Executive Insights</h3>
+          <p class="ply-usecase__outcome">PlyDB federates CRM data, infrastructure cost logs, and HR spreadsheets into a single query &mdash; so your AI can build a cross-functional financial picture that would otherwise require three separate exports and a BI tool.</p>
           <p class="ply-usecase__prompt">"Pull the MRR from the CRM, infrastructure costs from our logs, and headcount from the HR spreadsheet. <strong>Build a financial health dashboard</strong> and suggest three areas where we can improve our operating margin."</p>
         </div>
       </div>
@@ -133,7 +155,7 @@ layout: hextra-home
       <span class="ply-section-label" style="justify-content: center;">How it works</span>
       <h2 class="ply-section-title" style="margin-left: auto; margin-right: auto;">One gateway. Every data source.</h2>
       <p class="ply-section-desc ply-mx-auto" style="text-align: center;">
-        PlyDB sits between your AI agent and your data. It translates standard SQL into native queries across every connected source &mdash; no pipelines, no warehouses.
+        PlyDB is an open-source universal database gateway for AI agents. It sits between your agent and your data sources &mdash; databases, flat files, object storage, and SaaS &mdash; executing queries directly against each source in real time. No data movement. No pipeline to build. No warehouse to maintain.
       </p>
     </div>
     <div class="ply-arch-diagram">
@@ -167,6 +189,12 @@ layout: hextra-home
         </div>
       </div>
     </div>
+    <ol class="ply-arch-steps">
+      <li><strong>You ask a question</strong> in plain English. Your AI agent, guided by PlyDB&rsquo;s semantic context, translates it into SQL.</li>
+      <li><strong>The query reaches PlyDB</strong> via MCP or CLI, which identifies which sources to hit &mdash; a Postgres table, a CSV file, a Google Sheet, or any combination at once.</li>
+      <li><strong>PlyDB executes natively</strong> against each source, federating the results where needed, without copying or staging any data.</li>
+      <li><strong>Your agent delivers the answer</strong> in plain English. Your data never moved.</li>
+    </ol>
   </div>
 </section>
 
@@ -299,6 +327,53 @@ layout: hextra-home
       <span><span class="ply-source-chip__dot ply-source-chip__dot--saas" style="display:inline-block;"></span> SaaS</span>
       <span><span class="ply-source-chip__dot" style="display:inline-block; background: var(--ply-text-dim);"></span> Planned</span>
     </div>
+  </div>
+</section>
+
+<hr class="ply-divider">
+
+<!-- ═══════════════════ FAQ ═══════════════════ -->
+<section class="ply-faq">
+  <div class="ply-inner">
+    <div class="ply-text-center" style="margin-bottom: 2rem;">
+      <span class="ply-section-label" style="justify-content: center;">FAQ</span>
+      <h2 class="ply-section-title" style="margin-left: auto; margin-right: auto;">Frequently asked questions</h2>
+    </div>
+    <div class="ply-faq-list">
+      <div class="ply-faq-item">
+        <h3>What is PlyDB?</h3>
+        <p>PlyDB is an open-source universal database gateway for AI agents. It connects your AI to live data sources &mdash; PostgreSQL, MySQL, SQLite, DuckDB, CSV, JSON, Parquet, Excel, Amazon S3, and Google Sheets &mdash; so it can query across all of them using standard SQL, with no ETL pipeline or data warehouse required.</p>
+      </div>
+      <div class="ply-faq-item">
+        <h3>How does PlyDB work?</h3>
+        <p>PlyDB sits between your AI agent and your data sources. You ask a question in plain English; your agent translates it into SQL and sends it to PlyDB via MCP or CLI. PlyDB executes the query directly against your connected sources and returns the results &mdash; no data movement, no pipeline.</p>
+      </div>
+      <div class="ply-faq-item">
+        <h3>Which AI agents work with PlyDB?</h3>
+        <p>PlyDB works with any AI agent that supports MCP (Model Context Protocol) or CLI tools &mdash; including Claude, Claude Code, Claude Desktop, ChatGPT, Gemini, Codex, and more.</p>
+      </div>
+      <div class="ply-faq-item">
+        <h3>What databases and file formats does PlyDB support?</h3>
+        <p>PlyDB currently supports PostgreSQL, MySQL, SQLite, DuckDB, CSV, JSON, Parquet, Excel, Amazon S3, and Google Sheets. Apache Iceberg and Delta Lake support are planned.</p>
+      </div>
+      <div class="ply-faq-item">
+        <h3>Do I need to know SQL to use PlyDB?</h3>
+        <p>No. Your AI agent handles all the SQL. You ask questions in plain English; the agent translates them into queries, runs them via PlyDB, and returns answers.</p>
+      </div>
+      <div class="ply-faq-item">
+        <h3>Does PlyDB send my data to the cloud?</h3>
+        <p>No. PlyDB runs locally on your machine and queries your sources directly. Your data never leaves your infrastructure &mdash; only query results are returned to your AI agent.</p>
+      </div>
+      <div class="ply-faq-item">
+        <h3>What is the difference between PlyDB and a data warehouse?</h3>
+        <p>A data warehouse requires copying and transforming your data into a central store before you can query it &mdash; adding cost, latency, and maintenance. PlyDB queries your data exactly where it lives, in real time, with no pipeline and no data movement.</p>
+      </div>
+      <div class="ply-faq-item">
+        <h3>Is PlyDB open source?</h3>
+        <p>Yes. PlyDB is open source under the Apache 2.0 license &mdash; no vendor lock-in, full transparency, and a community-driven codebase.</p>
+      </div>
+    </div>
+    <p class="ply-faq-more">More questions? See the <a href="/docs/faq/">full FAQ in the docs</a>.</p>
   </div>
 </section>
 

@@ -176,7 +176,7 @@ description: "LangChain is a framework for building AI agents and applications â
 <section class="ply-footer-cta">
   <div class="ply-inner">
     <h2>The data gateway your LangChain agent needs.</h2>
-    <p>One MCP endpoint. Every source. Read-only. Semantic context that compounds. Free and open source.</p>
+    <p>One MCP endpoint. Every source. Read-only. Semantic context that compounds. Open source.</p>
     <div class="ply-cta-row">
       <a href="/docs/quickstart/" class="ply-btn ply-btn--primary">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>

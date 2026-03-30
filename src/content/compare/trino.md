@@ -89,7 +89,7 @@ description: "Trino is a battle-hardened distributed SQL engine for petabyte-sca
           <tr>
             <td>Cost</td>
             <td><span class="ply-cmp-val">Free (open source); Starburst commercial distribution available</span></td>
-            <td><span class="ply-cmp-val">Free and open source</span></td>
+            <td><span class="ply-cmp-val">Open source</span></td>
           </tr>
         </tbody>
       </table>

@@ -99,7 +99,7 @@ description: "MindsDB embeds AI models, LLMs, and agents directly into the data 
           <tr>
             <td>Cost</td>
             <td><span class="ply-cmp-val">Free to self-host (ELv2); MindsDB Cloud and Enterprise available at custom pricing</span></td>
-            <td><span class="ply-cmp-val">Free and open source</span></td>
+            <td><span class="ply-cmp-val">Open source</span></td>
           </tr>
         </tbody>
       </table>
@@ -176,7 +176,7 @@ description: "MindsDB embeds AI models, LLMs, and agents directly into the data 
 <section class="ply-footer-cta">
   <div class="ply-inner">
     <h2>The thinnest path between your agent and your data.</h2>
-    <p>Read-only. Declarative config. Semantic context that compounds. Free and open source.</p>
+    <p>Read-only. Declarative config. Semantic context that compounds. Open source.</p>
     <div class="ply-cta-row">
       <a href="/docs/quickstart/" class="ply-btn ply-btn--primary">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>

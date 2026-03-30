@@ -89,7 +89,7 @@ description: "Wren AI is an open-source GenBI agent that translates natural lang
           <tr>
             <td>Cost</td>
             <td><span class="ply-cmp-val">Free tier (20 credits/month); paid plans from $99/month; enterprise on request</span></td>
-            <td><span class="ply-cmp-win">Free and open source — no credits, no tiers</span></td>
+            <td><span class="ply-cmp-win">Open source — Apache 2.0</span></td>
           </tr>
         </tbody>
       </table>
@@ -166,7 +166,7 @@ description: "Wren AI is an open-source GenBI agent that translates natural lang
 <section class="ply-footer-cta">
   <div class="ply-inner">
     <h2>Direct SQL access. No translation layer.</h2>
-    <p>Your agent writes the SQL. PlyDB connects it to your data. No modeling phase. No credits. Free and open source.</p>
+    <p>Your agent writes the SQL. PlyDB connects it to your data. No modeling phase. No credits. Open source.</p>
     <div class="ply-cta-row">
       <a href="/docs/quickstart/" class="ply-btn ply-btn--primary">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>

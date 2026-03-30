@@ -99,7 +99,7 @@ description: "dbt transforms raw data into trusted models inside your warehouse 
           <tr>
             <td>Cost</td>
             <td><span class="ply-cmp-val">dbt Core: free; dbt Cloud: free Developer tier, ~$100/developer/month (Starter)</span></td>
-            <td><span class="ply-cmp-win">Free and open source</span></td>
+            <td><span class="ply-cmp-win">Open source</span></td>
           </tr>
         </tbody>
       </table>
@@ -176,7 +176,7 @@ description: "dbt transforms raw data into trusted models inside your warehouse 
 <section class="ply-footer-cta">
   <div class="ply-inner">
     <h2>Live data access for your agents. No pipeline required.</h2>
-    <p>Query operational databases directly. Native MCP. Semantic context that compounds. Free and open source.</p>
+    <p>Query operational databases directly. Native MCP. Semantic context that compounds. Open source.</p>
     <div class="ply-cta-row">
       <a href="/docs/quickstart/" class="ply-btn ply-btn--primary">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>

@@ -94,7 +94,7 @@ description: "MotherDuck is a managed cloud service for DuckDB workloads. PlyDB 
           <tr>
             <td>Pricing</td>
             <td><span class="ply-cmp-val">Free tier; pay-as-you-go compute + storage</span></td>
-            <td><span class="ply-cmp-win">Free and open source</span></td>
+            <td><span class="ply-cmp-win">Open source</span></td>
           </tr>
         </tbody>
       </table>

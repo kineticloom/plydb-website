@@ -89,7 +89,7 @@ description: "Databricks is a unified lakehouse platform for large-scale data en
           <tr>
             <td>Cost</td>
             <td><span class="ply-cmp-val">DBU + cloud infrastructure costs; no free tier after 14-day trial</span></td>
-            <td><span class="ply-cmp-win">Free and open source</span></td>
+            <td><span class="ply-cmp-win">Open source</span></td>
           </tr>
         </tbody>
       </table>
@@ -166,7 +166,7 @@ description: "Databricks is a unified lakehouse platform for large-scale data en
 <section class="ply-footer-cta">
   <div class="ply-inner">
     <h2>Agent access to your data. No lakehouse required.</h2>
-    <p>Single binary. One config file. Live queries from any source. Free and open source.</p>
+    <p>Single binary. One config file. Live queries from any source. Open source.</p>
     <div class="ply-cta-row">
       <a href="/docs/quickstart/" class="ply-btn ply-btn--primary">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>

@@ -94,7 +94,7 @@ description: "Metabase is an open-source BI platform for human dashboards and em
           <tr>
             <td>Pricing</td>
             <td><span class="ply-cmp-val">Free self-hosted (AGPL); Cloud from $100/mo; AI features +$100/mo add-on</span></td>
-            <td><span class="ply-cmp-win">Free and open source</span></td>
+            <td><span class="ply-cmp-win">Open source</span></td>
           </tr>
         </tbody>
       </table>

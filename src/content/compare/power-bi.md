@@ -94,7 +94,7 @@ description: "Power BI creates dashboards for human stakeholders. PlyDB gives AI
           <tr>
             <td>Pricing</td>
             <td><span class="ply-cmp-val">Free Desktop (no sharing); Pro $14/user/mo; AI &amp; MCP features require Fabric capacity</span></td>
-            <td><span class="ply-cmp-win">Free and open source</span></td>
+            <td><span class="ply-cmp-win">Open source</span></td>
           </tr>
           <tr>
             <td>Primary user</td>

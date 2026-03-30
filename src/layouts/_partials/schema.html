@@ -1,0 +1,57 @@
+{{- if .IsHome -}}
+{{- $permalink  := .Permalink -}}
+{{- $siteTitle  := .Site.Title -}}
+{{- $desc       := partial "utils/page-description.html" . | strings.TrimSpace -}}
+
+{{- /* ── WebSite ──────────────────────────────────────────────── */ -}}
+{{- $website := dict
+  "@type"       "WebSite"
+  "@id"         $permalink
+  "url"         $permalink
+  "name"        $siteTitle
+  "description" $desc
+-}}
+
+{{- /* ── SoftwareApplication ───────────────────────────────────── */ -}}
+{{- $app := dict
+  "@type"               "SoftwareApplication"
+  "name"                "PlyDB"
+  "description"         $desc
+  "applicationCategory" "DeveloperApplication"
+  "operatingSystem"     "macOS, Linux, Windows"
+  "license"             "https://www.apache.org/licenses/LICENSE-2.0"
+  "url"                 $permalink
+  "downloadUrl"         "https://github.com/kineticloom/plydb"
+  "sameAs"              "https://github.com/kineticloom/plydb"
+-}}
+
+{{- $graph := slice $website $app -}}
+
+{{- /* ── FAQPage (from front matter) ─────────────────────────── */ -}}
+{{- with .Params.faq -}}
+  {{- $entities := slice -}}
+  {{- range . -}}
+    {{- $entities = $entities | append (dict
+      "@type" "Question"
+      "name"  .q
+      "acceptedAnswer" (dict "@type" "Answer" "text" .a)
+    ) -}}
+  {{- end -}}
+  {{- $graph = $graph | append (dict "@type" "FAQPage" "mainEntity" $entities) -}}
+{{- end -}}
+
+{{- /* ── VideoObject ──────────────────────────────────────────── */ -}}
+{{- /* thumbnailUrl omitted — add once a 1200×630 thumbnail is created */ -}}
+{{- $video := dict
+  "@type"       "VideoObject"
+  "name"        "PlyDB Demo — AI-Powered Database Queries in Claude Desktop"
+  "description" "See PlyDB in action: an AI agent queries a live database in plain English using Claude Desktop and MCP, with no SQL required."
+  "contentUrl"  (absURL "videos/plydb-demo-in-claude-desktop.mp4")
+  "uploadDate"  (.Site.Params.videoDemoDate | default "2026-01-01")
+-}}
+{{- $graph = $graph | append $video -}}
+
+<script type="application/ld+json">
+{{ dict "@context" "https://schema.org" "@graph" $graph | jsonify (dict "indent" "  ") }}
+</script>
+{{- end -}}

@@ -99,7 +99,7 @@ description: "Grafana is the industry standard for observability — metrics, lo
           <tr>
             <td>Cost</td>
             <td><span class="ply-cmp-val">OSS: free; Cloud: free tier (3 users, 10K metrics series); Pro from $19/month + usage-based; Enterprise from $25K/year</span></td>
-            <td><span class="ply-cmp-win">Free and open source — no per-user pricing, no usage limits</span></td>
+            <td><span class="ply-cmp-win">Open source — Apache 2.0</span></td>
           </tr>
         </tbody>
       </table>

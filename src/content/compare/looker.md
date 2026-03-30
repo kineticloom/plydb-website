@@ -94,7 +94,7 @@ description: "Looker governs how data is defined and accessed across an enterpri
           <tr>
             <td>Cost</td>
             <td><span class="ply-cmp-val">$35K–$198K+/yr, enterprise sales only, no free tier</span></td>
-            <td><span class="ply-cmp-win">Free and open source</span></td>
+            <td><span class="ply-cmp-win">Open source</span></td>
           </tr>
         </tbody>
       </table>
@@ -171,7 +171,7 @@ description: "Looker governs how data is defined and accessed across an enterpri
 <section class="ply-footer-cta">
   <div class="ply-inner">
     <h2>Semantic context without the modeling tax.</h2>
-    <p>Auto-discovery. Agent-written overlays. Live cross-source queries. Free and open source.</p>
+    <p>Auto-discovery. Agent-written overlays. Live cross-source queries. Open source.</p>
     <div class="ply-cta-row">
       <a href="/docs/quickstart/" class="ply-btn ply-btn--primary">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>

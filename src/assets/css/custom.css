@@ -541,6 +541,50 @@
 }
 
 
+/* How it works: numbered steps below the architecture diagram */
+.ply-arch-steps {
+  max-width: 600px;
+  margin: 2.5rem auto 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  counter-reset: arch-step;
+  list-style: none;
+}
+
+.ply-arch-steps li {
+  position: relative;
+  padding-left: 2.5rem;
+  font-size: 0.95rem;
+  color: var(--ply-text-dim);
+  line-height: 1.6;
+  counter-increment: arch-step;
+}
+
+.ply-arch-steps li::before {
+  content: counter(arch-step);
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--ply-accent) 12%, transparent);
+  color: var(--ply-accent);
+  font-family: var(--ply-font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ply-arch-steps li strong {
+  color: var(--ply-text);
+}
+
+
 /* ═══════════════════════════════════════════════════════════════
    FEATURES
    ═══════════════════════════════════════════════════════════════ */
@@ -833,6 +877,13 @@
   background: color-mix(in srgb, var(--ply-bg-code) 40%, var(--ply-surface));
 }
 
+.ply-usecase__outcome {
+  font-size: 0.9rem;
+  color: var(--ply-text-dim);
+  line-height: 1.6;
+  margin: 0 0 0.75rem;
+}
+
 @media (max-width: 600px) {
   .ply-usecase {
     flex-direction: column;
@@ -846,7 +897,7 @@
    ═══════════════════════════════════════════════════════════════ */
 .ply-install {
   padding: var(--ply-section-gap) 0;
-  background: var(--ply-bg-alt);
+  background: var(--ply-bg);
 }
 
 .ply-install-grid {
@@ -894,6 +945,54 @@
 
 
 /* ═══════════════════════════════════════════════════════════════
+   FAQ
+   ═══════════════════════════════════════════════════════════════ */
+.ply-faq {
+  padding: var(--ply-section-gap) 0;
+  background: var(--ply-bg-alt);
+}
+
+.ply-faq-list {
+  max-width: 680px;
+  margin: 2rem auto 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ply-faq-item {
+  border-bottom: 1px solid var(--ply-border);
+  padding: 1.25rem 0;
+}
+
+.ply-faq-item:last-child {
+  border-bottom: none;
+}
+
+.ply-faq-item h3 {
+  font-family: var(--ply-font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: var(--ply-text);
+}
+
+.ply-faq-item p {
+  font-size: 0.9rem;
+  color: var(--ply-text-dim);
+  margin: 0;
+  line-height: 1.65;
+}
+
+.ply-faq-more {
+  max-width: 680px;
+  margin: 1.5rem auto 0;
+  font-size: 0.88rem;
+  color: var(--ply-text-dim);
+  text-align: right;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
    FOOTER CTA
    ═══════════════════════════════════════════════════════════════ */
 .ply-footer-cta {
@@ -901,7 +1000,7 @@
   text-align: center;
   background:
     radial-gradient(ellipse 50% 60% at 50% 110%, var(--ply-accent-glow), transparent),
-    var(--ply-bg);
+    var(--ply-bg-alt);
 }
 
 .ply-footer-cta h2 {

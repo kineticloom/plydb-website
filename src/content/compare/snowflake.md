@@ -94,7 +94,7 @@ description: "PlyDB gives AI agents real-time access to live data across databas
           <tr>
             <td>Cost</td>
             <td><span class="ply-cmp-val">Consumption-based pricing</span></td>
-            <td><span class="ply-cmp-win">Free and open source</span></td>
+            <td><span class="ply-cmp-win">Open source</span></td>
           </tr>
         </tbody>
       </table>

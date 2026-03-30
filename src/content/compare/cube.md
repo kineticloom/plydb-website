@@ -99,7 +99,7 @@ description: "Cube is a universal semantic layer and agentic analytics platform 
           <tr>
             <td>Cost</td>
             <td><span class="ply-cmp-val">Cube Core: free; Cube Cloud: free tier (1K queries/day), CCU-based paid plans; MCP on Premium+</span></td>
-            <td><span class="ply-cmp-win">Free and open source — no query limits, no paid tiers</span></td>
+            <td><span class="ply-cmp-win">Open source — Apache 2.0</span></td>
           </tr>
         </tbody>
       </table>
@@ -176,7 +176,7 @@ description: "Cube is a universal semantic layer and agentic analytics platform 
 <section class="ply-footer-cta">
   <div class="ply-inner">
     <h2>Semantic context that grows with your agents.</h2>
-    <p>Auto-discover schema. OSI overlays that compound across sessions. MCP included. Free and open source.</p>
+    <p>Auto-discover schema. OSI overlays that compound across sessions. MCP included. Open source.</p>
     <div class="ply-cta-row">
       <a href="/docs/quickstart/" class="ply-btn ply-btn--primary">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
