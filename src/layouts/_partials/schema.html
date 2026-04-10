@@ -52,6 +52,6 @@
 {{- $graph = $graph | append $video -}}
 
 <script type="application/ld+json">
-{{ dict "@context" "https://schema.org" "@graph" $graph | jsonify (dict "indent" "  ") }}
+{{ dict "@context" "https://schema.org" "@graph" $graph | jsonify (dict "indent" "  ") | safeJS }}
 </script>
 {{- end -}}
