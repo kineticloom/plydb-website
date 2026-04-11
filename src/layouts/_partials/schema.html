@@ -41,13 +41,13 @@
 {{- end -}}
 
 {{- /* ── VideoObject ──────────────────────────────────────────── */ -}}
-{{- /* thumbnailUrl omitted — add once a 1200×630 thumbnail is created */ -}}
 {{- $video := dict
   "@type"       "VideoObject"
   "name"        "PlyDB Demo — AI-Powered Database Queries in Claude Desktop"
   "description" "See PlyDB in action: an AI agent queries a live database in plain English using Claude Desktop and MCP, with no SQL required."
   "contentUrl"  (absURL "videos/plydb-demo-in-claude-desktop.mp4")
-  "uploadDate"  (.Site.Params.videoDemoDate | default "2026-01-01")
+  "thumbnailUrl" (absURL "videos/plydb-demo-in-claude-desktop-thumbnail.jpg")
+  "uploadDate"  (.Site.Params.videoDemoDate | default "2026-01-01T15:00:00Z")
 -}}
 {{- $graph = $graph | append $video -}}
 
