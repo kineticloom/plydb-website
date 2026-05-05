@@ -1,0 +1,201 @@
+<div id="nfla-ds" aria-label="NFL Analyst — data sources">
+<style>
+#nfla-ds {
+  font-family: var(--ply-font-body, 'Source Sans 3', sans-serif);
+  background: var(--ply-surface, #fff);
+  border: 1px solid var(--ply-border, #ddd9d0);
+  border-radius: 10px;
+  padding: 22px 20px 18px;
+  margin: 2rem auto;
+  color: var(--ply-text, #1a1a1a);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 680px;
+}
+#nfla-ds *, #nfla-ds *::before, #nfla-ds *::after { box-sizing: border-box; }
+
+.nfla-ds__heading {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ply-text-dim, #6b6560);
+  text-align: center;
+  margin: 0 0 16px;
+}
+
+.nfla-ds__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.nfla-ds__card {
+  border-radius: 8px;
+  border: 1.5px solid transparent;
+  padding: 13px 14px 11px;
+}
+
+.nfla-ds__card-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 6px;
+}
+
+.nfla-ds__card-icon {
+  font-size: 1rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.nfla-ds__card-title {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.nfla-ds__card-source {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.60rem;
+  font-weight: 400;
+  opacity: 0.75;
+  display: block;
+  margin-top: 1px;
+}
+
+.nfla-ds__card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 7px;
+}
+
+.nfla-ds__tag {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.58rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0.85;
+}
+
+.nfla-ds__card--pbp {
+  background: #f0fdf4;
+  border-color: #6ee7b7;
+  color: #064e3b;
+}
+.nfla-ds__card--pbp .nfla-ds__tag { background: #d1fae5; }
+
+.nfla-ds__card--ngs {
+  background: #eff6ff;
+  border-color: #93c5fd;
+  color: #1e3a5f;
+}
+.nfla-ds__card--ngs .nfla-ds__tag { background: #dbeafe; }
+
+.nfla-ds__card--pfr {
+  background: #fef9ee;
+  border-color: #f59e0b;
+  color: #78350f;
+}
+.nfla-ds__card--pfr .nfla-ds__tag { background: #fef3c7; }
+
+.nfla-ds__card--ref {
+  background: #fdf4ff;
+  border-color: #d8b4fe;
+  color: #4a1d96;
+}
+.nfla-ds__card--ref .nfla-ds__tag { background: #f3e8ff; }
+
+@media (prefers-color-scheme: dark) {
+  .nfla-ds__card--pbp  { background: #022c22; border-color: #059669; color: #6ee7b7; }
+  .nfla-ds__card--pbp .nfla-ds__tag  { background: #021a14; }
+  .nfla-ds__card--ngs  { background: #0d1f3c; border-color: #3b82f6; color: #93c5fd; }
+  .nfla-ds__card--ngs .nfla-ds__tag  { background: #071124; }
+  .nfla-ds__card--pfr  { background: #2d1a00; border-color: #d97706; color: #fde68a; }
+  .nfla-ds__card--pfr .nfla-ds__tag  { background: #1c1000; }
+  .nfla-ds__card--ref  { background: #2e1065; border-color: #7c3aed; color: #ddd6fe; }
+  .nfla-ds__card--ref .nfla-ds__tag  { background: #1c0840; }
+}
+
+@media (max-width: 480px) {
+  .nfla-ds__grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<p class="nfla-ds__heading">Data sources</p>
+<div class="nfla-ds__grid">
+
+  <div class="nfla-ds__card nfla-ds__card--pbp">
+    <div class="nfla-ds__card-header">
+      <span class="nfla-ds__card-icon">🏈</span>
+      <span class="nfla-ds__card-title">
+        Play-by-Play
+        <span class="nfla-ds__card-source">nflfastR · 1999–present</span>
+      </span>
+    </div>
+    <div class="nfla-ds__card-tags">
+      <span class="nfla-ds__tag">EPA</span>
+      <span class="nfla-ds__tag">WPA</span>
+      <span class="nfla-ds__tag">win probability</span>
+      <span class="nfla-ds__tag">down &amp; distance</span>
+      <span class="nfla-ds__tag">player IDs</span>
+    </div>
+  </div>
+
+  <div class="nfla-ds__card nfla-ds__card--ngs">
+    <div class="nfla-ds__card-header">
+      <span class="nfla-ds__card-icon">📡</span>
+      <span class="nfla-ds__card-title">
+        Next Gen Stats
+        <span class="nfla-ds__card-source">NFL official · 2016–present</span>
+      </span>
+    </div>
+    <div class="nfla-ds__card-tags">
+      <span class="nfla-ds__tag">separation</span>
+      <span class="nfla-ds__tag">RYOE</span>
+      <span class="nfla-ds__tag">time to throw</span>
+      <span class="nfla-ds__tag">aggressiveness</span>
+      <span class="nfla-ds__tag">CPAE</span>
+    </div>
+  </div>
+
+  <div class="nfla-ds__card nfla-ds__card--pfr">
+    <div class="nfla-ds__card-header">
+      <span class="nfla-ds__card-icon">📊</span>
+      <span class="nfla-ds__card-title">
+        PFR Advanced
+        <span class="nfla-ds__card-source">Pro Football Reference · 2018–present</span>
+      </span>
+    </div>
+    <div class="nfla-ds__card-tags">
+      <span class="nfla-ds__tag">pressure rate</span>
+      <span class="nfla-ds__tag">broken tackles</span>
+      <span class="nfla-ds__tag">drop rate</span>
+      <span class="nfla-ds__tag">ADOT</span>
+      <span class="nfla-ds__tag">missed tackle %</span>
+    </div>
+  </div>
+
+  <div class="nfla-ds__card nfla-ds__card--ref">
+    <div class="nfla-ds__card-header">
+      <span class="nfla-ds__card-icon">🔗</span>
+      <span class="nfla-ds__card-title">
+        Reference Data
+        <span class="nfla-ds__card-source">nflverse · rosters, combine, draft</span>
+      </span>
+    </div>
+    <div class="nfla-ds__card-tags">
+      <span class="nfla-ds__tag">snap counts</span>
+      <span class="nfla-ds__tag">schedules</span>
+      <span class="nfla-ds__tag">combine</span>
+      <span class="nfla-ds__tag">draft picks</span>
+      <span class="nfla-ds__tag">player IDs</span>
+    </div>
+  </div>
+
+</div>
+</div>
