@@ -1,0 +1,203 @@
+<div id="nbaa-ds" aria-label="NBA Analyst — data sources">
+<style>
+#nbaa-ds {
+  font-family: var(--ply-font-body, 'Source Sans 3', sans-serif);
+  background: var(--ply-surface, #fff);
+  border: 1px solid var(--ply-border, #ddd9d0);
+  border-radius: 10px;
+  padding: 22px 20px 18px;
+  margin: 2rem auto;
+  color: var(--ply-text, #1a1a1a);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 680px;
+}
+#nbaa-ds *, #nbaa-ds *::before, #nbaa-ds *::after { box-sizing: border-box; }
+
+.nbaa-ds__heading {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ply-text-dim, #6b6560);
+  text-align: center;
+  margin: 0 0 16px;
+}
+
+.nbaa-ds__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.nbaa-ds__card {
+  border-radius: 8px;
+  border: 1.5px solid transparent;
+  padding: 13px 14px 11px;
+}
+
+.nbaa-ds__card-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 6px;
+}
+
+.nbaa-ds__card-icon {
+  font-size: 1rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.nbaa-ds__card-title {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.nbaa-ds__card-source {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.60rem;
+  font-weight: 400;
+  opacity: 0.75;
+  display: block;
+  margin-top: 1px;
+}
+
+.nbaa-ds__card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 7px;
+}
+
+.nbaa-ds__tag {
+  font-family: var(--ply-font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.58rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0.85;
+}
+
+.nbaa-ds__card--boxscores {
+  background: #fef9ee;
+  border-color: #f59e0b;
+  color: #78350f;
+}
+.nbaa-ds__card--boxscores .nbaa-ds__tag { background: #fef3c7; }
+
+.nbaa-ds__card--advanced {
+  background: #eff6ff;
+  border-color: #93c5fd;
+  color: #1e3a5f;
+}
+.nbaa-ds__card--advanced .nbaa-ds__tag { background: #dbeafe; }
+
+.nbaa-ds__card--pbp {
+  background: #f0fdf4;
+  border-color: #6ee7b7;
+  color: #064e3b;
+}
+.nbaa-ds__card--pbp .nbaa-ds__tag { background: #d1fae5; }
+
+.nbaa-ds__card--ref {
+  background: #fdf4ff;
+  border-color: #d8b4fe;
+  color: #4a1d96;
+}
+.nbaa-ds__card--ref .nbaa-ds__tag { background: #f3e8ff; }
+
+@media (prefers-color-scheme: dark) {
+  .nbaa-ds__card--boxscores { background: #2d1a00; border-color: #d97706; color: #fde68a; }
+  .nbaa-ds__card--boxscores .nbaa-ds__tag { background: #1c1000; }
+  .nbaa-ds__card--advanced  { background: #0d1f3c; border-color: #3b82f6; color: #93c5fd; }
+  .nbaa-ds__card--advanced .nbaa-ds__tag  { background: #071124; }
+  .nbaa-ds__card--pbp       { background: #022c22; border-color: #059669; color: #6ee7b7; }
+  .nbaa-ds__card--pbp .nbaa-ds__tag       { background: #021a14; }
+  .nbaa-ds__card--ref       { background: #2e1065; border-color: #7c3aed; color: #ddd6fe; }
+  .nbaa-ds__card--ref .nbaa-ds__tag       { background: #1c0840; }
+}
+
+@media (max-width: 480px) {
+  .nbaa-ds__grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<p class="nbaa-ds__heading">Data sources</p>
+<div class="nbaa-ds__grid">
+
+  <div class="nbaa-ds__card nbaa-ds__card--boxscores">
+    <div class="nbaa-ds__card-header">
+      <span class="nbaa-ds__card-icon">🏀</span>
+      <span class="nbaa-ds__card-title">
+        Box Scores
+        <span class="nbaa-ds__card-source">NBA.com · player &amp; team · 1947–present</span>
+      </span>
+    </div>
+    <div class="nbaa-ds__card-tags">
+      <span class="nbaa-ds__tag">PTS</span>
+      <span class="nbaa-ds__tag">REB</span>
+      <span class="nbaa-ds__tag">AST</span>
+      <span class="nbaa-ds__tag">FG%</span>
+      <span class="nbaa-ds__tag">3P%</span>
+      <span class="nbaa-ds__tag">+/-</span>
+    </div>
+  </div>
+
+  <div class="nbaa-ds__card nbaa-ds__card--advanced">
+    <div class="nbaa-ds__card-header">
+      <span class="nbaa-ds__card-icon">📊</span>
+      <span class="nbaa-ds__card-title">
+        Advanced Metrics
+        <span class="nbaa-ds__card-source">NBA.com · player &amp; team · 1996–present</span>
+      </span>
+    </div>
+    <div class="nbaa-ds__card-tags">
+      <span class="nbaa-ds__tag">TS%</span>
+      <span class="nbaa-ds__tag">USG%</span>
+      <span class="nbaa-ds__tag">ORTG</span>
+      <span class="nbaa-ds__tag">DRTG</span>
+      <span class="nbaa-ds__tag">pace</span>
+      <span class="nbaa-ds__tag">PIE</span>
+    </div>
+  </div>
+
+  <div class="nbaa-ds__card nbaa-ds__card--pbp">
+    <div class="nbaa-ds__card-header">
+      <span class="nbaa-ds__card-icon">▶</span>
+      <span class="nbaa-ds__card-title">
+        Play-by-Play
+        <span class="nbaa-ds__card-source">NBA.com · Parquet · 1996–present</span>
+      </span>
+    </div>
+    <div class="nbaa-ds__card-tags">
+      <span class="nbaa-ds__tag">shot location</span>
+      <span class="nbaa-ds__tag">shot distance</span>
+      <span class="nbaa-ds__tag">game clock</span>
+      <span class="nbaa-ds__tag">score margin</span>
+      <span class="nbaa-ds__tag">18.7M rows</span>
+    </div>
+  </div>
+
+  <div class="nbaa-ds__card nbaa-ds__card--ref">
+    <div class="nbaa-ds__card-header">
+      <span class="nbaa-ds__card-icon">🔗</span>
+      <span class="nbaa-ds__card-title">
+        Reference Data
+        <span class="nbaa-ds__card-source">games · players · franchise history</span>
+      </span>
+    </div>
+    <div class="nbaa-ds__card-tags">
+      <span class="nbaa-ds__tag">draft info</span>
+      <span class="nbaa-ds__tag">attendance</span>
+      <span class="nbaa-ds__tag">arena</span>
+      <span class="nbaa-ds__tag">franchise moves</span>
+      <span class="nbaa-ds__tag">schedules</span>
+    </div>
+  </div>
+
+</div>
+</div>
